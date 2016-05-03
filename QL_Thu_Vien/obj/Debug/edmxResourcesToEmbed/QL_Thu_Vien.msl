@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_Thu_VienModelStoreContainer" CdmEntityContainer="QL_Thu_VienEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_chitietphieu">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_chitietphieu">
+        <MappingFragment StoreEntitySet="tbl_chitietphieu">
+          <ScalarProperty Name="sophieumuon" ColumnName="sophieumuon" />
+          <ScalarProperty Name="masach" ColumnName="masach" />
+          <ScalarProperty Name="trangthaisach" ColumnName="trangthaisach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_docgia">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_docgia">
+        <MappingFragment StoreEntitySet="tbl_docgia">
+          <ScalarProperty Name="madg" ColumnName="madg" />
+          <ScalarProperty Name="tendg" ColumnName="tendg" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="lop" ColumnName="lop" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_linhvuc">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_linhvuc">
+        <MappingFragment StoreEntitySet="tbl_linhvuc">
+          <ScalarProperty Name="malinhvuc" ColumnName="malinhvuc" />
+          <ScalarProperty Name="tenlinhvuc" ColumnName="tenlinhvuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_nxb">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nxb">
+        <MappingFragment StoreEntitySet="tbl_nxb">
+          <ScalarProperty Name="manxb" ColumnName="manxb" />
+          <ScalarProperty Name="tennxb" ColumnName="tennxb" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_nhanvien">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nhanvien">
+        <MappingFragment StoreEntitySet="tbl_nhanvien">
+          <ScalarProperty Name="manv" ColumnName="manv" />
+          <ScalarProperty Name="tennv" ColumnName="tennv" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="chucvu" ColumnName="chucvu" />
+          <ScalarProperty Name="tuoi" ColumnName="tuoi" />
+          <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_phieumuon_tra">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_phieumuon_tra">
+        <MappingFragment StoreEntitySet="tbl_phieumuon_tra">
+          <ScalarProperty Name="sophieumuon" ColumnName="sophieumuon" />
+          <ScalarProperty Name="madg" ColumnName="madg" />
+          <ScalarProperty Name="manv" ColumnName="manv" />
+          <ScalarProperty Name="ngaymuon" ColumnName="ngaymuon" />
+          <ScalarProperty Name="ngaytra" ColumnName="ngaytra" />
+          <ScalarProperty Name="xacnhantra" ColumnName="xacnhantra" />
+          <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+          <ScalarProperty Name="sotienphat" ColumnName="sotienphat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_sach">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_sach">
+        <MappingFragment StoreEntitySet="tbl_sach">
+          <ScalarProperty Name="masach" ColumnName="masach" />
+          <ScalarProperty Name="tensach" ColumnName="tensach" />
+          <ScalarProperty Name="matg" ColumnName="matg" />
+          <ScalarProperty Name="manxb" ColumnName="manxb" />
+          <ScalarProperty Name="malv" ColumnName="malv" />
+          <ScalarProperty Name="sotrang" ColumnName="sotrang" />
+          <ScalarProperty Name="soluonghientai" ColumnName="soluonghientai" />
+          <ScalarProperty Name="soluongbandau" ColumnName="soluongbandau" />
+          <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tacgia">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_tacgia">
+        <MappingFragment StoreEntitySet="tbl_tacgia">
+          <ScalarProperty Name="matg" ColumnName="matg" />
+          <ScalarProperty Name="tentg" ColumnName="tentg" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_xuphat">
+      <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_xuphat">
+        <MappingFragment StoreEntitySet="tbl_xuphat">
+          <ScalarProperty Name="maphat" ColumnName="maphat" />
+          <ScalarProperty Name="loaiphat" ColumnName="loaiphat" />
+          <ScalarProperty Name="giatien" ColumnName="giatien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tbl_sach_tacgia" TypeName="QL_Thu_VienModel.tbl_sach_tacgia" StoreEntitySet="tbl_sach_tacgia">
+      <EndProperty Name="tbl_sach">
+        <ScalarProperty Name="masach" ColumnName="masach" />
+      </EndProperty>
+      <EndProperty Name="tbl_tacgia">
+        <ScalarProperty Name="matg" ColumnName="matg" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
