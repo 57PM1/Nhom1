@@ -2,6 +2,7 @@
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,28 +47,21 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        // [ToanNV] Insert nhân viên
         public Result<bool> insert_nhanvien(nhanvien_ett nhanvien)
         {
             Result<bool> rs = new Result<bool>();
 
             try
             {
-                //// create new tbl_nhanvien to insert to database_context
-                //tbl_nhanvien temp = new tbl_nhanvien();
-                //temp.tennv = nhanvien.tennhanvien;
-                //temp.diachi = nhanvien.diachi;
-                //temp.dienthoai = nhanvien.sdt;
-                //temp.email = nhanvien.email;
-                //temp.chucvu = nhanvien.chucvu;
-                //temp.tuoi = nhanvien.tuoi;
-                //temp.taikhoan = nhanvien.taikhoan;
-                //temp.matkhau = nhanvien.matkhau;
+                // create new tbl_nhanvien to insert to database_context
+                string sql = String.Format("Insert into tbl_nhanvien(tennv, diachi, dienthoai, email, chucvu, tuoi, taikhoan, matkhau) values(N'{0}', N'{1}', '{2}', N'{3}', N'{4}', {5},  N'{6}', N'{7}')", nhanvien.tennhanvien, nhanvien.diachi, nhanvien.sdt, nhanvien.email, nhanvien.chucvu, nhanvien.tuoi, nhanvien.taikhoan, PasswordUtil.HashPassword(nhanvien.matkhau));
 
-                //db.tbl_nhanviens.InsertOnSubmit(temp);
-                //db.SubmitChanges();
+                db.Database.ExecuteSqlCommand(sql);
+                db.SaveChanges();
 
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -79,28 +73,17 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        //[ToanNV] Delete nhân viên
         public Result<bool> delete_nhanvien(int manhanvien)
         {
             Result<bool> rs = new Result<bool>();
             try
             {
-                //var dt = db.tbl_nhanviens.Where(o => o.manv == manhanvien);
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_nhanvien item in dt)
-                //    {
-                //        db.tbl_nhanviens.DeleteOnSubmit(item);
-                //    }
-                //    db.SubmitChanges();
-                //    rs.data = true;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = false;
-                //    rs.errcode = ErrorCode.NaN;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_nhanvien where manv = " + manhanvien);
+
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
+                rs.errInfor = Constants.success_insert;
 
                 return rs;
             }
@@ -113,50 +96,51 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        //[ToanNV] edit nhân viên
         public Result<bool> edit_nhanvien(nhanvien_ett nhanvien)
         {
             Result<bool> rs = new Result<bool>();
             try
             {
-                // find the only row to edit
-                //var dt = db.tbl_nhanviens.Where(o => o.manv == nhanvien.manhanvien).SingleOrDefault();
-                //// if fields are null or "" then maintaining the old data;
-                //if (nhanvien.tennhanvien != null && nhanvien.tennhanvien != "")
-                //{
-                //    dt.tennv = nhanvien.tennhanvien;
-                //}
-                //if (nhanvien.diachi != null && nhanvien.diachi != "")
-                //{
-                //    dt.diachi = nhanvien.diachi;
-                //}
-                //if (nhanvien.sdt != null && nhanvien.sdt != "")
-                //{
-                //    dt.dienthoai = nhanvien.sdt;
-                //}
-                //if (nhanvien.email != null && nhanvien.email != "")
-                //{
-                //    dt.email = nhanvien.email;
-                //}
-                //if (nhanvien.chucvu != null && nhanvien.chucvu != "")
-                //{
-                //    dt.chucvu = nhanvien.chucvu;
-                //}
-                //if (nhanvien.tuoi != null)
-                //{
-                //    dt.tuoi = nhanvien.tuoi;
-                //}
-                //if (nhanvien.taikhoan != null && nhanvien.taikhoan != "")
-                //{
-                //    dt.taikhoan = nhanvien.taikhoan;
-                //}
-                //if (nhanvien.matkhau != null && nhanvien.matkhau != "")
-                //{
-                //    dt.matkhau = nhanvien.matkhau;
-                //}
+                //find the only row to edit
+                var dt = db.tbl_nhanvien.SqlQuery("Select * from tbl_nhanvien where manv = " + nhanvien.manhanvien).SingleOrDefault();
+                // if fields are null or "" then maintaining the old data;
+                if (nhanvien.tennhanvien != null && nhanvien.tennhanvien != "")
+                {
+                    dt.tennv = nhanvien.tennhanvien;
+                }
+                if (nhanvien.diachi != null && nhanvien.diachi != "")
+                {
+                    dt.diachi = nhanvien.diachi;
+                }
+                if (nhanvien.sdt != null && nhanvien.sdt != "")
+                {
+                    dt.dienthoai = nhanvien.sdt;
+                }
+                if (nhanvien.email != null && nhanvien.email != "")
+                {
+                    dt.email = nhanvien.email;
+                }
+                if (nhanvien.chucvu != null && nhanvien.chucvu != "")
+                {
+                    dt.chucvu = nhanvien.chucvu;
+                }
+                if (nhanvien.tuoi != null)
+                {
+                    dt.tuoi = nhanvien.tuoi;
+                }
+                if (nhanvien.taikhoan != null && nhanvien.taikhoan != "")
+                {
+                    dt.taikhoan = nhanvien.taikhoan;
+                }
+                if (nhanvien.matkhau != null && nhanvien.matkhau != "")
+                {
+                    dt.matkhau = PasswordUtil.HashPassword(nhanvien.matkhau);
+                }
 
-                //db.SubmitChanges();
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                db.SaveChanges();
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -168,46 +152,46 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        // [ToanNV] Search by fields
         public Result<List<nhanvien_ett>> select_nhanvien_fields(string input, string howtosearch)
         {
             Result<List<nhanvien_ett>> rs = new Result<List<nhanvien_ett>>();
             try
             {
-                //IQueryable<tbl_nhanvien> dt = null;
-                //List<nhanvien_ett> lst = new List<nhanvien_ett>();
-                //switch (howtosearch)
-                //{
-                //    case "hoten":
-                //        dt = db.tbl_nhanviens.Where(o => o.tennv.Contains(input));
-                //        break;
-                //    case "chucvu":
-                //        dt = db.tbl_nhanviens.Where(o => o.chucvu.Contains(input));
-                //        break;
-                //    case "taikhoan":
-                //        dt = db.tbl_nhanviens.Where(o => o.taikhoan.Contains(input));
-                //        break;
-                //    default:
-                //        break;
-                //}
+                DbSqlQuery<tbl_nhanvien> dt = null;
+                List<nhanvien_ett> lst = new List<nhanvien_ett>();
+                switch (howtosearch)
+                {
+                    case "hoten":
+                        dt = db.tbl_nhanvien.SqlQuery(String.Format("Select * from tbl_nhanvien where tennv like '%{0}%'", input));
+                        break;
+                    case "chucvu":
+                        dt = db.tbl_nhanvien.SqlQuery(String.Format("Select * from tbl_nhanvien where chucvu like '%{0}%'", input));
+                        break;
+                    case "taikhoan":
+                        dt = db.tbl_nhanvien.SqlQuery(String.Format("Select * from tbl_nhanvien where taikhoan like '%{0}%'", input));
+                        break;
+                    default:
+                        break;
+                }
 
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_nhanvien item in dt)
-                //    {
-                //        nhanvien_ett temp = new nhanvien_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //    return rs;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //    return rs;
-                //}
-                return rs;
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_nhanvien item in dt)
+                    {
+                        nhanvien_ett temp = new nhanvien_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                    return rs;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                    return rs;
+                }
             }
             catch (Exception e)
             {

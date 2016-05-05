@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Shareds\PasswordUtil.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
