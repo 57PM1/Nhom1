@@ -2,6 +2,7 @@
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,34 +14,44 @@ namespace DoAnCNPM.Controllers
 
         public phieumuontra_ctrl() { }
 
-       // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
         public Result<List<phieumuontraview_ett>> select_all_phieumuontra_view()
         {
             Result<List<phieumuontraview_ett>> rs = new Result<List<phieumuontraview_ett>>();
             try
             {
-                //List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
-                //var dt = from o in db.tbl_phieumuon_tras
-                //         join p in db.tbl_docgias on o.madg equals p.madg
-                //         join k in db.tbl_nhanviens on o.manv equals k.manv
-                //         select new phieumuontraview_ett() { sophieumuon = o.sophieumuon, docgia = p.tendg,
-                //         nhanvien = k.tennv, ngaymuon = o.ngaymuon, ngaytra = o.ngaytra, xacnhantra = o.xacnhantra, ghichu = o.ghichu};
+                List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
+                //var dt = from o in db.tbl_phieumuon_tra
+                //         join p in db.tbl_docgia on o.madg equals p.madg
+                //         join k in db.tbl_nhanvien on o.manv equals k.manv
+                //         select new phieumuontraview_ett()
+                //         {
+                //             sophieumuon = o.sophieumuon,
+                //             docgia = p.tendg,
+                //             nhanvien = k.tennv,
+                //             ngaymuon = o.ngaymuon,
+                //             ngaytra = o.ngaytra,
+                //             xacnhantra = o.xacnhantra,
+                //             ghichu = o.ghichu
+                //         };
 
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (phieumuontraview_ett item in dt)
-                //    {
-                //        lst.Add(item);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                var dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra");
+
+                if (dt.Count() > 0)
+                {
+                    foreach (var item in dt)
+                    {
+                        lst.Add(new phieumuontraview_ett(item));
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
                 return rs;
             }
             catch (Exception e)
@@ -58,38 +69,31 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                // create new tbl_phieumuontra to insert to database_context
-                //tbl_phieumuon_tra temp = new tbl_phieumuon_tra();
-                //temp.manv = phieumuontra.manv;
-                //temp.madg = phieumuontra.madg;
-                //temp.ngaytra = phieumuontra.ngaytra;
-                //temp.ngaymuon = phieumuontra.ngaymuon;
-                //temp.xacnhantra = phieumuontra.xacnhantra;
-                //temp.ghichu = phieumuontra.ghichu;
+                string sql = String.Format("Insert into tbl_phieumuon_tra(madg, manv, ngaymuon, ngaytra, ghichu) values({0}, {1}, '{2}', '{3}', N'{4}')", phieumuontra.madg, phieumuontra.manv, phieumuontra.ngaymuon, phieumuontra.ngaytra, phieumuontra.ghichu);
 
-                //db.tbl_phieumuon_tras.InsertOnSubmit(temp);
+                db.Database.ExecuteSqlCommand(sql);
+                db.SaveChanges();
 
-                //if (list_masach.Count() > 0)
-                //{
-                //    foreach (string item in list_masach)
-                //    {
-                //        var dt = db.tbl_saches.Where(o => o.masach == int.Parse(item)).SingleOrDefault();
-                //        dt.soluong--;
-                //    }
-                //}   
+                // Get Inserted phieu muon tra
+                var last_record = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra OrderBy sophieumuon DESC").Take(1);
+                if (last_record.Count() > 0)
+                {
+                    foreach (var item in last_record)
+                    {
+                        phieumuontra_ett temp = new phieumuontra_ett(item);
+                        rs.data = temp;
+                    }
+                }
 
-                //db.SubmitChanges();
+                // Insert Chi tiet phieu in phieu
+                if (list_masach.Count() > 0)
+                {
+                    chitietphieu_ctrl chitietphieu_ctrl = new chitietphieu_ctrl();
 
-                //var last_record = db.tbl_phieumuon_tras.OrderByDescending(o => o.sophieumuon).Take(1);
-                //if (last_record.Count() > 0)
-                //{
-                //    foreach (var item in last_record)
-                //    {
-                //        phieumuontra_ett temp1 = new phieumuontra_ett(item);
-                //        rs.data = temp1;
-                //    }
-                //}
-                //rs.errcode = ErrorCode.sucess;
+                    chitietphieu_ctrl.insert_chitietphieu(phieumuontra.sophieumuon.ToString(), list_masach);
+                }
+
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -106,23 +110,11 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                //var dt = db.tbl_phieumuon_tras.Where(o => o.sophieumuon == maphieumuontra);
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_phieumuon_tra item in dt)
-                //    {
-                //        db.tbl_phieumuon_tras.DeleteOnSubmit(item);
-                //    }
-                //    db.SubmitChanges();
-                //    rs.data = true;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = false;
-                //    rs.errcode = ErrorCode.NaN;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_phieumuon_tra where sophieumuon = " + maphieumuontra);
+
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
+                rs.errInfor = Constants.success_insert;
 
                 return rs;
             }
@@ -140,48 +132,48 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                //// find the only row to edit
-                //var dt = db.tbl_phieumuon_tras.Where(o => o.sophieumuon == phieumuontra.sophieumuon).SingleOrDefault();
-                //// if fields are null or "" then maintaining the old data;
-                //if (phieumuontra.madg != null)
-                //{
-                //    dt.madg = phieumuontra.madg;
-                //}
-                //if (phieumuontra.manv != null)
-                //{
-                //    dt.manv = phieumuontra.manv;
-                //}
-                //if (phieumuontra.ngaymuon != null && phieumuontra.ngaymuon != "")
-                //{
-                //    dt.ngaymuon = phieumuontra.ngaymuon;
-                //}
-                //if (phieumuontra.ngaytra != null && phieumuontra.ngaytra != "")
-                //{
-                //    dt.ngaytra = phieumuontra.ngaytra;
-                //}
-                //if (phieumuontra.ghichu != null && phieumuontra.ghichu != "")
-                //{
-                //    dt.ghichu = phieumuontra.ghichu;
-                //}
-                //if (phieumuontra.xacnhantra != null)
-                //{
-                //    dt.xacnhantra = phieumuontra.xacnhantra;
-                //    if (phieumuontra.xacnhantra==true)
-                //    {
-                //        if (list_masach.Count() > 0)
-                //        {
-                //            foreach (string item in list_masach)
-                //            {
-                //                var data = db.tbl_saches.Where(o => o.masach == int.Parse(item)).SingleOrDefault();
-                //                data.soluong++;
-                //            }
-                //        }               
-                //    }
-                //}
+                // find the only row to edit
+                var dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon = " + phieumuontra.sophieumuon).SingleOrDefault();
+                // if fields are null or "" then maintaining the old data;
+                if (phieumuontra.madg != null)
+                {
+                    dt.madg = phieumuontra.madg;
+                }
+                if (phieumuontra.manv != null)
+                {
+                    dt.manv = phieumuontra.manv;
+                }
+                if (phieumuontra.ngaymuon != null && phieumuontra.ngaymuon != "")
+                {
+                    dt.ngaymuon = phieumuontra.ngaymuon;
+                }
+                if (phieumuontra.ngaytra != null && phieumuontra.ngaytra != "")
+                {
+                    dt.ngaytra = phieumuontra.ngaytra;
+                }
+                if (phieumuontra.ghichu != null && phieumuontra.ghichu != "")
+                {
+                    dt.ghichu = phieumuontra.ghichu;
+                }
+                if (phieumuontra.xacnhantra != null)
+                {
+                    dt.xacnhantra = phieumuontra.xacnhantra;
+                    if (phieumuontra.xacnhantra == true)
+                    {
+                        if (list_masach.Count() > 0)
+                        {
+                            foreach (string item in list_masach)
+                            {
+                                var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + item).SingleOrDefault();
+                                data.soluonghientai++;
+                            }
+                        }
+                    }
+                }
 
-                //db.SubmitChanges();
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                db.SaveChanges();
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -198,49 +190,37 @@ namespace DoAnCNPM.Controllers
             Result<List<phieumuontraview_ett>> rs = new Result<List<phieumuontraview_ett>>();
             try
             {
-            //    var dt = from o in db.tbl_phieumuon_tras
-            //             join p in db.tbl_docgias on o.madg equals p.madg
-            //             join k in db.tbl_nhanviens on o.manv equals k.manv
-            //             select new phieumuontraview_ett()
-            //             {
-            //                 sophieumuon = o.sophieumuon,
-            //                 docgia = p.tendg,
-            //                 nhanvien = k.tennv,
-            //                 ngaymuon = o.ngaymuon,
-            //                 ngaytra = o.ngaytra,
-            //                 xacnhantra = o.xacnhantra,
-            //                 ghichu = o.ghichu
-            //             };
-            //    List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
-            //    switch (howtosearch)
-            //    {
-            //        case "sophieumuon":
-            //            dt = dt.Where(o => o.sophieumuon.ToString().Contains(input));
-            //            break;
-            //        case "docgia":
-            //            dt = dt.Where(o => o.docgia.Contains(input));
-            //            break;
-            //        default:
-            //            break;
-            //    }
+               
+                List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
+                DbSqlQuery<tbl_phieumuon_tra> dt = null;
+                switch (howtosearch)
+                {
+                    case "sophieumuon":
+                        dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon =" + input);
+                        break;
+                    case "docgia":
+                        dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where madg =" + input);
+                        break;
+                    default:
+                        break;
+                }
 
-            //    if (dt.Count() > 0)
-            //    {
-            //        foreach (phieumuontraview_ett item in dt)
-            //        {
-            //            lst.Add(item);
-            //        }
-            //        rs.data = lst;
-            //        rs.errcode = ErrorCode.sucess;
-            //        return rs;
-            //    }
-            //    else
-            //    {
-            //        rs.data = null;
-            //        rs.errInfor = Constants.empty_data;
-            //        return rs;
-            //    }
-            return rs;
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_phieumuon_tra item in dt)
+                    {
+                        lst.Add( new phieumuontraview_ett(item));
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                    return rs;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                    return rs;
+                }
             }
             catch (Exception e)
             {

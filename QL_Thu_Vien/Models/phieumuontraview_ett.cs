@@ -28,5 +28,16 @@ namespace DoAnCNPM.Models
             this.xacnhantra = xacnhantra;
             this.ghichu = ghichu;
         }
+
+        public phieumuontraview_ett(tbl_phieumuon_tra tbl)
+        {
+            sophieumuon = tbl.sophieumuon;
+            docgia = tbl.tbl_docgia.tendg;
+            nhanvien = tbl.tbl_nhanvien.tennv;
+            ngaymuon = tbl.ngaymuon;
+            ngaytra = tbl.ngaytra;
+            xacnhantra = tbl.xacnhantra;
+            ghichu = tbl.ghichu;
+        }
     }
 }

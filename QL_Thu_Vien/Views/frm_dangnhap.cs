@@ -1,5 +1,6 @@
 ﻿using DoAnCNPM.Controllers;
 using DoAnCNPM.Models;
+using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,10 @@ namespace DoAnCNPM.Views
 
         private void btn_thoat_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            frm_main main_form = new frm_main();
+            main_form.Show();
+     
         }
 
         private void btn_dangnhap_Click(object sender, EventArgs e)
@@ -36,7 +40,7 @@ namespace DoAnCNPM.Views
                     bool check = false;
                     foreach (nhanvien_ett item in temp.data)
                     {
-                        if (txt_ten.Text == item.taikhoan && txt_mk.Text == item.matkhau && item.taikhoan != "" && item.taikhoan != null)
+                        if (txt_ten.Text == item.taikhoan && PasswordUtil.HashPassword(txt_mk.Text) == item.matkhau && item.taikhoan != "" && item.taikhoan != null)
                         {
                             check = true;
                             break;            

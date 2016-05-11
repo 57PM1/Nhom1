@@ -55,17 +55,54 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                //// create new tbl_chitietphieu to insert to database_context
-                //tbl_chitietphieu temp = new tbl_chitietphieu();
-                //temp.sophieumuon = chitietphieu.sophieumuon;
-                //temp.masach = chitietphieu.masach;
-                //temp.trangthaisach = chitietphieu.trangthaisach;
+                // create new tbl_chitietphieu to insert to database_context
+                string sql = String.Format("Insert into tbl_chitietphieu(sophieumuon, masach, trangthaisach) values({0}, {1}, N'{2}')", chitietphieu.sophieumuon, chitietphieu.masach, chitietphieu.trangthaisach);
 
-                //db.tbl_chitietphieus.InsertOnSubmit(temp);
-                //db.SubmitChanges();
+                db.Database.ExecuteSqlCommand(sql);
+                db.SaveChanges();
 
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
+                return rs;
+            }
+            catch (Exception e)
+            {
+                rs.data = false;
+                rs.errcode = ErrorCode.fail;
+                rs.errInfor = e.ToString();
+                return rs;
+            }
+        }
+
+        public Result<bool> insert_chitietphieu(string maphieumuon, List<string> masach)
+        {
+            Result<bool> rs = new Result<bool>();
+
+            try
+            {
+                // check whether maphieumuon exists or not
+
+                var data = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon = " + maphieumuon);
+
+                if (data.Count() > 0)
+                {
+                    foreach (var item in masach)
+                    {
+                        string sql = String.Format("Insert into tbl_chitietphieu(sophieumuon, masach) values({0}, {1})", maphieumuon, item);
+                        db.Database.ExecuteSqlCommand(sql);
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    rs.data = false;
+                    rs.errcode = ErrorCode.fail;
+                    rs.errInfor = Constants.Err_SoPhieuMuon_Not_Exists;
+                    return rs;
+                }
+
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
