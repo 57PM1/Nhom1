@@ -15,7 +15,6 @@ namespace DoAnCNPM.Controllers
 
         QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
-       
         //[ToanNV] Get all nha xuat ban
         public Result<List<nhaxuatban_ett>> select_all_nhaxuatban()
         {

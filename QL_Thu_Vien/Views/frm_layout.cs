@@ -111,10 +111,5 @@ namespace DoAnCNPM
             frm_baocao_docgiamuonquahan temp = new frm_baocao_docgiamuonquahan();
             Utils.add_form_to_panel(temp, panel1);
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
