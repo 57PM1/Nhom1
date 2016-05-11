@@ -29,8 +29,8 @@ namespace DoAnCNPM
         public virtual DbSet<tbl_chitietphieu> tbl_chitietphieu { get; set; }
         public virtual DbSet<tbl_docgia> tbl_docgia { get; set; }
         public virtual DbSet<tbl_linhvuc> tbl_linhvuc { get; set; }
-        public virtual DbSet<tbl_nxb> tbl_nxb { get; set; }
         public virtual DbSet<tbl_nhanvien> tbl_nhanvien { get; set; }
+        public virtual DbSet<tbl_nxb> tbl_nxb { get; set; }
         public virtual DbSet<tbl_phieumuon_tra> tbl_phieumuon_tra { get; set; }
         public virtual DbSet<tbl_sach> tbl_sach { get; set; }
         public virtual DbSet<tbl_tacgia> tbl_tacgia { get; set; }

@@ -2,6 +2,7 @@
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +13,31 @@ namespace DoAnCNPM.Controllers
     {
         public tacgia_ctrl() { }
 
-       // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
+        // Trang 
         public Result<List<tacgia_ett>> select_all_tacgia()
         {
             Result<List<tacgia_ett>> rs = new Result<List<tacgia_ett>>();
             try
             {
-                //List<tacgia_ett> lst = new List<tacgia_ett>();
-                //var dt = db.tbl_tacgias;
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_tacgia item in dt)
-                //    {
-                //        tacgia_ett temp = new tacgia_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                List<tacgia_ett> lst = new List<tacgia_ett>();
+                var dt = db.tbl_tacgia.SqlQuery("Select * from tbl_tacgia");
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_tacgia item in dt)
+                    {
+                        tacgia_ett temp = new tacgia_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
                 return rs;
             }
             catch (Exception e)
@@ -47,23 +49,20 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        //Trang
         public Result<bool> insert_tacgia(tacgia_ett tacgia)
         {
             Result<bool> rs = new Result<bool>();
 
             try
             {
-                //// create new tbl_tacgia to insert to database_context
-                //tbl_tacgia temp = new tbl_tacgia();
-                //temp.tentg = tacgia.tentacgia;
-                //temp.gioitinh = tacgia.gioitinh;
-                //temp.diachi = tacgia.diachi;
+                string sql = String.Format("Insert into tbl_tacgia(tentg, gioitinh, diachi) values(N'{0}', N'{1}', '{2}')", tacgia.tentacgia, tacgia.gioitinh, tacgia.diachi);
 
-                //db.tbl_tacgias.InsertOnSubmit(temp);
-                //db.SubmitChanges();
+                db.Database.ExecuteSqlCommand(sql);
+                db.SaveChanges(); 
 
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -75,28 +74,17 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        //Trang
         public Result<bool> delete_tacgia(int matacgia)
         {
             Result<bool> rs = new Result<bool>();
             try
             {
-                //var dt = db.tbl_tacgias.Where(o => o.matg == matacgia);
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_tacgia item in dt)
-                //    {
-                //        db.tbl_tacgias.DeleteOnSubmit(item);
-                //    }
-                //    db.SubmitChanges();
-                //    rs.data = true;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = false;
-                //    rs.errcode = ErrorCode.NaN;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_tacgia where matg = " +matacgia);
+
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
+                rs.errInfor = Constants.success_insert;
 
                 return rs;
             }
@@ -114,25 +102,25 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                //// find the only row to edit
-                //var dt = db.tbl_tacgias.Where(o => o.matg == tacgia.matacgia).SingleOrDefault();
-                //// if fields are null or "" then maintaining the old data;
-                //if (tacgia.tentacgia != null && tacgia.tentacgia != "")
-                //{
-                //    dt.tentg = tacgia.tentacgia;
-                //}
-                //if (tacgia.gioitinh != null && tacgia.gioitinh != "")
-                //{
-                //    dt.gioitinh = tacgia.gioitinh;
-                //}
-                //if (tacgia.diachi != null && tacgia.diachi != "")
-                //{
-                //    dt.diachi = tacgia.diachi;
-                //}
+                // find the only row to edit
+                var dt = db.tbl_tacgia.SqlQuery("Select * from tbl_tacgia where mantg = " + tacgia.matacgia).SingleOrDefault();
+                // if fields are null or "" then maintaining the old data;
+                if (tacgia.tentacgia != null && tacgia.tentacgia != "")
+                {
+                    dt.tentg = tacgia.tentacgia;
+                }
+                if (tacgia.gioitinh != null && tacgia.gioitinh != "")
+                {
+                    dt.gioitinh = tacgia.gioitinh;
+                }
+                if (tacgia.diachi != null && tacgia.diachi != "")
+                {
+                    dt.diachi = tacgia.diachi;
+                }
 
-                //db.SubmitChanges();
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                db.SaveChanges();
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -149,35 +137,35 @@ namespace DoAnCNPM.Controllers
             Result<List<tacgia_ett>> rs = new Result<List<tacgia_ett>>();
             try
             {
-                //IQueryable<tbl_tacgia> dt = null;
-                //List<tacgia_ett> lst = new List<tacgia_ett>();
-                //switch (howtosearch)
-                //{
-                //    case "hoten":
-                //        dt = db.tbl_tacgias.Where(o => o.tentg.Contains(input));
-                //        break;
-                //    default:
-                //        break;
-                //}
+                DbSqlQuery<tbl_tacgia> dt = null;
+                List<tacgia_ett> lst = new List<tacgia_ett>();
+                switch (howtosearch)
+                {
+                    case "tentg":
+                        dt = db.tbl_tacgia.SqlQuery(string.Format("Select * from tbl_tacgia where tentg like '%{0}%'", input));
+                        break;
+                    default:
+                        break;
+                }
 
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_tacgia item in dt)
-                //    {
-                //        tacgia_ett temp = new tacgia_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //    return rs;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //    return rs;
-                //}
-                return rs;
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_tacgia item in dt)
+                    {
+                        tacgia_ett temp = new tacgia_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                    return rs;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                    return rs;
+                }
+   
             }
             catch (Exception e)
             {

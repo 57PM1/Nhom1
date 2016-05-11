@@ -81,11 +81,12 @@
             // txt_matacgia
             // 
             this.txt_matacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_matacgia.Location = new System.Drawing.Point(91, 36);
+            this.txt_matacgia.Location = new System.Drawing.Point(90, 117);
             this.txt_matacgia.Name = "txt_matacgia";
             this.txt_matacgia.ReadOnly = true;
             this.txt_matacgia.Size = new System.Drawing.Size(158, 25);
             this.txt_matacgia.TabIndex = 1;
+            this.txt_matacgia.Visible = false;
             this.txt_matacgia.TextChanged += new System.EventHandler(this.txt_matacgia_TextChanged);
             // 
             // label5
@@ -93,11 +94,12 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(16, 39);
+            this.label5.Location = new System.Drawing.Point(15, 120);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 2;
             this.label5.Text = "Mã TG";
+            this.label5.Visible = false;
             // 
             // txt_timkiem
             // 
@@ -126,7 +128,7 @@
             this.cbx_gioitinh.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cbx_gioitinh.Location = new System.Drawing.Point(91, 114);
+            this.cbx_gioitinh.Location = new System.Drawing.Point(88, 71);
             this.cbx_gioitinh.Name = "cbx_gioitinh";
             this.cbx_gioitinh.Size = new System.Drawing.Size(158, 25);
             this.cbx_gioitinh.TabIndex = 2;
@@ -173,14 +175,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(95, 150);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 309);
+            this.groupBox1.Size = new System.Drawing.Size(524, 309);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết độc giả";
             // 
             // btn_huy
             // 
-            this.btn_huy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_huy.BackColor = System.Drawing.Color.Blue;
             this.btn_huy.BackgroundImage = global::DoAnCNPM.Properties.Resources.Huy;
             this.btn_huy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_huy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,7 +196,7 @@
             // 
             // btn_xoa
             // 
-            this.btn_xoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btn_xoa.BackColor = System.Drawing.Color.Orange;
             this.btn_xoa.BackgroundImage = global::DoAnCNPM.Properties.Resources.Xoa;
             this.btn_xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,7 +253,7 @@
             // txt_tentacgia
             // 
             this.txt_tentacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tentacgia.Location = new System.Drawing.Point(91, 76);
+            this.txt_tentacgia.Location = new System.Drawing.Point(88, 33);
             this.txt_tentacgia.Name = "txt_tentacgia";
             this.txt_tentacgia.Size = new System.Drawing.Size(158, 25);
             this.txt_tentacgia.TabIndex = 1;
@@ -261,7 +263,7 @@
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label.Location = new System.Drawing.Point(16, 79);
+            this.label.Location = new System.Drawing.Point(13, 36);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(48, 17);
             this.label.TabIndex = 2;
@@ -283,7 +285,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(16, 114);
+            this.label4.Location = new System.Drawing.Point(13, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 2;
