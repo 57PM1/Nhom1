@@ -31,7 +31,7 @@ namespace DoAnCNPM.Views
             {
                 linhvuc_ett.malinhvuc = int.Parse(txt_malinhvuc.Text);
             }
-            else linhvuc_ett.malinhvuc = 0; 
+            else linhvuc_ett.malinhvuc = 0;
             linhvuc_ett.tenlinhvuc = txt_tenlinhvuc.Text;
         }
 
@@ -46,7 +46,7 @@ namespace DoAnCNPM.Views
                     break;
                 case Models.ErrorCode.sucess:
                     dtgv.DataSource = dt.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã lĩnh vực", "Tên lĩnh vực"});
+                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã lĩnh vực", "Tên lĩnh vực" });
                     break;
                 case Models.ErrorCode.fail:
                     if (Utils.switch_false())
@@ -62,9 +62,11 @@ namespace DoAnCNPM.Views
         public frm_capnhat_linhvuc()
         {
             InitializeComponent();
-            Utils.readOnly_text_box(new List<TextBox> {txt_tenlinhvuc}, true);
-            btn_xoa.Visible = false;
-            btn_sua.Visible = false;
+            Utils.readOnly_text_box(new List<TextBox> { txt_tenlinhvuc }, true);
+            btn_xoa.Enabled = false;
+            btn_xoa.BackColor = Color.White;
+            btn_sua.Enabled = false;
+            btn_sua.BackColor = Color.White;
         }
 
 
@@ -93,13 +95,13 @@ namespace DoAnCNPM.Views
         {
             option = Option.Nodata;
             Utils.erase_text_box(new List<TextBox> { txt_malinhvuc, txt_tenlinhvuc });
-            Utils.readOnly_text_box(new List<TextBox> {txt_tenlinhvuc }, true);
+            Utils.readOnly_text_box(new List<TextBox> { txt_tenlinhvuc }, true);
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
             Utils.erase_text_box(new List<TextBox> { txt_malinhvuc, txt_tenlinhvuc });
-            Utils.readOnly_text_box(new List<TextBox> {txt_tenlinhvuc }, false);
+            Utils.readOnly_text_box(new List<TextBox> { txt_tenlinhvuc }, false);
             txt_tenlinhvuc.Focus();
             option = Option.Insert;
 
@@ -288,15 +290,28 @@ namespace DoAnCNPM.Views
         {
             if (txt_malinhvuc.Text == null || txt_malinhvuc.Text == "")
             {
-                btn_xoa.Visible = false;
-                btn_sua.Visible = false;
+                btn_xoa.Enabled = false;
+                btn_xoa.BackColor = Color.White;
+                btn_sua.Enabled = false;
+                btn_sua.BackColor = Color.White;
             }
             else
             {
-                btn_xoa.Visible = true;
-                btn_sua.Visible = true;
+                btn_xoa.Enabled = true;
+                btn_xoa.BackColor = Color.PowderBlue;
+                btn_sua.Enabled = true;
+                btn_sua.BackColor = Color.PowderBlue;
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

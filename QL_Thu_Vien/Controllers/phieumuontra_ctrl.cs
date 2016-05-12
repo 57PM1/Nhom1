@@ -165,7 +165,7 @@ namespace DoAnCNPM.Controllers
                             foreach (string item in list_masach)
                             {
                                 var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + item).SingleOrDefault();
-                                data.soluonghientai++;
+                                
                             }
                         }
                     }

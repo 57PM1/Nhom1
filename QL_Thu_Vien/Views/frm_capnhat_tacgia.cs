@@ -64,9 +64,11 @@ namespace DoAnCNPM.Views
         public frm_capnhat_tacgia()
         {
             InitializeComponent();
-            Utils.readOnly_text_box(new List<TextBox> { txt_diachi,txt_tentacgia }, true);
-            btn_xoa.Visible = false;
-            btn_sua.Visible = false;
+            Utils.readOnly_text_box(new List<TextBox> { txt_diachi, txt_tentacgia }, true);
+            btn_xoa.Enabled = false;
+            btn_xoa.BackColor = Color.White;
+            btn_sua.Enabled = false;
+            btn_sua.BackColor = Color.White;
         }
 
 
@@ -149,7 +151,7 @@ namespace DoAnCNPM.Views
         private void btn_sua_Click(object sender, EventArgs e)
         {
             option = Option.Edit;
-            Utils.readOnly_text_box(new List<TextBox> { txt_diachi,  txt_tentacgia }, false);
+            Utils.readOnly_text_box(new List<TextBox> { txt_diachi, txt_tentacgia }, false);
 
         }
 
@@ -293,13 +295,19 @@ namespace DoAnCNPM.Views
         {
             if (txt_matacgia.Text == null || txt_matacgia.Text == "")
             {
-                btn_xoa.Visible = false;
-                btn_sua.Visible = false;
+                btn_xoa.Enabled = false;
+                btn_xoa.BackColor = Color.White;
+                btn_sua.Enabled = false;
+                btn_sua.BackColor = Color.White;
             }
             else
             {
-                btn_xoa.Visible = true;
-                btn_sua.Visible = true;
+
+                btn_xoa.Enabled = true;
+                btn_xoa.BackColor = Color.Orange;
+                btn_sua.Enabled = true;
+                btn_sua.BackColor = Color.SkyBlue;
+
             }
         }
     }
