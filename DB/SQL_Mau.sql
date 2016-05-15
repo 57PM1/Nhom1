@@ -144,3 +144,9 @@ As
 		Update tbl_sach set soluonghientai = soluonghientai - 1 where tbl_sach.masach = (Select masach from inserted)
 	End
 Go
+
+-----------------------------------------------------------------------------------------------
+-- Index
+
+CREATE INDEX Index_TenSach
+ON tbl_sach (tensach)
