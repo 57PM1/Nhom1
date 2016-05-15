@@ -15,14 +15,17 @@ namespace DoAnCNPM.Controllers
 
         QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
+
         //[ToanNV] Get all nha xuat ban
         public Result<List<nhaxuatban_ett>> select_all_nhaxuatban()
         {
+            QL_Thu_VienEntities db_select = new QL_Thu_VienEntities();
+
             Result<List<nhaxuatban_ett>> rs = new Result<List<nhaxuatban_ett>>();
             try
             {
                 List<nhaxuatban_ett> lst = new List<nhaxuatban_ett>();
-                var dt = db.tbl_nxb.SqlQuery("Select * from tbl_nxb");
+                var dt = db_select.tbl_nxb.SqlQuery("Select * from tbl_nxb");
                 if (dt.Count() > 0)
                 {
                     foreach (tbl_nxb item in dt)
@@ -56,10 +59,12 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                string sql = String.Format("Insert into tbl_nxb(tennxb, diachi, sdt) values(N'{0}', N'{1}', '{2}')", nhaxuatban.tennxb, nhaxuatban.diachi, nhaxuatban.sdt);
+                //string sql = String.Format("Insert into tbl_nxb(tennxb, diachi, sdt) values(N'{0}', N'{1}', '{2}')", nhaxuatban.tennxb, nhaxuatban.diachi, nhaxuatban.sdt);
+                //db.Database.ExecuteSqlCommand(sql);
+                //db.SaveChanges();
 
-                db.Database.ExecuteSqlCommand(sql);
-                db.SaveChanges();
+
+                db.Proc_Insert_NXB(nhaxuatban.tennxb, nhaxuatban.diachi, nhaxuatban.sdt);
 
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -79,7 +84,9 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_nxb where manxb = " + manhaxuatban);
+                //int dt = db.Database.ExecuteSqlCommand("Delete from tbl_nxb where manxb = " + manhaxuatban);
+
+                db.Proc_Delete_NXB(manhaxuatban);
 
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -101,23 +108,26 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                // find the only row to edit
-                var dt = db.tbl_nxb.SqlQuery("Select * from tbl_nxb where manxb = " + nhaxuatban.manxb).SingleOrDefault();
-                // if fields are null or "" then maintaining the old data;
-                if (nhaxuatban.tennxb != null && nhaxuatban.tennxb != "")
-                {
-                    dt.tennxb = nhaxuatban.tennxb;
-                }
-                if (nhaxuatban.sdt != null && nhaxuatban.sdt != "")
-                {
-                    dt.sdt = nhaxuatban.sdt;
-                }
-                if (nhaxuatban.diachi != null && nhaxuatban.diachi != "")
-                {
-                    dt.diachi = nhaxuatban.diachi;
-                }
+                //// find the only row to edit
+                //var dt = db.tbl_nxb.SqlQuery("Select * from tbl_nxb where manxb = " + nhaxuatban.manxb).SingleOrDefault();
+                //// if fields are null or "" then maintaining the old data;
+                //if (nhaxuatban.tennxb != null && nhaxuatban.tennxb != "")
+                //{
+                //    dt.tennxb = nhaxuatban.tennxb;
+                //}
+                //if (nhaxuatban.sdt != null && nhaxuatban.sdt != "")
+                //{
+                //    dt.sdt = nhaxuatban.sdt;
+                //}
+                //if (nhaxuatban.diachi != null && nhaxuatban.diachi != "")
+                //{
+                //    dt.diachi = nhaxuatban.diachi;
+                //}        
+                //db.SaveChanges();
 
-                db.SaveChanges();
+                db.Proc_Update_NXB(nhaxuatban.manxb, nhaxuatban.tennxb, nhaxuatban.diachi, nhaxuatban.sdt);
+              
+
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 return rs;
@@ -133,6 +143,8 @@ namespace DoAnCNPM.Controllers
 
         public Result<List<nhaxuatban_ett>> select_nhaxuatban_fields(string input, string howtosearch)
         {
+            QL_Thu_VienEntities db_select = new QL_Thu_VienEntities();
+
             Result<List<nhaxuatban_ett>> rs = new Result<List<nhaxuatban_ett>>();
             try
             {
@@ -141,7 +153,7 @@ namespace DoAnCNPM.Controllers
                 switch (howtosearch)
                 {
                     case "tennxb":
-                        dt = db.tbl_nxb.SqlQuery(String.Format("Select * from tbl_nxb where tennxb like '%{0}%'", input));
+                        dt = db_select.tbl_nxb.SqlQuery(String.Format("Select * from tbl_nxb where tennxb like N'%{0}%'", input));
                         break;
                     default:
                         break;
