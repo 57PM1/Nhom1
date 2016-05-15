@@ -27,7 +27,8 @@ namespace DoAnCNPM
         public Nullable<int> manxb { get; set; }
         public Nullable<int> malv { get; set; }
         public Nullable<int> sotrang { get; set; }
-        public Nullable<int> soluong { get; set; }
+        public Nullable<int> soluonghientai { get; set; }
+        public Nullable<int> soluongbandau { get; set; }
         public string ngaynhap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

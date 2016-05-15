@@ -27,6 +27,7 @@ namespace DoAnCNPM
         public string ngaytra { get; set; }
         public Nullable<bool> xacnhantra { get; set; }
         public string ghichu { get; set; }
+        public Nullable<long> sotienphat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_chitietphieu> tbl_chitietphieu { get; set; }
