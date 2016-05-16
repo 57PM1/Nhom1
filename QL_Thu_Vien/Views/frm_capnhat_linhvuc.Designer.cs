@@ -66,18 +66,18 @@
             // 
             // dtgv
             // 
-            this.dtgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dtgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv.GridColor = System.Drawing.SystemColors.Control;
             this.dtgv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtgv.Location = new System.Drawing.Point(16, 34);
+            this.dtgv.Location = new System.Drawing.Point(16, 48);
             this.dtgv.Name = "dtgv";
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv.Size = new System.Drawing.Size(690, 324);
+            this.dtgv.Size = new System.Drawing.Size(690, 263);
             this.dtgv.TabIndex = 36;
             this.dtgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             this.dtgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
@@ -109,7 +109,7 @@
             // 
             this.txt_timkiem.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_timkiem.Location = new System.Drawing.Point(247, 276);
+            this.txt_timkiem.Location = new System.Drawing.Point(247, 286);
             this.txt_timkiem.Name = "txt_timkiem";
             this.txt_timkiem.Size = new System.Drawing.Size(223, 25);
             this.txt_timkiem.TabIndex = 32;
@@ -117,10 +117,11 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(8, 279);
+            this.label7.Location = new System.Drawing.Point(8, 289);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 35;
@@ -128,7 +129,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -145,7 +146,7 @@
             this.groupBox1.Size = new System.Drawing.Size(489, 388);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chi tiết độc giả";
+            this.groupBox1.Text = "Chi tiết lĩnh vực";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
@@ -257,21 +258,21 @@
             // 
             // label
             // 
-            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label.Location = new System.Drawing.Point(22, 48);
+            this.label.Location = new System.Drawing.Point(22, 51);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(80, 17);
             this.label.TabIndex = 2;
             this.label.Text = "Tên lĩnh vực";
+            this.label.Click += new System.EventHandler(this.label_Click);
             // 
             // cbx_option_search
             // 
-            this.cbx_option_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbx_option_search.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbx_option_search.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_option_search.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_option_search.FormattingEnabled = true;
@@ -280,26 +281,26 @@
             "Tên khoa",
             "Địa chỉ",
             "Điện thoại"});
-            this.cbx_option_search.Location = new System.Drawing.Point(108, 276);
+            this.cbx_option_search.Location = new System.Drawing.Point(108, 286);
             this.cbx_option_search.Name = "cbx_option_search";
             this.cbx_option_search.Size = new System.Drawing.Size(127, 25);
             this.cbx_option_search.TabIndex = 33;
             // 
             // txt_tenlinhvuc
             // 
-            this.txt_tenlinhvuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txt_tenlinhvuc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_tenlinhvuc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tenlinhvuc.Location = new System.Drawing.Point(116, 48);
+            this.txt_tenlinhvuc.Location = new System.Drawing.Point(108, 48);
             this.txt_tenlinhvuc.Name = "txt_tenlinhvuc";
-            this.txt_tenlinhvuc.Size = new System.Drawing.Size(237, 25);
+            this.txt_tenlinhvuc.Size = new System.Drawing.Size(362, 25);
             this.txt_tenlinhvuc.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(390, 53);
+            this.label1.Location = new System.Drawing.Point(445, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(390, 42);
             this.label1.TabIndex = 30;
@@ -307,8 +308,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.dtgv);
             this.panel1.Controls.Add(this.label6);

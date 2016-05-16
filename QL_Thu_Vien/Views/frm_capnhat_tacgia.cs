@@ -245,6 +245,8 @@ namespace DoAnCNPM.Views
                 default:
                     break;
             }
+
+           
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -304,11 +306,26 @@ namespace DoAnCNPM.Views
             {
 
                 btn_xoa.Enabled = true;
-                btn_xoa.BackColor = Color.Orange;
+                btn_xoa.BackColor = Color.PowderBlue;
                 btn_sua.Enabled = true;
-                btn_sua.BackColor = Color.SkyBlue;
+                btn_sua.BackColor = Color.PowderBlue;
 
             }
+        }
+
+        private void txt_tentacgia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

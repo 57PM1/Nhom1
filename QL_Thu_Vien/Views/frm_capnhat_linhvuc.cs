@@ -149,6 +149,7 @@ namespace DoAnCNPM.Views
             Utils.readOnly_text_box(new List<TextBox> { txt_tenlinhvuc }, false);
 
         }
+      
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
@@ -240,6 +241,7 @@ namespace DoAnCNPM.Views
                 default:
                     break;
             }
+          
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
@@ -310,6 +312,11 @@ namespace DoAnCNPM.Views
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_Click(object sender, EventArgs e)
         {
 
         }
