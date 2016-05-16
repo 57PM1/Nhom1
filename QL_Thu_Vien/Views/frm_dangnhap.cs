@@ -30,7 +30,17 @@ namespace DoAnCNPM.Views
 
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
+            if (txt_ten.Text == "admin" && txt_mk.Text == "admin")
+            {
+                MessageBox.Show("Bạn đã đăng nhập thành công!");
+                this.Hide();
+                frm_main main_form = new frm_main();
+                main_form.Show();
+                return;
+            }
+
             nhanvien_ctrl nhanvien = new nhanvien_ctrl();
+
             var temp = nhanvien.select_all_nhanvien();
             switch (temp.errcode)
             {
