@@ -229,7 +229,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_main";
-            this.Text = "frm_main";
+            this.Text = "QUẢN LÝ THƯ VIỆN";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

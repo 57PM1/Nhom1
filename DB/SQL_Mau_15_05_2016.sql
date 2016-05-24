@@ -1,4 +1,4 @@
-
+﻿
 -- Nha xuat ban
 Create Proc Proc_Insert_NXB 
 	@tennxb nvarchar(100),
@@ -134,6 +134,47 @@ As
 Go
 
 
+--độc giả--
+Create Proc Proc_Insert_DocGia
+	@tendg nvarchar(50),
+	@ngaysinh varchar(50)='',
+	@gioitinh nvarchar(3)='',
+	@lop varchar(10)='',
+	@diachi nvarchar(100)='',
+	@email varchar(50)=''
+
+As
+	Begin 
+		Insert into tbl_docgia (tendg, ngaysinh, gioitinh, lop, diachi, email) values (@tendg, @ngaysinh, @gioitinh, @lop, @diachi, @email)
+	End
+Go
+
+
+Create proc Proc_Delete_DocGia
+	@madg int
+
+As
+	Begin
+		Delete from tbl_docgia where madg=@madg
+	End
+Go
+
+Create proc Proc_Edit_DocGia
+	@tendg nvarchar(50),
+	@ngaysinh varchar(50),
+	@gioitinh nvarchar(3),
+	@lop varchar(10),
+	@diachi nvarchar(100),
+	@email varchar(50),
+	@madg int
+
+As
+	Begin
+		Update tbl_docgia set tendg=@tendg, ngaysinh=@ngaysinh, gioitinh=@gioitinh, lop=@lop, diachi=@diachi, email=@email where madg=@madg
+	End
+Go
+
+
 ------------------------------------------------------------------------------------------
 --Trigger
 
@@ -150,3 +191,161 @@ Go
 
 CREATE INDEX Index_TenSach
 ON tbl_sach (tensach)
+
+
+
+
+
+--Trang: Lĩnh vực
+
+Create Proc Proc_Insert_LinhVuc 
+	@tenlinhvuc nvarchar(100)
+	
+As
+	Begin
+		Insert into tbl_linhvuc(tenlinhvuc) values (@tenlinhvuc);
+	End
+Go
+
+
+
+Create Proc Proc_Update_LinhVuc 
+	@malinhvuc int,
+	@tenlinhvuc nvarchar(100)
+	
+As
+	Begin
+		Update tbl_linhvuc set tenlinhvuc = @tenlinhvuc  where malinhvuc = @malinhvuc
+	End
+Go
+
+
+Create Proc Proc_Delete_LinhVuc
+	@malinhvuc int
+As
+	Begin
+		Delete from tbl_linhvuc where malinhvuc = @malinhvuc
+	End
+Go
+
+
+
+--  Trang : Tác giả
+
+Create Proc Proc_Insert_TacGia 
+	@tentacgia nvarchar(100),
+	@gioitinh nvarchar(3)='',
+	@diachi nvarchar(100)=''
+	
+As
+	Begin
+		Insert into tbl_tacgia(tentg,gioitinh,diachi) values (@tentacgia,@gioitinh,@diachi);
+	End
+Go
+
+
+
+
+Create Proc Proc_Update_TacGia 
+	@matacgia int,
+	@tentacgia nvarchar(100),
+	@gioitinh nvarchar(3)='',
+	@diachi nvarchar(100)=''
+	
+As
+	Begin
+		Update tbl_tacgia set tentg =@tentacgia,gioitinh=@gioitinh, diachi=@diachi  where matg = @matacgia
+	End
+Go
+
+
+
+Create Proc Proc_Delete_TacGia
+	@matacgia int
+As
+	Begin
+		Delete from tbl_tacgia where matg = @matacgia
+	End
+Go
+
+
+------------------------------------------------------------------------
+--Nga 
+-- Xu phat
+Create Proc Proc_Insert_XuPhat
+	@loaiphat nvarchar(100),
+	@giatien bigint
+As
+	Begin
+		Insert into tbl_xuphat(loaiphat, giatien) values(@loaiphat, @giatien);
+	End
+Go
+
+EXEC Proc_Insert_XuPhat N'phat mat sach', 100000
+go
+
+
+Create Proc Proc_Update_XuPhat
+	@maphat int,
+	@loaiphat nvarchar(100),
+	@giatien bigint
+As
+	Begin
+		Update tbl_xuphat set loaiphat = @loaiphat, giatien = @giatien where maphat = @maphat
+	End
+Go
+
+
+Create Proc Proc_Delete_XuPhat
+	@maphat int
+As
+	Begin
+		Delete from tbl_xuphat where maphat = @maphat
+	End
+Go
+
+-- Xu phat
+Create Proc Proc_Insert_Sach
+	@tensach nvarchar(100),
+	@maxb int,
+	@malv int,
+	@sotrang int,
+	@soluonghientai int,
+	@soluongbandau int,
+	@ngaynhap varchar
+As
+	Begin
+		Insert into tbl_sach(tensach, manxb, malv, sotrang, soluonghientai,soluongbandau, ngaynhap) values(@tensach, @maxb, @malv, @sotrang, @soluonghientai, @soluongbandau, @ngaynhap);
+	End
+Go
+
+EXEC Proc_Insert_Sach N'Sách văn học', 3,1,100,50,10,N'19/05/2015'
+go
+
+
+Create Proc Proc_Update_Sach
+	@masach int,
+	@tensach nvarchar(100),
+	@maxb int,
+	@malv int,
+	@sotrang int,
+	@soluonghientai int,
+	@soluongbandau int,
+	@ngaynhap varchar
+As
+	Begin
+		Update tbl_sach set tensach = @tensach, manxb = @maxb, malv = @malv, sotrang = @sotrang, soluonghientai = @soluonghientai, soluongbandau = @soluongbandau, ngaynhap = @ngaynhap where masach = @masach
+	End
+Go
+
+
+Create Proc Proc_Delete_Sach
+	@masach int
+As
+	Begin
+		Delete from tbl_sach where masach = @masach
+	End
+Go
+
+
+

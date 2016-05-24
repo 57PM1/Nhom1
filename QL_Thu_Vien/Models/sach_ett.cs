@@ -10,11 +10,11 @@ namespace DoAnCNPM.Models
     {
         public int masach { get; set; }
         public string tensach { get; set; }
-        public int? matg { get; set; }
         public int? manxb { get; set; }
         public int? malv { get; set; }
         public int? sotrang { get; set; }
-        public int? soluong { get; set; }
+        public int? soluongbandau { get; set; }
+        public int? soluonghientai { get; set; }
         public string ngaynhap { get; set; }
 
         public sach_ett() { }
@@ -26,17 +26,19 @@ namespace DoAnCNPM.Models
             malv = (int)sach.malv;
             sotrang = (int)sach.sotrang;
             // soluong = (int)sach.soluong;
+            soluongbandau = (int)sach.soluongbandau;
+            soluonghientai = (int)sach.soluonghientai;
             ngaynhap = sach.ngaynhap.ToString();
         }
-        public sach_ett(int ma, string ten, int matg, int manxb, int malv, int sotrang, int soluong, string ngaynhap)
+        public sach_ett(int ma, string ten, int manxb, int malv, int sotrang, int soluonghientai, int soluongbandau, string ngaynhap)
         {
             masach = ma;
             tensach = ten;
-            this.matg = matg;
             this.malv = malv;
             this.manxb = manxb;
             this.sotrang = sotrang;
-            this.soluong = soluong;
+            this.soluonghientai = soluonghientai;
+            this.soluongbandau = soluongbandau;
             this.ngaynhap = ngaynhap;
         }
     }
