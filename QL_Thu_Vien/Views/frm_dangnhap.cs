@@ -83,5 +83,10 @@ namespace DoAnCNPM.Views
                     break;
             }
         }
+
+        private void frm_dangnhap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -56,10 +56,8 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                string sql = String.Format("Insert into tbl_linhvuc(tenlinhvuc) values(N'{0}')", linhvuc.tenlinhvuc);
-                db.Database.ExecuteSqlCommand(sql);
-                db.SaveChanges();
-
+               
+                db.Proc_Insert_LinhVuc(linhvuc.tenlinhvuc);
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 return rs;
@@ -78,7 +76,9 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_linhvuc where malinhvuc = " + malinhvuc);
+                // int dt = db.Database.ExecuteSqlCommand("Delete from tbl_linhvuc where malinhvuc = " + malinhvuc);
+
+                db.Proc_Delete_LinhVuc(malinhvuc);
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 rs.errInfor = Constants.success_insert;
@@ -100,14 +100,16 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                // find the only row to edit
-                var dt = db.tbl_linhvuc.SqlQuery("Select * from tbl_linhvuc where malinhvuc = " + linhvuc.malinhvuc).SingleOrDefault();
-                // if fields are null or "" then maintaining the old data;
-                if (linhvuc.tenlinhvuc != null && linhvuc.tenlinhvuc != "")
-                {
-                    dt.tenlinhvuc = linhvuc.tenlinhvuc;
-                }
-                db.SaveChanges();
+                //// find the only row to edit
+                //var dt = db.tbl_linhvuc.SqlQuery("Select * from tbl_linhvuc where malinhvuc = " + linhvuc.malinhvuc).SingleOrDefault();
+                //// if fields are null or "" then maintaining the old data;
+                //if (linhvuc.tenlinhvuc != null && linhvuc.tenlinhvuc != "")
+                //{
+                //    dt.tenlinhvuc = linhvuc.tenlinhvuc;
+                //}
+                //db.SaveChanges();
+
+                db.Proc_Update_LinhVuc(linhvuc.malinhvuc,linhvuc.tenlinhvuc);
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 return rs;

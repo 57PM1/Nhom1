@@ -38,17 +38,17 @@
             this.txt_sdt = new System.Windows.Forms.TextBox();
             this.txt_diachi = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_them = new System.Windows.Forms.Button();
             this.btn_huy = new System.Windows.Forms.Button();
+            this.btn_sua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
             this.btn_luu = new System.Windows.Forms.Button();
-            this.btn_sua = new System.Windows.Forms.Button();
-            this.btn_them = new System.Windows.Forms.Button();
             this.txt_tennhaxuatban = new System.Windows.Forms.TextBox();
+            this.cbx_option_search = new System.Windows.Forms.ComboBox();
             this.label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbx_option_search = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -87,7 +87,6 @@
             // 
             // label9
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -111,7 +110,7 @@
             // 
             // txt_timkiem
             // 
-            this.txt_timkiem.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_timkiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_timkiem.Location = new System.Drawing.Point(237, 332);
             this.txt_timkiem.Name = "txt_timkiem";
@@ -121,7 +120,6 @@
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -147,7 +145,7 @@
             // 
             // txt_sdt
             // 
-            this.txt_sdt.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_sdt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_sdt.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_sdt.Location = new System.Drawing.Point(99, 79);
             this.txt_sdt.Name = "txt_sdt";
@@ -157,7 +155,7 @@
             // 
             // txt_diachi
             // 
-            this.txt_diachi.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_diachi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_diachi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_diachi.Location = new System.Drawing.Point(99, 113);
             this.txt_diachi.Multiline = true;
@@ -189,6 +187,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết nhà xuất bản";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btn_thoat);
+            this.groupBox2.Controls.Add(this.btn_them);
+            this.groupBox2.Controls.Add(this.btn_huy);
+            this.groupBox2.Controls.Add(this.btn_sua);
+            this.groupBox2.Controls.Add(this.btn_xoa);
+            this.groupBox2.Controls.Add(this.btn_luu);
+            this.groupBox2.Location = new System.Drawing.Point(0, 222);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(517, 76);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btn_them
+            // 
+            this.btn_them.BackColor = System.Drawing.Color.PowderBlue;
+            this.btn_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_them.Location = new System.Drawing.Point(11, 19);
+            this.btn_them.Name = "btn_them";
+            this.btn_them.Size = new System.Drawing.Size(72, 41);
+            this.btn_them.TabIndex = 8;
+            this.btn_them.Text = "Thêm";
+            this.btn_them.UseVisualStyleBackColor = false;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
+            // 
             // btn_huy
             // 
             this.btn_huy.BackColor = System.Drawing.Color.PowderBlue;
@@ -202,6 +231,20 @@
             this.btn_huy.Text = "Hủy";
             this.btn_huy.UseVisualStyleBackColor = false;
             this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
+            // 
+            // btn_sua
+            // 
+            this.btn_sua.BackColor = System.Drawing.Color.PowderBlue;
+            this.btn_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_sua.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sua.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_sua.Location = new System.Drawing.Point(94, 19);
+            this.btn_sua.Name = "btn_sua";
+            this.btn_sua.Size = new System.Drawing.Size(72, 41);
+            this.btn_sua.TabIndex = 9;
+            this.btn_sua.Text = "Sửa";
+            this.btn_sua.UseVisualStyleBackColor = false;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_xoa
             // 
@@ -231,71 +274,20 @@
             this.btn_luu.UseVisualStyleBackColor = false;
             this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);
             // 
-            // btn_sua
-            // 
-            this.btn_sua.BackColor = System.Drawing.Color.PowderBlue;
-            this.btn_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_sua.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sua.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_sua.Location = new System.Drawing.Point(94, 19);
-            this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(72, 41);
-            this.btn_sua.TabIndex = 9;
-            this.btn_sua.Text = "Sửa";
-            this.btn_sua.UseVisualStyleBackColor = false;
-            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
-            // 
-            // btn_them
-            // 
-            this.btn_them.BackColor = System.Drawing.Color.PowderBlue;
-            this.btn_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_them.Location = new System.Drawing.Point(11, 19);
-            this.btn_them.Name = "btn_them";
-            this.btn_them.Size = new System.Drawing.Size(72, 41);
-            this.btn_them.TabIndex = 8;
-            this.btn_them.Text = "Thêm";
-            this.btn_them.UseVisualStyleBackColor = false;
-            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
-            // 
             // txt_tennhaxuatban
             // 
-            this.txt_tennhaxuatban.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_tennhaxuatban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_tennhaxuatban.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_tennhaxuatban.Location = new System.Drawing.Point(99, 41);
             this.txt_tennhaxuatban.Name = "txt_tennhaxuatban";
             this.txt_tennhaxuatban.Size = new System.Drawing.Size(382, 25);
             this.txt_tennhaxuatban.TabIndex = 1;
             // 
-            // label
-            // 
-            this.label.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label.Location = new System.Drawing.Point(24, 44);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(59, 17);
-            this.label.TabIndex = 2;
-            this.label.Text = "Tên NXB";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(24, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Địa chỉ";
-            // 
             // cbx_option_search
             // 
-            this.cbx_option_search.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbx_option_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbx_option_search.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_option_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbx_option_search.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_option_search.FormattingEnabled = true;
             this.cbx_option_search.Items.AddRange(new object[] {
@@ -308,6 +300,28 @@
             this.cbx_option_search.Size = new System.Drawing.Size(110, 25);
             this.cbx_option_search.TabIndex = 33;
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label.Location = new System.Drawing.Point(24, 44);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(59, 17);
+            this.label.TabIndex = 2;
+            this.label.Text = "Tên NXB";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(24, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Địa chỉ";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -317,22 +331,6 @@
             this.label1.Size = new System.Drawing.Size(493, 42);
             this.label1.TabIndex = 30;
             this.label1.Text = "CẬP NHẬT NHÀ XUẤT BẢN";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btn_thoat);
-            this.groupBox2.Controls.Add(this.btn_them);
-            this.groupBox2.Controls.Add(this.btn_huy);
-            this.groupBox2.Controls.Add(this.btn_sua);
-            this.groupBox2.Controls.Add(this.btn_xoa);
-            this.groupBox2.Controls.Add(this.btn_luu);
-            this.groupBox2.Location = new System.Drawing.Point(0, 222);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(517, 76);
-            this.groupBox2.TabIndex = 37;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // groupBox3
             // 

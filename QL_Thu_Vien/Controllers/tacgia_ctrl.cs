@@ -56,10 +56,7 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                string sql = String.Format("Insert into tbl_tacgia(tentg, gioitinh, diachi) values(N'{0}', N'{1}', '{2}')", tacgia.tentacgia, tacgia.gioitinh, tacgia.diachi);
-
-                db.Database.ExecuteSqlCommand(sql);
-                db.SaveChanges();
+                db.Proc_Insert_TacGia(tacgia.tentacgia, tacgia.gioitinh, tacgia.diachi);
 
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -80,7 +77,8 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                int dt = db.Database.ExecuteSqlCommand("Delete from tbl_tacgia where matg = " + matacgia);
+
+                db.Proc_Delete_TacGia(matacgia);
 
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -102,23 +100,7 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                // find the only row to edit
-                var dt = db.tbl_tacgia.SqlQuery("Select * from tbl_tacgia where matg = " + tacgia.matacgia).SingleOrDefault();
-                // if fields are null or "" then maintaining the old data;
-                if (tacgia.tentacgia != null && tacgia.tentacgia != "")
-                {
-                    dt.tentg = tacgia.tentacgia;
-                }
-                if (tacgia.gioitinh != null && tacgia.gioitinh != "")
-                {
-                    dt.gioitinh = tacgia.gioitinh;
-                }
-                if (tacgia.diachi != null && tacgia.diachi != "")
-                {
-                    dt.diachi = tacgia.diachi;
-                }
-
-                db.SaveChanges();
+                db.Proc_Update_TacGia(tacgia.matacgia, tacgia.tentacgia, tacgia.gioitinh, tacgia.diachi);
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 return rs;
