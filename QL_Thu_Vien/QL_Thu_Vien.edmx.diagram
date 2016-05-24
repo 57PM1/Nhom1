@@ -22,6 +22,7 @@
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_sach__manxb__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_phieum__manv__1FCDBCEB" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.tbl_sach_tacgia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_nhanvien_view" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
