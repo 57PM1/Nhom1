@@ -43,15 +43,6 @@
           <Property Name="malinhvuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tenlinhvuc" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="tbl_nxb">
-          <Key>
-            <PropertyRef Name="manxb" />
-          </Key>
-          <Property Name="manxb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tennxb" Type="nvarchar" MaxLength="100" />
-          <Property Name="diachi" Type="nvarchar" MaxLength="200" />
-          <Property Name="sdt" Type="varchar" MaxLength="11" />
-        </EntityType>
         <EntityType Name="tbl_nhanvien">
           <Key>
             <PropertyRef Name="manv" />
@@ -59,12 +50,21 @@
           <Property Name="manv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tennv" Type="nvarchar" MaxLength="50" />
           <Property Name="diachi" Type="nvarchar" MaxLength="50" />
-          <Property Name="dienthoai" Type="varchar" MaxLength="11" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="12" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="chucvu" Type="nvarchar" MaxLength="100" />
           <Property Name="tuoi" Type="int" />
           <Property Name="taikhoan" Type="varchar" MaxLength="50" />
           <Property Name="matkhau" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_nxb">
+          <Key>
+            <PropertyRef Name="manxb" />
+          </Key>
+          <Property Name="manxb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tennxb" Type="nvarchar" MaxLength="100" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="200" />
+          <Property Name="sdt" Type="varchar" MaxLength="12" />
         </EntityType>
         <EntityType Name="tbl_phieumuon_tra">
           <Key>
@@ -85,7 +85,6 @@
           </Key>
           <Property Name="masach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tensach" Type="nvarchar" MaxLength="100" />
-          <Property Name="matg" Type="int" />
           <Property Name="manxb" Type="int" />
           <Property Name="malv" Type="int" />
           <Property Name="sotrang" Type="int" />
@@ -117,6 +116,22 @@
           <Property Name="maphat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="loaiphat" Type="nvarchar" MaxLength="100" />
           <Property Name="giatien" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_nhanvien_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_nhanvien_view">
+          <Key>
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="manv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tennv" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="11" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="chucvu" Type="nvarchar" MaxLength="100" />
+          <Property Name="tuoi" Type="int" />
+          <Property Name="taikhoan" Type="varchar" MaxLength="50" />
+          <Property Name="matkhau" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
           <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
@@ -214,18 +229,151 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Proc_Delete_ChiTietPhieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sophieumuon" Type="int" Mode="In" />
+          <Parameter Name="masach" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Delete_DocGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="madg" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Delete_NhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Delete_NXB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manxb" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Delete_PhieuMuonTra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sophieumuon" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Edit_DocGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tendg" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinh" Type="varchar" Mode="In" />
+          <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="lop" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="madg" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_Insert_ChiTietPhieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sophieumuon" Type="int" Mode="In" />
+          <Parameter Name="masach" Type="int" Mode="In" />
+          <Parameter Name="trangthaisach" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Insert_DocGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tendg" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaysinh" Type="varchar" Mode="In" />
+          <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="lop" Type="varchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Insert_NhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tennv" Type="nvarchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="dienthoai" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+          <Parameter Name="tuoi" Type="int" Mode="In" />
+          <Parameter Name="taikhoan" Type="varchar" Mode="In" />
+          <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Insert_NXB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tennxb" Type="nvarchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Insert_PhieuMuonTra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="madg" Type="int" Mode="In" />
+          <Parameter Name="manv" Type="int" Mode="In" />
+          <Parameter Name="ngaymuon" Type="varchar" Mode="In" />
+          <Parameter Name="ngaytra" Type="varchar" Mode="In" />
+          <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Update_NhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="int" Mode="In" />
+          <Parameter Name="tennv" Type="nvarchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="dienthoai" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+          <Parameter Name="tuoi" Type="int" Mode="In" />
+          <Parameter Name="taikhoan" Type="varchar" Mode="In" />
+          <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Update_NXB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manxb" Type="int" Mode="In" />
+          <Parameter Name="tennxb" Type="nvarchar" Mode="In" />
+          <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="sdt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Update_PhieuMuonTra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sophieumuon" Type="int" Mode="In" />
+          <Parameter Name="madg" Type="int" Mode="In" />
+          <Parameter Name="manv" Type="int" Mode="In" />
+          <Parameter Name="ngaymuon" Type="varchar" Mode="In" />
+          <Parameter Name="ngaytra" Type="varchar" Mode="In" />
+          <Parameter Name="ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="select_admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="QL_Thu_VienModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_chitietphieu" EntityType="Self.tbl_chitietphieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_docgia" EntityType="Self.tbl_docgia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_linhvuc" EntityType="Self.tbl_linhvuc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_nxb" EntityType="Self.tbl_nxb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_nhanvien" EntityType="Self.tbl_nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_nxb" EntityType="Self.tbl_nxb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_phieumuon_tra" EntityType="Self.tbl_phieumuon_tra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_sach" EntityType="Self.tbl_sach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_sach_tacgia" EntityType="Self.tbl_sach_tacgia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_nhanvien_view].[manv] AS [manv], 
+    [tbl_nhanvien_view].[tennv] AS [tennv], 
+    [tbl_nhanvien_view].[diachi] AS [diachi], 
+    [tbl_nhanvien_view].[dienthoai] AS [dienthoai], 
+    [tbl_nhanvien_view].[email] AS [email], 
+    [tbl_nhanvien_view].[chucvu] AS [chucvu], 
+    [tbl_nhanvien_view].[tuoi] AS [tuoi], 
+    [tbl_nhanvien_view].[taikhoan] AS [taikhoan], 
+    [tbl_nhanvien_view].[matkhau] AS [matkhau]
+    FROM [dbo].[tbl_nhanvien_view] AS [tbl_nhanvien_view]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -306,16 +454,6 @@
           <Property Name="tenlinhvuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_sach" Relationship="Self.FK__tbl_sach__malv__1BFD2C07" FromRole="tbl_linhvuc" ToRole="tbl_sach" />
         </EntityType>
-        <EntityType Name="tbl_nxb">
-          <Key>
-            <PropertyRef Name="manxb" />
-          </Key>
-          <Property Name="manxb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tennxb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbl_sach" Relationship="Self.FK__tbl_sach__manxb__1B0907CE" FromRole="tbl_nxb" ToRole="tbl_sach" />
-        </EntityType>
         <EntityType Name="tbl_nhanvien">
           <Key>
             <PropertyRef Name="manv" />
@@ -323,13 +461,23 @@
           <Property Name="manv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tennv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="dienthoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="chucvu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="tuoi" Type="Int32" />
           <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_phieumuon_tra" Relationship="Self.FK__tbl_phieum__manv__1FCDBCEB" FromRole="tbl_nhanvien" ToRole="tbl_phieumuon_tra" />
+        </EntityType>
+        <EntityType Name="tbl_nxb">
+          <Key>
+            <PropertyRef Name="manxb" />
+          </Key>
+          <Property Name="manxb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tennxb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sdt" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_sach" Relationship="Self.FK__tbl_sach__manxb__1B0907CE" FromRole="tbl_nxb" ToRole="tbl_sach" />
         </EntityType>
         <EntityType Name="tbl_phieumuon_tra">
           <Key>
@@ -353,7 +501,6 @@
           </Key>
           <Property Name="masach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="matg" Type="Int32" />
           <Property Name="manxb" Type="Int32" />
           <Property Name="malv" Type="Int32" />
           <Property Name="sotrang" Type="Int32" />
@@ -382,6 +529,20 @@
           <Property Name="maphat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="loaiphat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="giatien" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tbl_nhanvien_view">
+          <Key>
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="manv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tennv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chucvu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tuoi" Type="Int32" />
+          <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
           <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
@@ -431,18 +592,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_sach__manxb__1B0907CE">
-          <End Role="tbl_nxb" Type="Self.tbl_nxb" Multiplicity="0..1" />
-          <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_nxb">
-              <PropertyRef Name="manxb" />
-            </Principal>
-            <Dependent Role="tbl_sach">
-              <PropertyRef Name="manxb" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tbl_phieum__manv__1FCDBCEB">
           <End Role="tbl_nhanvien" Type="Self.tbl_nhanvien" Multiplicity="0..1" />
           <End Role="tbl_phieumuon_tra" Type="Self.tbl_phieumuon_tra" Multiplicity="*" />
@@ -455,6 +604,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tbl_sach__manxb__1B0907CE">
+          <End Role="tbl_nxb" Type="Self.tbl_nxb" Multiplicity="0..1" />
+          <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_nxb">
+              <PropertyRef Name="manxb" />
+            </Principal>
+            <Dependent Role="tbl_sach">
+              <PropertyRef Name="manxb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="tbl_sach_tacgia">
           <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="*" />
           <End Role="tbl_tacgia" Type="Self.tbl_tacgia" Multiplicity="*" />
@@ -464,12 +625,13 @@
           <EntitySet Name="tbl_chitietphieu" EntityType="Self.tbl_chitietphieu" />
           <EntitySet Name="tbl_docgia" EntityType="Self.tbl_docgia" />
           <EntitySet Name="tbl_linhvuc" EntityType="Self.tbl_linhvuc" />
-          <EntitySet Name="tbl_nxb" EntityType="Self.tbl_nxb" />
           <EntitySet Name="tbl_nhanvien" EntityType="Self.tbl_nhanvien" />
+          <EntitySet Name="tbl_nxb" EntityType="Self.tbl_nxb" />
           <EntitySet Name="tbl_phieumuon_tra" EntityType="Self.tbl_phieumuon_tra" />
           <EntitySet Name="tbl_sach" EntityType="Self.tbl_sach" />
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" />
+          <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" />
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -486,19 +648,149 @@
             <End Role="tbl_linhvuc" EntitySet="tbl_linhvuc" />
             <End Role="tbl_sach" EntitySet="tbl_sach" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_sach__manxb__1B0907CE" Association="Self.FK__tbl_sach__manxb__1B0907CE">
-            <End Role="tbl_nxb" EntitySet="tbl_nxb" />
-            <End Role="tbl_sach" EntitySet="tbl_sach" />
-          </AssociationSet>
           <AssociationSet Name="FK__tbl_phieum__manv__1FCDBCEB" Association="Self.FK__tbl_phieum__manv__1FCDBCEB">
             <End Role="tbl_nhanvien" EntitySet="tbl_nhanvien" />
             <End Role="tbl_phieumuon_tra" EntitySet="tbl_phieumuon_tra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_sach__manxb__1B0907CE" Association="Self.FK__tbl_sach__manxb__1B0907CE">
+            <End Role="tbl_nxb" EntitySet="tbl_nxb" />
+            <End Role="tbl_sach" EntitySet="tbl_sach" />
           </AssociationSet>
           <AssociationSet Name="tbl_sach_tacgia" Association="Self.tbl_sach_tacgia">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_tacgia" EntitySet="tbl_tacgia" />
           </AssociationSet>
+          <FunctionImport Name="Proc_Delete_ChiTietPhieu">
+            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+            <Parameter Name="masach" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Delete_DocGia">
+            <Parameter Name="madg" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Delete_NhanVien">
+            <Parameter Name="manv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Delete_NXB">
+            <Parameter Name="manxb" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Delete_PhieuMuonTra">
+            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Edit_DocGia">
+            <Parameter Name="tendg" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="String" />
+            <Parameter Name="gioitinh" Mode="In" Type="String" />
+            <Parameter Name="lop" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="madg" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Insert_ChiTietPhieu">
+            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+            <Parameter Name="masach" Mode="In" Type="Int32" />
+            <Parameter Name="trangthaisach" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Insert_DocGia">
+            <Parameter Name="tendg" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="String" />
+            <Parameter Name="gioitinh" Mode="In" Type="String" />
+            <Parameter Name="lop" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Insert_NhanVien">
+            <Parameter Name="tennv" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="dienthoai" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+            <Parameter Name="tuoi" Mode="In" Type="Int32" />
+            <Parameter Name="taikhoan" Mode="In" Type="String" />
+            <Parameter Name="matkhau" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Insert_NXB">
+            <Parameter Name="tennxb" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Insert_PhieuMuonTra">
+            <Parameter Name="madg" Mode="In" Type="Int32" />
+            <Parameter Name="manv" Mode="In" Type="Int32" />
+            <Parameter Name="ngaymuon" Mode="In" Type="String" />
+            <Parameter Name="ngaytra" Mode="In" Type="String" />
+            <Parameter Name="ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Update_NhanVien">
+            <Parameter Name="manv" Mode="In" Type="Int32" />
+            <Parameter Name="tennv" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="dienthoai" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+            <Parameter Name="tuoi" Mode="In" Type="Int32" />
+            <Parameter Name="taikhoan" Mode="In" Type="String" />
+            <Parameter Name="matkhau" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Update_NXB">
+            <Parameter Name="manxb" Mode="In" Type="Int32" />
+            <Parameter Name="tennxb" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Update_PhieuMuonTra">
+            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+            <Parameter Name="madg" Mode="In" Type="Int32" />
+            <Parameter Name="manv" Mode="In" Type="Int32" />
+            <Parameter Name="ngaymuon" Mode="In" Type="String" />
+            <Parameter Name="ngaytra" Mode="In" Type="String" />
+            <Parameter Name="ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="select_admin" ReturnType="Collection(QL_Thu_VienModel.select_admin_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="select_admin_Result">
+          <Property Type="Int32" Name="manv" Nullable="false" />
+          <Property Type="String" Name="tennv" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dienthoai" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="chucvu" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="tuoi" Nullable="true" />
+          <Property Type="String" Name="taikhoan" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="matkhau" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -546,16 +838,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_nxb">
-            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nxb">
-              <MappingFragment StoreEntitySet="tbl_nxb">
-                <ScalarProperty Name="manxb" ColumnName="manxb" />
-                <ScalarProperty Name="tennxb" ColumnName="tennxb" />
-                <ScalarProperty Name="diachi" ColumnName="diachi" />
-                <ScalarProperty Name="sdt" ColumnName="sdt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_nhanvien">
             <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nhanvien">
               <MappingFragment StoreEntitySet="tbl_nhanvien">
@@ -568,6 +850,16 @@
                 <ScalarProperty Name="tuoi" ColumnName="tuoi" />
                 <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
                 <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_nxb">
+            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nxb">
+              <MappingFragment StoreEntitySet="tbl_nxb">
+                <ScalarProperty Name="manxb" ColumnName="manxb" />
+                <ScalarProperty Name="tennxb" ColumnName="tennxb" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -590,7 +882,6 @@
               <MappingFragment StoreEntitySet="tbl_sach">
                 <ScalarProperty Name="masach" ColumnName="masach" />
                 <ScalarProperty Name="tensach" ColumnName="tensach" />
-                <ScalarProperty Name="matg" ColumnName="matg" />
                 <ScalarProperty Name="manxb" ColumnName="manxb" />
                 <ScalarProperty Name="malv" ColumnName="malv" />
                 <ScalarProperty Name="sotrang" ColumnName="sotrang" />
@@ -619,6 +910,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_nhanvien_view">
+            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nhanvien_view">
+              <MappingFragment StoreEntitySet="tbl_nhanvien_view">
+                <ScalarProperty Name="manv" ColumnName="manv" />
+                <ScalarProperty Name="tennv" ColumnName="tennv" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="chucvu" ColumnName="chucvu" />
+                <ScalarProperty Name="tuoi" ColumnName="tuoi" />
+                <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="tbl_sach_tacgia" TypeName="QL_Thu_VienModel.tbl_sach_tacgia" StoreEntitySet="tbl_sach_tacgia">
             <EndProperty Name="tbl_sach">
               <ScalarProperty Name="masach" ColumnName="masach" />
@@ -627,6 +933,42 @@
               <ScalarProperty Name="matg" ColumnName="matg" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Delete_ChiTietPhieu" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_ChiTietPhieu" />
+          <FunctionImportMapping FunctionImportName="Proc_Delete_DocGia" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_DocGia" />
+          <FunctionImportMapping FunctionImportName="Proc_Delete_NhanVien" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_NhanVien" />
+          <FunctionImportMapping FunctionImportName="Proc_Delete_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_NXB" />
+          <FunctionImportMapping FunctionImportName="Proc_Delete_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_PhieuMuonTra" />
+          <FunctionImportMapping FunctionImportName="Proc_Edit_DocGia" FunctionName="QL_Thu_VienModel.Store.Proc_Edit_DocGia" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_ChiTietPhieu" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_ChiTietPhieu" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_DocGia" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_DocGia" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_NhanVien" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_NhanVien" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_NXB" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_PhieuMuonTra" />
+          <FunctionImportMapping FunctionImportName="Proc_Update_NhanVien" FunctionName="QL_Thu_VienModel.Store.Proc_Update_NhanVien" />
+          <FunctionImportMapping FunctionImportName="Proc_Update_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Update_NXB" />
+          <FunctionImportMapping FunctionImportName="Proc_Update_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Update_PhieuMuonTra" />
+          <FunctionImportMapping FunctionImportName="select_admin" FunctionName="QL_Thu_VienModel.Store.select_admin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_Thu_VienModel.select_admin_Result">
+                <ScalarProperty Name="manv" ColumnName="manv" />
+                <ScalarProperty Name="tennv" ColumnName="tennv" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="chucvu" ColumnName="chucvu" />
+                <ScalarProperty Name="tuoi" ColumnName="tuoi" />
+                <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QL_Thu_VienModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QL_Thu_VienModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QL_Thu_VienModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QL_Thu_VienModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QL_Thu_VienModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

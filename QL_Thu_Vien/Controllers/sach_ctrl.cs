@@ -12,31 +12,35 @@ namespace DoAnCNPM.Controllers
     {
         public sach_ctrl() { }
 
-       // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
-        public Result<List<sach_ett>> select_all_sach()
+        public Result<List<tacgia_ett>> select_tacgia(string masach)
         {
-            Result<List<sach_ett>> rs = new Result<List<sach_ett>>();
+            Result<List<tacgia_ett>> rs = new Result<List<tacgia_ett>>();
             try
             {
-                //List<sach_ett> lst = new List<sach_ett>();
-                //var dt = db.tbl_saches;
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_sach item in dt)
-                //    {
-                //        sach_ett temp = new sach_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
-                return rs;
+                List<tacgia_ett> lst = new List<tacgia_ett>();
+                var dt = db.tbl_sach.SqlQuery("select * from tbl_sach where masach=" + int.Parse(masach)).FirstOrDefault();
+                var item = dt.tbl_tacgia;
+
+                if (item.Count()>0)
+                {
+                    foreach (var i in item)
+                    {
+                        tacgia_ett temp = new tacgia_ett();
+                        temp.matacgia = i.matg;
+                        temp.tentacgia = i.tentg;
+                        lst.Add(temp);
+                    }
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
+                rs.data = lst;
+                rs.errcode = ErrorCode.sucess;
             }
             catch (Exception e)
             {
@@ -45,33 +49,47 @@ namespace DoAnCNPM.Controllers
                 rs.errcode = ErrorCode.fail;
                 return rs;
             }
+
+
+            return rs;
         }
 
         public Result<List<sachview_ett>> select_all_sachview()
         {
+            QL_Thu_VienEntities db1 = new QL_Thu_VienEntities();
             Result<List<sachview_ett>> rs = new Result<List<sachview_ett>>();
             try
             {
-                //List<sachview_ett> lst = new List<sachview_ett>();
+                List<sachview_ett> lst = new List<sachview_ett>();
                 //var dt = from o in db.tbl_saches
                 //         join p in db.tbl_tacgias on o.matg equals p.matg
                 //         join k in db.tbl_nxbs on o.manxb equals k.manxb
                 //         join l in db.tbl_linhvucs on o.malv equals l.malinhvuc
                 //         select new sachview_ett() { masach = o.masach, tensach = o.tensach, linhvuc = l.tenlinhvuc, tacgia = p.tentg, nxb = k.tennxb, soluong = o.soluong.ToString(), sotrang = o.sotrang.ToString(), ngaynhap = o.ngaynhap };
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (sachview_ett item in dt)
-                //    {
-                //        lst.Add(item);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                var dt = db1.tbl_sach.SqlQuery("select * from tbl_sach");
+                if (dt.Count() > 0)
+                {
+                    foreach (var item in dt)
+                    {
+                        sachview_ett temp = new sachview_ett();
+                        temp.masach = item.masach;
+                        temp.tensach = item.tensach;
+                        temp.nxb = item.tbl_nxb.tennxb;
+                        temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
+                        temp.sotrang = (int) item.sotrang;
+                        temp.soluonghientai = (int) item.soluonghientai;
+                        temp.soluongbandau = (int)item.soluongbandau;
+                        temp.ngaynhap = item.ngaynhap;
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
                 return rs;
             }
             catch (Exception e)

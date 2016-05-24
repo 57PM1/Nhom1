@@ -1,4 +1,4 @@
-
+﻿
 -- Nha xuat ban
 Create Proc Proc_Insert_NXB 
 	@tennxb nvarchar(100),
@@ -130,6 +130,47 @@ Create Proc Proc_Delete_ChiTietPhieu
 As
 	Begin
 		Delete from tbl_chitietphieu where sophieumuon = @sophieumuon and masach = @masach
+	End
+Go
+
+
+--độc giả--
+Create Proc Proc_Insert_DocGia
+	@tendg nvarchar(50),
+	@ngaysinh varchar(50)='',
+	@gioitinh nvarchar(3)='',
+	@lop varchar(10)='',
+	@diachi nvarchar(100)='',
+	@email varchar(50)=''
+
+As
+	Begin 
+		Insert into tbl_docgia (tendg, ngaysinh, gioitinh, lop, diachi, email) values (@tendg, @ngaysinh, @gioitinh, @lop, @diachi, @email)
+	End
+Go
+
+
+Create proc Proc_Delete_DocGia
+	@madg int
+
+As
+	Begin
+		Delete from tbl_docgia where madg=@madg
+	End
+Go
+
+Create proc Proc_Edit_DocGia
+	@tendg nvarchar(50),
+	@ngaysinh varchar(50),
+	@gioitinh nvarchar(3),
+	@lop varchar(10),
+	@diachi nvarchar(100),
+	@email varchar(50),
+	@madg int
+
+As
+	Begin
+		Update tbl_docgia set tendg=@tendg, ngaysinh=@ngaysinh, gioitinh=@gioitinh, lop=@lop, diachi=@diachi, email=@email where madg=@madg
 	End
 Go
 

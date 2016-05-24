@@ -33,10 +33,6 @@ namespace DoAnCNPM.Views
             }
             else sach_ett.masach = 0;
             sach_ett.tensach = txt_tensach.Text;
-            if (cbx_tacgia.SelectedValue != null)
-            {
-                sach_ett.matg = int.Parse(cbx_tacgia.SelectedValue.ToString());
-            }
             if (cbx_linhvuc.SelectedValue != null)
             {
                 sach_ett.malv = int.Parse(cbx_linhvuc.SelectedValue.ToString());
@@ -45,9 +41,13 @@ namespace DoAnCNPM.Views
             {
                 sach_ett.manxb = int.Parse(cbx_nxb.SelectedValue.ToString());
             }
-            if (txt_soluong.Text != null && txt_soluong.Text != "")
+            if (txt_slbd.Text != null && txt_slbd.Text != "")
             {
-                sach_ett.soluong = int.Parse(txt_soluong.Text);
+                sach_ett.soluongbandau = int.Parse(txt_slbd.Text);
+            }
+            if (txt_slht.Text != null && txt_slht.Text != "")
+            {
+                sach_ett.soluonghientai = int.Parse(txt_slht.Text);
             }
             else sach_ett.sotrang = 0;
             if (txt_sotrang.Text != null && txt_sotrang.Text != "")
@@ -69,7 +69,7 @@ namespace DoAnCNPM.Views
                     break;
                 case Models.ErrorCode.sucess:
                     dtgv.DataSource = dt.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Tác giả", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng", "Ngày nhập" });
+                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng hiện tại", "Số lượng ban đầu", "Ngày nhập" });
                     break;
                 case Models.ErrorCode.fail:
                     if (Utils.switch_false())
@@ -85,12 +85,11 @@ namespace DoAnCNPM.Views
         public frm_capnhat_sach()
         {
             InitializeComponent();
-            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong , txt_tensach }, true);
+            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd , txt_slht, txt_tensach }, true);
             dtpk_ngaynhap.Enabled = false;
             btn_add_soluong.Visible = false;
             btn_xoa.Visible = false;
             btn_sua.Visible = false;
-            Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, false);
         }
 
 
@@ -113,16 +112,18 @@ namespace DoAnCNPM.Views
             linhvuc_ctrl linhvuc = new linhvuc_ctrl();
             nhaxuatban_ctrl nxb = new nhaxuatban_ctrl();
 
+
+
             var dt_cbx_tacgia = tacgia.select_all_tacgia();
             switch (dt_cbx_tacgia.errcode)
             {
                 case ErrorCode.NaN:
                     break;
                 case ErrorCode.sucess:
-                    cbx_tacgia.DisplayMember = "tentacgia";
-                    cbx_tacgia.ValueMember = "matacgia";
-                    cbx_tacgia.DataSource = dt_cbx_tacgia.data;
-                    cbx_tacgia.SelectedIndex = -1;
+                    cbx_tacgias.DisplayMember = "tentacgia";
+                    cbx_tacgias.ValueMember = "matacgia";
+                    cbx_tacgias.DataSource = dt_cbx_tacgia.data;
+                    cbx_tacgias.SelectedIndex = -1;
                     break;
                 case ErrorCode.fail:
                     break;
@@ -175,21 +176,21 @@ namespace DoAnCNPM.Views
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, false);
-            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_soluong, txt_tensach });
-            Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
-            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong, txt_tensach }, true);
+            //Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, false);
+            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht });
+            //Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
+            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd, txt_tensach, txt_slht }, true);
             dtpk_ngaynhap.Enabled = false;
             option = Option.Nodata;
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_soluong, txt_tensach });
-            Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
-            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong, txt_tensach }, false);
+            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht });
+            //Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
+            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd, txt_tensach, txt_slht }, false);
             dtpk_ngaynhap.Enabled = true;
-            Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, true);
+            //Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, true);
             txt_tensach.Focus();
             option = Option.Insert;
 
@@ -202,13 +203,22 @@ namespace DoAnCNPM.Views
                 DataGridViewRow temp = dtgv.Rows[e.RowIndex];
                 txt_masach.Text = temp.Cells[0].Value.ToString();
                 txt_tensach.Text = temp.Cells[1].Value.ToString();
-                cbx_linhvuc.Text = temp.Cells[2].Value.ToString();
-                cbx_tacgia.Text = temp.Cells[3].Value.ToString();
-                cbx_nxb.Text = temp.Cells[4].Value.ToString();
-                txt_sotrang.Text = temp.Cells[5].Value.ToString();
-                txt_soluong.Text = temp.Cells[6].Value.ToString();
+                cbx_linhvuc.Text = temp.Cells[3].Value.ToString();
+                cbx_nxb.Text = temp.Cells[2].Value.ToString();
+                txt_sotrang.Text = temp.Cells[4].Value.ToString();
+                txt_slbd.Text = temp.Cells[5].Value.ToString();
+                txt_slht.Text = temp.Cells[6].Value.ToString();
                 var ngaynhap = temp.Cells[7].Value.ToString();
                 dtpk_ngaynhap.Value = DateTime.ParseExact(ngaynhap, "dd/MM/yyyy", null);
+                List<tacgia_ett> lst_tacgias = new List<tacgia_ett>();
+                lst_tacgias=sach_ctrl.select_tacgia(txt_masach.Text.ToString()).data;
+                lst_tacgia_rs.Items.Clear();
+                foreach (var item in lst_tacgias)
+                {
+                    var row = new ListViewItem(item.matacgia.ToString());
+                    row.SubItems.Add(item.tentacgia);
+                    lst_tacgia_rs.Items.Add(row);
+                }
             }
         }
 
@@ -241,9 +251,9 @@ namespace DoAnCNPM.Views
         private void btn_sua_Click(object sender, EventArgs e)
         {
             option = Option.Edit;
-            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong, txt_tensach }, false);
+            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd, txt_tensach, txt_slht }, false);
             dtpk_ngaynhap.Enabled = true;
-            Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, true);
+            //Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, true);
 
         }
 
@@ -262,12 +272,12 @@ namespace DoAnCNPM.Views
                         MessageBox.Show(check_ten);
                         break;
                     }
-                    var check_tacgia = Utils.err_null_data_cbx(cbx_tacgia);
-                    if (check_tacgia != null)
-                    {
-                        MessageBox.Show(check_tacgia);
-                        break;
-                    }
+                    //var check_tacgia = Utils.err_null_data_cbx(cbx_tacgia);
+                    //if (check_tacgia != null)
+                    //{
+                    //    MessageBox.Show(check_tacgia);
+                    //    break;
+                    //}
                     var check_nxb = Utils.err_null_data_cbx(cbx_nxb);
                     if (check_nxb != null)
                     {
@@ -281,10 +291,11 @@ namespace DoAnCNPM.Views
                         break;
                     }
 
-                    var check_soluong = Utils.err_null_data(txt_soluong);
-                    if (check_soluong != null)
+                    var check_soluong1 = Utils.err_null_data(txt_slbd);
+                    var check_soluong2 = Utils.err_null_data(txt_slht);
+                    if (check_soluong1 != null && check_soluong2 != null)
                     {
-                        MessageBox.Show(check_soluong);
+                        MessageBox.Show(check_soluong1 + " " + check_soluong2);
                         break;
                     }
                     get_info();
@@ -311,8 +322,8 @@ namespace DoAnCNPM.Views
                         case ErrorCode.sucess:
                             MessageBox.Show(Constants.success_insert);
                             load_data();
-                            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_soluong, txt_tensach });
-                            Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
+                            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht });
+                            //Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
                             break;
                         case ErrorCode.fail:
                             break;
@@ -346,11 +357,11 @@ namespace DoAnCNPM.Views
                         case ErrorCode.sucess:
                             MessageBox.Show(Constants.success_edit);
                             load_data();
-                            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_soluong, txt_tensach });
-                            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong, txt_tensach }, true);
+                            Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht });
+                            Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd, txt_tensach, txt_slht }, true);
                             dtpk_ngaynhap.Enabled = false;
-                            Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, false);
-                            Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
+                            //Utils.enable_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia }, false);
+                            //Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
                             break;
                         case ErrorCode.fail:
                             if (Utils.switch_false())
@@ -386,9 +397,9 @@ namespace DoAnCNPM.Views
                             case ErrorCode.NaN:
                                 break;
                             case ErrorCode.sucess:
-                                Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_soluong, txt_tensach });
-                                Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
-                                Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_soluong, txt_tensach }, true);
+                                Utils.erase_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht });
+                                //Utils.erase_combobox(new List<ComboBox> { cbx_linhvuc, cbx_nxb, cbx_tacgia });
+                                Utils.readOnly_text_box(new List<TextBox> { txt_sotrang, txt_slbd, txt_tensach, txt_slht }, true);
                                 dtpk_ngaynhap.Enabled = false;
                                 option = Option.Nodata;
                                 break;
@@ -432,16 +443,16 @@ namespace DoAnCNPM.Views
 
         }
 
-        private void cbx_tacgia_Leave(object sender, EventArgs e)
-        {
-            List<tacgia_ett> temp = cbx_tacgia.Items.OfType<tacgia_ett>().ToList();
-            var x = temp.Where(o => o.tentacgia == cbx_tacgia.Text);
-            if (x.Count() == 0)
-            {
-                MessageBox.Show(Constants.error_not_list);
-                cbx_tacgia.Focus();
-            }
-        }
+        //private void cbx_tacgia_Leave(object sender, EventArgs e)
+        //{
+        //    List<tacgia_ett> temp = cbx_tacgia.Items.OfType<tacgia_ett>().ToList();
+        //    var x = temp.Where(o => o.tentacgia == cbx_tacgia.Text);
+        //    if (x.Count() == 0)
+        //    {
+        //        MessageBox.Show(Constants.error_not_list);
+        //        cbx_tacgia.Focus();
+        //    }
+        //}
 
         private void cbx_nxb_Leave(object sender, EventArgs e)
         {
