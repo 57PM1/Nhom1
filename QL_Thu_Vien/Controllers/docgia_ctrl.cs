@@ -12,30 +12,32 @@ namespace DoAnCNPM.Controllers
     {
         public docgia_ctrl() { }
 
-       // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        // QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
+        QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
         public Result<List<docgia_ett>> select_all_docgia()
         {
             Result<List<docgia_ett>> rs = new Result<List<docgia_ett>>();
             try
             {
-                //List<docgia_ett> lst = new List<docgia_ett>();
-                //var dt = db.tbl_docgias;
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_docgia item in dt)
-                //    {
-                //        docgia_ett temp = new docgia_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                QL_Thu_VienEntities db1 = new QL_Thu_VienEntities();
+                List<docgia_ett> lst = new List<docgia_ett>();
+                var dt = db1.tbl_docgia.SqlQuery("select * from tbl_docgia");
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_docgia item in dt)
+                    {
+                        docgia_ett temp = new docgia_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
                 return rs;
             }
             catch (Exception e)
@@ -53,20 +55,11 @@ namespace DoAnCNPM.Controllers
 
             try
             {
-                //// create new tbl_docgia to insert to database_context
-                //tbl_docgia temp = new tbl_docgia();
-                //temp.tendg = docgia.tendocgia;
-                //temp.lop = docgia.lop;
-                //temp.gioitinh = docgia.gioitinh;
-                //temp.ngaysinh = docgia.ngaysinh;
-                //temp.email = docgia.email;
-                //temp.diachi = docgia.diachi;
+                // create new tbl_docgia to insert to database_context
+                db.Proc_Insert_DocGia(docgia.tendocgia, docgia.ngaysinh, docgia.gioitinh, docgia.lop, docgia.diachi, docgia.email);
 
-                //db.tbl_docgias.InsertOnSubmit(temp);
-                //db.SubmitChanges();
-
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -132,8 +125,7 @@ namespace DoAnCNPM.Controllers
                 //        db.tbl_docgias.DeleteOnSubmit(item);
                 //    }
                 //    db.SubmitChanges();
-                //    rs.data = true;
-                //    rs.errcode = ErrorCode.sucess;
+
                 //}
                 //else
                 //{
@@ -141,7 +133,9 @@ namespace DoAnCNPM.Controllers
                 //    rs.errcode = ErrorCode.NaN;
                 //    rs.errInfor = Constants.empty_data;
                 //}
-
+                db.Proc_Delete_DocGia(madocgia);
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -187,8 +181,9 @@ namespace DoAnCNPM.Controllers
                 //}
 
                 //db.SubmitChanges();
-                //rs.data = true;
-                //rs.errcode = ErrorCode.sucess;
+                db.Proc_Edit_DocGia(docgia.tendocgia, docgia.ngaysinh, docgia.gioitinh, docgia.lop, docgia.diachi, docgia.email, docgia.madocgia);
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)
@@ -205,40 +200,40 @@ namespace DoAnCNPM.Controllers
             Result<List<docgia_ett>> rs = new Result<List<docgia_ett>>();
             try
             {
-                //IQueryable<tbl_docgia> dt = null;
-                //List<docgia_ett> lst = new List<docgia_ett>();
-                //switch (howtosearch)
-                //{
-                //    case "hoten":
-                //        dt = db.tbl_docgias.Where(o => o.tendg.Contains(input));
-                //        break;
-                //    case "lop":
-                //        dt = db.tbl_docgias.Where(o => o.lop.Contains(input));
-                //        break;
-                //    case "email":
-                //        dt = db.tbl_docgias.Where(o => o.email.Contains(input));
-                //        break;
-                //    default:
-                //        break;
-                //}
+                List<docgia_ett> lst = new List<docgia_ett>();
+                var dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia");
+                switch (howtosearch)
+                {
+                    case "hoten":
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where tendg like '%" + input + "%'");
+                        break;
+                    case "lop":
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where lop like '%" + input + "%'");
+                        break;
+                    case "email":
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where email like '%" + input + "%'");
+                        break;
+                    default:
+                        break;
+                }
 
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_docgia item in dt)
-                //    {
-                //        docgia_ett temp = new docgia_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //    return rs;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //    return rs;
-                //}
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_docgia item in dt)
+                    {
+                        docgia_ett temp = new docgia_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                    return rs;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                    return rs;
+                }
                 return rs;
             }
             catch (Exception e)

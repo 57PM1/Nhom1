@@ -23,7 +23,6 @@ namespace DoAnCNPM
     
         public int masach { get; set; }
         public string tensach { get; set; }
-        public Nullable<int> matg { get; set; }
         public Nullable<int> manxb { get; set; }
         public Nullable<int> malv { get; set; }
         public Nullable<int> sotrang { get; set; }
