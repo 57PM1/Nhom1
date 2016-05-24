@@ -361,6 +361,7 @@
             // dtgv
             // 
             this.dtgv.AllowUserToOrderColumns = true;
+            this.dtgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv.GridColor = System.Drawing.SystemColors.Control;
             this.dtgv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -407,6 +408,7 @@
             // cbx_option_search
             // 
             this.cbx_option_search.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_option_search.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbx_option_search.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_option_search.FormattingEnabled = true;
             this.cbx_option_search.Items.AddRange(new object[] {
