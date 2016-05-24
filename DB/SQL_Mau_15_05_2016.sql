@@ -175,6 +175,29 @@ As
 Go
 
 
+--sách--
+Create Proc Proc_Insert_Sach
+	@tensach nvarchar(100),
+	@manxb int,
+	@malv int,
+	@sotrang int,
+	@soluonghientai int,
+	@soluongbandau int,
+	@ngaynhap varchar(50)=''
+As
+	Begin
+		Insert into tbl_sach (tensach, manxb, malv, sotrang, soluonghientai, soluongbandau, ngaynhap) values (@tensach, @manxb, @malv, @sotrang, @soluonghientai, @soluongbandau, @ngaynhap)
+	End
+Go
+
+Create proc Proc_Insert_Sach_Tacgia
+	@matg int
+As
+	Begin 
+		Insert into tbl_sach_tacgia (masach, matg) values ((select SCOPE_IDENTITY() ), @matg)
+	End
+Go
+
 ------------------------------------------------------------------------------------------
 --Trigger
 
