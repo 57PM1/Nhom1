@@ -80,7 +80,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
     </Compile>
+    <Compile Include="select_admin_Result.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shareds\PasswordUtil.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
@@ -94,6 +103,9 @@
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_nhanvien.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_nhanvien_view.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_nxb.cs">

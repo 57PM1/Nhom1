@@ -22,7 +22,6 @@ namespace DoAnCNPM.Models
         {
             masach = sach.masach;
             tensach = sach.tensach;
-            matg = (int)sach.matg;
             manxb = (int)sach.manxb;
             malv = (int)sach.malv;
             sotrang = (int)sach.sotrang;

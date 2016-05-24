@@ -327,6 +327,31 @@ namespace DoAnCNPM.Views
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
+            #region Check độc giả
+            List<docgia_ett> temp_check_docgia = cbx_docgia.Items.OfType<docgia_ett>().ToList();
+            var x_check_docgia = temp_check_docgia.Where(o => o.tendocgia == cbx_docgia.Text);
+            if (x_check_docgia.Count() == 0)
+            {
+                MessageBox.Show(Constants.error_not_list);
+                cbx_docgia.Focus();
+
+                return;
+            }
+            #endregion
+
+            #region Check nhân viên
+
+            List<nhanvien_ett> temp_check_nhanvien = cbx_nhanvien.Items.OfType<nhanvien_ett>().ToList();
+            var x_check_nhanvien = temp_check_nhanvien.Where(o => o.tennhanvien == cbx_nhanvien.Text);
+            if (x_check_nhanvien.Count() == 0)
+            {
+                MessageBox.Show(Constants.error_not_list);
+                cbx_nhanvien.Focus();
+            }
+
+            #endregion
+
+
             switch (option)
             {
                 case Option.Nodata:
@@ -549,24 +574,24 @@ namespace DoAnCNPM.Views
 
         private void cbx_docgia_Leave(object sender, EventArgs e)
         {
-            List<docgia_ett> temp = cbx_docgia.Items.OfType<docgia_ett>().ToList();
-            var x = temp.Where(o => o.tendocgia == cbx_docgia.Text);
-            if (x.Count() == 0)
-            {
-                MessageBox.Show(Constants.error_not_list);
-                cbx_docgia.Focus();
-            }
+            //List<docgia_ett> temp = cbx_docgia.Items.OfType<docgia_ett>().ToList();
+            //var x = temp.Where(o => o.tendocgia == cbx_docgia.Text);
+            //if (x.Count() == 0)
+            //{
+            //    MessageBox.Show(Constants.error_not_list);
+            //    cbx_docgia.Focus();
+            //}
         }
 
         private void cbx_nhanvien_Leave(object sender, EventArgs e)
         {
-            List<nhanvien_ett> temp = cbx_nhanvien.Items.OfType<nhanvien_ett>().ToList();
-            var x = temp.Where(o => o.tennhanvien == cbx_nhanvien.Text);
-            if (x.Count() == 0)
-            {
-                MessageBox.Show(Constants.error_not_list);
-                cbx_nhanvien.Focus();
-            }
+            //List<nhanvien_ett> temp = cbx_nhanvien.Items.OfType<nhanvien_ett>().ToList();
+            //var x = temp.Where(o => o.tennhanvien == cbx_nhanvien.Text);
+            //if (x.Count() == 0)
+            //{
+            //    MessageBox.Show(Constants.error_not_list);
+            //    cbx_nhanvien.Focus();
+            //}
         }
 
         private void dtgv_sachmuon_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

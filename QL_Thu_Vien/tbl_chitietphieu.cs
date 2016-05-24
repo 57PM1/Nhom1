@@ -18,7 +18,7 @@ namespace DoAnCNPM
         public int masach { get; set; }
         public string trangthaisach { get; set; }
     
-        public virtual tbl_sach tbl_sach { get; set; }
         public virtual tbl_phieumuon_tra tbl_phieumuon_tra { get; set; }
+        public virtual tbl_sach tbl_sach { get; set; }
     }
 }
