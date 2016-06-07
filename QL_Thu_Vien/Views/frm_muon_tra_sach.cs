@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,10 @@ namespace DoAnCNPM.Views
         // uses for save data from all textboxs
         private phieumuontra_ett phieumuontra_ett = new phieumuontra_ett();
 
+        // Save temporary when clicking on a row.
+        private List<chitietphieu_ett> temp_chitietphieu = new List<chitietphieu_ett>();
+
+        QL_Thu_VienEntities db = new QL_Thu_VienEntities();
 
         // set value to caculate later on
         private void get_info()
@@ -79,7 +84,7 @@ namespace DoAnCNPM.Views
         public frm_muon_tra_sach()
         {
             InitializeComponent();
-            Utils.readOnly_text_box(new List<TextBox> {txt_ghichu }, true);
+            Utils.readOnly_text_box(new List<TextBox> { txt_ghichu }, true);
             Utils.enable_combobox(new List<ComboBox> { cbx_docgia, cbx_nhanvien }, false);
             chbox_xacnhantra.Enabled = false;
             dtgv_sachmuon.Enabled = false;
@@ -121,7 +126,7 @@ namespace DoAnCNPM.Views
             dtgv_sachmuon.Font = new Font("Verdana", 9, FontStyle.Regular);
             dtgv_sachmuon.Columns[1].Width = 150;
             dtgv_sachmuon.Columns[0].Width = 150;
-            
+
         }
 
 
@@ -186,8 +191,8 @@ namespace DoAnCNPM.Views
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            Utils.erase_text_box(new List<TextBox> { txt_soPM, txt_ghichu});
-            Utils.readOnly_text_box(new List<TextBox> { txt_ghichu}, true);
+            Utils.erase_text_box(new List<TextBox> { txt_soPM, txt_ghichu });
+            Utils.readOnly_text_box(new List<TextBox> { txt_ghichu }, true);
             Utils.enable_combobox(new List<ComboBox> { cbx_docgia, cbx_nhanvien }, false);
             chbox_xacnhantra.Enabled = false;
             dtgv_sachmuon.Enabled = false;
@@ -226,7 +231,7 @@ namespace DoAnCNPM.Views
                 cbx_nhanvien.Text = temp.Cells[2].Value.ToString();
                 dtpk_ngaymuon.Value = DateTime.ParseExact(temp.Cells[3].Value.ToString(), "dd/MM/yyyy", null);
                 dtpk_ngaytra.Value = DateTime.ParseExact(temp.Cells[4].Value.ToString(), "dd/MM/yyyy", null);
-                chbox_xacnhantra.Checked = bool.Parse(temp.Cells[5].Value.ToString());
+                chbox_xacnhantra.Checked = temp.Cells[5].Value == null ? false : bool.Parse(temp.Cells[5].Value.ToString());
                 txt_ghichu.Text = temp.Cells[6].Value.ToString();
 
                 if (chbox_xacnhantra.Checked)
@@ -238,15 +243,22 @@ namespace DoAnCNPM.Views
                     dtgv_sachmuon.Enabled = false;
                     dtpk_ngaytra.Enabled = false;
                     dtpk_ngaymuon.Enabled = false;
+
+                    Show_So_Tien_Phat();
+                    var phieumuon = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon = " + temp.Cells[0].Value.ToString()).FirstOrDefault();
+                    txt_sotienphat.Text = phieumuon.sotienphat == null ? "0" : phieumuon.sotienphat.ToString();
+
                 }
                 else
                 {
-                   btn_sua.Enabled = btn_xoa.Enabled = btn_luu.Enabled = true;
+                    btn_sua.Enabled = btn_xoa.Enabled = btn_luu.Enabled = true;
+                    Hide_So_Tien_Phat();
                 }
 
                 chitietphieu_ctrl chitiet_ctrl = new chitietphieu_ctrl();
                 var list_sach = chitiet_ctrl.select_all_chitietphieu_by_sopm(int.Parse(txt_soPM.Text));
                 var data_sach = list_sach.data;
+                temp_chitietphieu = data_sach;
                 if (data_sach != null)
                 {
                     dtgv_sachmuon.RowCount = data_sach.Count() + 1;
@@ -260,7 +272,7 @@ namespace DoAnCNPM.Views
                 {
                     dtgv_sachmuon.Rows.Clear();
                 }
-                
+
             }
         }
 
@@ -304,6 +316,7 @@ namespace DoAnCNPM.Views
 
         private void get_ds_sach()
         {
+            chitietphieu.Clear();
             get_info();
             var data = dtgv_sachmuon.Rows;
             foreach (DataGridViewRow item in data)
@@ -318,8 +331,9 @@ namespace DoAnCNPM.Views
                 if (item.Cells[1].Value == null)
                 {
                     temp.trangthaisach = "Bình thường";
-                } else
-                temp.trangthaisach = item.Cells[1].Value.ToString();
+                }
+                else
+                    temp.trangthaisach = item.Cells[1].Value.ToString();
 
                 chitietphieu.Add(temp);
             }
@@ -354,10 +368,6 @@ namespace DoAnCNPM.Views
 
             switch (option)
             {
-                case Option.Nodata:
-
-                    break;
-
                 case Option.Insert:
                     get_ds_sach();
                     var check_docgia = Utils.err_null_data_cbx(cbx_docgia);
@@ -412,14 +422,13 @@ namespace DoAnCNPM.Views
                             // insert chitietphieu
                             var sopm = temp.data.sophieumuon;
                             chitietphieu_ctrl chitiet_ctrl = new chitietphieu_ctrl();
-                            get_ds_sach();
                             phieumuontra_ett.sophieumuon = sopm;
                             foreach (chitietphieu_ett item in chitietphieu)
                             {
                                 item.sophieumuon = sopm;
                                 chitiet_ctrl.insert_chitietphieu(item);
                             }
-                            
+
                             break;
                         case ErrorCode.fail:
                             break;
@@ -428,7 +437,7 @@ namespace DoAnCNPM.Views
                     }
                     break;
 
-                case Option.Edit:  
+                case Option.Edit:
                     get_info();
                     //check if existing data
                     var check1 = true;
@@ -466,7 +475,7 @@ namespace DoAnCNPM.Views
                             chitiet_ctrl1.delete_chitietphieu(item.sophieumuon, item.masach);
                         }
                     }
-                    
+
                     switch (temp1.errcode)
                     {
                         case ErrorCode.NaN:
@@ -480,16 +489,79 @@ namespace DoAnCNPM.Views
                                 item.sophieumuon = sopm1;
                                 chitiet_ctrl1.insert_chitietphieu(item);
                             }
-                            Utils.erase_text_box(new List<TextBox> { txt_soPM, txt_ghichu});
-                            Utils.readOnly_text_box(new List<TextBox> {txt_ghichu}, true);
-                            Utils.erase_combobox(new List<ComboBox>() { cbx_nhanvien, cbx_docgia });
-                            Utils.enable_combobox(new List<ComboBox>() { cbx_nhanvien, cbx_docgia }, false);
-                            dtpk_ngaymuon.Enabled = false;
-                            dtgv_sachmuon.Enabled = false;
-                            dtgv_sachmuon.Rows.Clear();
-                            dtpk_ngaytra.Enabled = false;
-                            chbox_xacnhantra.Enabled = false;
-                            chbox_xacnhantra.Checked = false;
+                            //Utils.erase_text_box(new List<TextBox> { txt_soPM, txt_ghichu});
+                            //Utils.readOnly_text_box(new List<TextBox> {txt_ghichu}, true);
+                            //Utils.erase_combobox(new List<ComboBox>() { cbx_nhanvien, cbx_docgia });
+                            //Utils.enable_combobox(new List<ComboBox>() { cbx_nhanvien, cbx_docgia }, false);
+                            //dtpk_ngaymuon.Enabled = false;
+                            //dtgv_sachmuon.Enabled = false;
+                            //dtgv_sachmuon.Rows.Clear();
+                            //dtpk_ngaytra.Enabled = false;
+                            //chbox_xacnhantra.Enabled = false;
+                            //chbox_xacnhantra.Checked = false;
+
+                            // Tính tổng tiền phạt ở đây;
+                            int tienphat = 0;
+                            var phieumuon = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon = " + phieumuontra_ett.sophieumuon).FirstOrDefault();
+
+                           
+                            if (phieumuon.sotienphat == null && chbox_xacnhantra.Checked)
+                            {
+
+                                var date_now = DateTime.Now.Date;
+                                DateTime date_tra = DateTime.ParseExact(dtpk_ngaytra.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                                if (date_now > date_tra)
+                                {
+                                    int days = (date_now - date_tra).Days;
+                                    int giatien = (int)db.tbl_xuphat.SqlQuery("Select * from tbl_xuphat where loaiphat = N'Quá hạn theo ngày'").FirstOrDefault().giatien;
+
+                                    tienphat += days * giatien;
+                                }
+
+
+                                chitietphieu.Clear();
+                                get_ds_sach();
+                                var edit_data = chitietphieu;
+                                var old_data = temp_chitietphieu;
+                             
+                                if (edit_data.Count > 0 && old_data.Count > 0)
+                                {
+                                    foreach (var item in old_data)
+                                    {
+                                        foreach (var item1 in edit_data)
+                                        {
+                                            if (item.sophieumuon == item1.sophieumuon && item.masach == item1.masach && item.trangthaisach != item1.trangthaisach)
+                                            {
+                                                switch (item1.trangthaisach)
+                                                {
+                                                    case "Rách nát":
+                                                        int giatien = (int)db.tbl_xuphat.SqlQuery("Select * from tbl_xuphat where loaiphat = N'Hỏng sách'").FirstOrDefault().giatien;
+
+                                                        tienphat += giatien;
+                                                        break;
+
+                                                    case "Mất":
+                                                        giatien = (int)db.tbl_xuphat.SqlQuery("Select * from tbl_xuphat where loaiphat = N'Mất sách'").FirstOrDefault().giatien;
+
+                                                        tienphat += giatien;
+                                                        break;
+
+                                                    default:
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                phieumuon.sotienphat = tienphat;
+                                db.SaveChanges();
+
+                                Show_So_Tien_Phat();
+                                txt_sotienphat.Text = tienphat.ToString();
+                            }
+
                             break;
                         case ErrorCode.fail:
                             if (Utils.switch_false())
@@ -606,7 +678,7 @@ namespace DoAnCNPM.Views
 
         private void dtgv_sachmuon_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 )
+            if (e.ColumnIndex == 0)
             {
                 var data_check = dtgv_sachmuon.Rows;
                 var cur_cell = dtgv_sachmuon[e.ColumnIndex, e.RowIndex];
@@ -640,7 +712,26 @@ namespace DoAnCNPM.Views
 
         private void btn_in_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void chbox_xacnhantra_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void Show_So_Tien_Phat()
+        {
+            lbl_sotienphat.Visible = true;
+            txt_sotienphat.Visible = true;
+        }
+
+        private void Hide_So_Tien_Phat()
+        {
+            lbl_sotienphat.Visible = false;
+            txt_sotienphat.Visible = false;
         }
     }
 }

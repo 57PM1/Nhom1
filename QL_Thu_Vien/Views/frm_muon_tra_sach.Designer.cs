@@ -38,6 +38,7 @@
             this.cbx_docgia = new System.Windows.Forms.ComboBox();
             this.cbx_nhanvien = new System.Windows.Forms.ComboBox();
             this.btn_huy = new System.Windows.Forms.Button();
+            this.txt_sotienphat = new System.Windows.Forms.TextBox();
             this.txt_ghichu = new System.Windows.Forms.TextBox();
             this.txt_soPM = new System.Windows.Forms.TextBox();
             this.btn_xoa = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_them = new System.Windows.Forms.Button();
+            this.lbl_sotienphat = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             this.txt_timkiem = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbx_option_search = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_sachmuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
@@ -74,6 +77,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btn_in);
             this.groupBox1.Controls.Add(this.dtgv_sachmuon);
             this.groupBox1.Controls.Add(this.chbox_xacnhantra);
@@ -83,6 +87,7 @@
             this.groupBox1.Controls.Add(this.cbx_docgia);
             this.groupBox1.Controls.Add(this.cbx_nhanvien);
             this.groupBox1.Controls.Add(this.btn_huy);
+            this.groupBox1.Controls.Add(this.txt_sotienphat);
             this.groupBox1.Controls.Add(this.txt_ghichu);
             this.groupBox1.Controls.Add(this.txt_soPM);
             this.groupBox1.Controls.Add(this.btn_xoa);
@@ -93,12 +98,13 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label);
             this.groupBox1.Controls.Add(this.btn_them);
+            this.groupBox1.Controls.Add(this.lbl_sotienphat);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 422);
+            this.groupBox1.Size = new System.Drawing.Size(517, 471);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết phiếu mượn";
@@ -108,7 +114,7 @@
             this.btn_in.BackColor = System.Drawing.Color.White;
             this.btn_in.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_in.Location = new System.Drawing.Point(30, 238);
+            this.btn_in.Location = new System.Drawing.Point(395, 334);
             this.btn_in.Name = "btn_in";
             this.btn_in.Size = new System.Drawing.Size(75, 59);
             this.btn_in.TabIndex = 47;
@@ -119,7 +125,7 @@
             // dtgv_sachmuon
             // 
             this.dtgv_sachmuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_sachmuon.Location = new System.Drawing.Point(138, 199);
+            this.dtgv_sachmuon.Location = new System.Drawing.Point(149, 194);
             this.dtgv_sachmuon.Name = "dtgv_sachmuon";
             this.dtgv_sachmuon.Size = new System.Drawing.Size(362, 125);
             this.dtgv_sachmuon.TabIndex = 48;
@@ -129,12 +135,13 @@
             // chbox_xacnhantra
             // 
             this.chbox_xacnhantra.AutoSize = true;
-            this.chbox_xacnhantra.Location = new System.Drawing.Point(91, 152);
+            this.chbox_xacnhantra.Location = new System.Drawing.Point(91, 149);
             this.chbox_xacnhantra.Name = "chbox_xacnhantra";
             this.chbox_xacnhantra.Size = new System.Drawing.Size(104, 21);
             this.chbox_xacnhantra.TabIndex = 14;
             this.chbox_xacnhantra.Text = "Xác nhận trả";
             this.chbox_xacnhantra.UseVisualStyleBackColor = true;
+            this.chbox_xacnhantra.CheckedChanged += new System.EventHandler(this.chbox_xacnhantra_CheckedChanged);
             // 
             // dtpk_ngaymuon
             // 
@@ -153,7 +160,7 @@
             this.btn_thoat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_thoat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_thoat.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_thoat.Location = new System.Drawing.Point(425, 341);
+            this.btn_thoat.Location = new System.Drawing.Point(312, 399);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(75, 59);
             this.btn_thoat.TabIndex = 12;
@@ -189,12 +196,23 @@
             this.btn_huy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_huy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_huy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_huy.Location = new System.Drawing.Point(345, 341);
+            this.btn_huy.Location = new System.Drawing.Point(229, 399);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(75, 59);
             this.btn_huy.TabIndex = 11;
             this.btn_huy.UseVisualStyleBackColor = false;
             this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
+            // 
+            // txt_sotienphat
+            // 
+            this.txt_sotienphat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_sotienphat.Location = new System.Drawing.Point(10, 214);
+            this.txt_sotienphat.Multiline = true;
+            this.txt_sotienphat.Name = "txt_sotienphat";
+            this.txt_sotienphat.ReadOnly = true;
+            this.txt_sotienphat.Size = new System.Drawing.Size(133, 26);
+            this.txt_sotienphat.TabIndex = 4;
+            this.txt_sotienphat.Visible = false;
             // 
             // txt_ghichu
             // 
@@ -222,7 +240,7 @@
             this.btn_xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_xoa.Location = new System.Drawing.Point(176, 341);
+            this.btn_xoa.Location = new System.Drawing.Point(314, 334);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(75, 59);
             this.btn_xoa.TabIndex = 10;
@@ -258,7 +276,7 @@
             this.btn_luu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_luu.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_luu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_luu.Location = new System.Drawing.Point(262, 341);
+            this.btn_luu.Location = new System.Drawing.Point(149, 399);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(75, 59);
             this.btn_luu.TabIndex = 7;
@@ -272,7 +290,7 @@
             this.btn_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_sua.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sua.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_sua.Location = new System.Drawing.Point(93, 341);
+            this.btn_sua.Location = new System.Drawing.Point(229, 334);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(75, 59);
             this.btn_sua.TabIndex = 9;
@@ -308,12 +326,24 @@
             this.btn_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_them.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_them.Location = new System.Drawing.Point(10, 341);
+            this.btn_them.Location = new System.Drawing.Point(148, 334);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(75, 59);
             this.btn_them.TabIndex = 8;
             this.btn_them.UseVisualStyleBackColor = false;
             this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
+            // 
+            // lbl_sotienphat
+            // 
+            this.lbl_sotienphat.AutoSize = true;
+            this.lbl_sotienphat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_sotienphat.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_sotienphat.Location = new System.Drawing.Point(7, 194);
+            this.lbl_sotienphat.Name = "lbl_sotienphat";
+            this.lbl_sotienphat.Size = new System.Drawing.Size(82, 17);
+            this.lbl_sotienphat.TabIndex = 2;
+            this.lbl_sotienphat.Text = "Số tiền phạt";
+            this.lbl_sotienphat.Visible = false;
             // 
             // label4
             // 
@@ -369,7 +399,7 @@
             this.dtgv.Name = "dtgv";
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv.Size = new System.Drawing.Size(679, 323);
+            this.dtgv.Size = new System.Drawing.Size(679, 372);
             this.dtgv.TabIndex = 43;
             this.dtgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             this.dtgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
@@ -421,11 +451,24 @@
             this.cbx_option_search.Size = new System.Drawing.Size(110, 25);
             this.cbx_option_search.TabIndex = 45;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(393, 400);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 59);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Xem";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btn_in_Click);
+            // 
             // frm_muon_tra_sach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 490);
+            this.ClientSize = new System.Drawing.Size(1264, 555);
             this.Controls.Add(this.txt_timkiem);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbx_option_search);
@@ -477,5 +520,8 @@
         private System.Windows.Forms.ComboBox cbx_docgia;
         private System.Windows.Forms.Button btn_in;
         private System.Windows.Forms.DataGridView dtgv_sachmuon;
+        private System.Windows.Forms.TextBox txt_sotienphat;
+        private System.Windows.Forms.Label lbl_sotienphat;
+        private System.Windows.Forms.Button button1;
     }
 }
