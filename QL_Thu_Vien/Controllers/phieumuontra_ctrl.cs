@@ -50,7 +50,7 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<phieumuontra_ett> insert_phieumuontra(phieumuontra_ett phieumuontra, List<string> list_masach)
+        public Result<phieumuontra_ett> insert_phieumuontra(phieumuontra_ett phieumuontra, List<chitietphieu_ett> sachs)
         {
             Result<phieumuontra_ett> rs = new Result<phieumuontra_ett>();
 
@@ -68,14 +68,14 @@ namespace DoAnCNPM.Controllers
                         phieumuontra_ett temp = new phieumuontra_ett(item);
                         rs.data = temp;
                     }
-                }   
+                }
 
-                // Insert Chi tiet phieu in phieu
-                if (list_masach.Count() > 0)
+                chitietphieu_ctrl chitietphieu_ctrl = new chitietphieu_ctrl();
+
+                foreach (chitietphieu_ett sach in sachs)
                 {
-                    chitietphieu_ctrl chitietphieu_ctrl = new chitietphieu_ctrl();
-
-                    chitietphieu_ctrl.insert_chitietphieu(phieumuontra.sophieumuon.ToString(), list_masach);
+                    sach.sophieumuon = rs.data.sophieumuon;
+                    chitietphieu_ctrl.insert_chitietphieu(sach);
                 }
 
                 rs.errcode = ErrorCode.sucess;
@@ -115,7 +115,7 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<bool> edit_phieumuontra(phieumuontra_ett phieumuontra, List<string> list_masach)
+        public Result<bool> edit_phieumuontra(phieumuontra_ett phieumuontra, List<chitietphieu_ett> sachs)
         {
             Result<bool> rs = new Result<bool>();
             try
@@ -148,12 +148,16 @@ namespace DoAnCNPM.Controllers
                     dt.xacnhantra = phieumuontra.xacnhantra;
                     if (phieumuontra.xacnhantra == true)
                     {
-                        if (list_masach.Count() > 0)
+                        if (sachs.Count() > 0)
                         {
-                            foreach (string item in list_masach)
+                            foreach (var sach in sachs)
                             {
-                                var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + item).SingleOrDefault();
-                                
+                                if (sach.trangthaisach != Constants.TrangThai_Mat)
+                                {
+                                    var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + sach.masach).SingleOrDefault();
+                                    data.soluonghientai++;
+
+                                }
                             }
                         }
                     }
@@ -178,7 +182,7 @@ namespace DoAnCNPM.Controllers
             Result<List<phieumuontraview_ett>> rs = new Result<List<phieumuontraview_ett>>();
             try
             {
-               
+
                 List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
                 DbSqlQuery<tbl_phieumuon_tra> dt = null;
                 switch (howtosearch)
@@ -216,7 +220,7 @@ namespace DoAnCNPM.Controllers
                 {
                     foreach (tbl_phieumuon_tra item in dt)
                     {
-                        lst.Add( new phieumuontraview_ett(item));
+                        lst.Add(new phieumuontraview_ett(item));
                     }
                     rs.data = lst;
                     rs.errcode = ErrorCode.sucess;

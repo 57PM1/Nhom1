@@ -9,6 +9,10 @@ namespace DoAnCNPM.Shareds
 {
     class Utils
     {
+        static QL_Thu_VienEntities db = new QL_Thu_VienEntities();
+
+        public static int ID_Account = db.tbl_nhanvien.Where(o => o.taikhoan == Constants.Admin_Name).FirstOrDefault().manv;
+
         public static void add_form_to_panel(Form f, Panel p)
         {
             p.Controls.Clear();
@@ -30,6 +34,15 @@ namespace DoAnCNPM.Shareds
         }
 
         #region "dialog"
+
+        public static void Show_Error(string message)
+        {
+            if (MessageBox.Show(Constants.error, Constants.warning_caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                MessageBox.Show(message);
+            }
+        }
+
         public static bool switch_false()
         {
             return MessageBox.Show(Constants.error, Constants.warning_caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;

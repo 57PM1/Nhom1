@@ -24,5 +24,14 @@ namespace DoAnCNPM.Shareds
         public static string not_allow_to_delete = "Bạn không được phép xóa vì có thể mất dữ liệu ở bảng khác";
 
         public static string Err_SoPhieuMuon_Not_Exists = "Số phiếu mượn không tồn tại!";
+
+
+        public static string DaTra_Value = "Đã trả";
+        public static string ChuaTra_Value = "Chưa trả";
+        public const string Admin_Name = "admin";
+
+        public const string TrangThai_Mat = "Mất";
+        public const string TrangThai_BinhThuong = "Bình Thường";
+        public const string TrangThai_RachNat = "Rách Nát";
     }
 }

@@ -9,6 +9,7 @@ namespace DoAnCNPM.Models
     public class docgia_ett
     {
         public int madocgia { get; set; }
+        public string ma_ten { get; set; }
         public string tendocgia { get; set; }
         public string ngaysinh { get; set; }
         public string gioitinh { get; set; }
@@ -27,6 +28,7 @@ namespace DoAnCNPM.Models
             lop = dg.lop;
             diachi = dg.diachi;
             email = dg.email;
+            ma_ten = dg.madg + " | " + dg.tendg;
         }
 
         public docgia_ett(int ma, string ten, string ns, string gt, string lop, string dc, string email)
@@ -37,6 +39,7 @@ namespace DoAnCNPM.Models
             this.lop = lop;
             diachi = dc;
             this.email = email;
+            ma_ten = ma + " | " + ten;
         }
     }
 }
