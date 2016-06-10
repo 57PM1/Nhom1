@@ -116,5 +116,11 @@ namespace DoAnCNPM
         {
 
         }
+
+        private void xửPhạtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_capnhat_xuphat temp = new frm_capnhat_xuphat();
+            Utils.add_form_to_panel(temp, panel1);
+        }
     }
 }
