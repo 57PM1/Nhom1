@@ -1,5 +1,6 @@
 ﻿using DoAnCNPM.Controllers;
 using DoAnCNPM.Models;
+using DoAnCNPM.Report;
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
@@ -147,7 +148,7 @@ namespace DoAnCNPM.Views
                         MessageBox.Show("Không thể cho mượn sách đã mất! Vui lòng kiểm tra lại chi tiết phiếu mượn.");
                         return;
                     };
-                                   
+
                     get_info();
                     #region check for Phieu muon check if existing data 
                     var check = true;
@@ -173,7 +174,7 @@ namespace DoAnCNPM.Views
                             break;
                         case ErrorCode.sucess:
                             MessageBox.Show(Constants.success_insert);
-                            ResetAction();                 
+                            ResetAction();
                             break;
                         case ErrorCode.fail:
                             Utils.Show_Error(temp.errInfor);
@@ -522,7 +523,37 @@ namespace DoAnCNPM.Views
 
         private void btn_in_Click(object sender, EventArgs e)
         {
+            if (txt_soPM.Text != "")
+            {
+                var db = new QL_Thu_VienEntities();
+                var phieumuontra_tbl = db.tbl_phieumuon_tra.FirstOrDefault(o => o.sophieumuon.ToString() == txt_soPM.Text);
 
+                frm_report_PhieuMuonTra f_report = new frm_report_PhieuMuonTra();
+
+                f_report.SoPM = phieumuontra_tbl.sophieumuon.ToString();
+                f_report.DocGia = phieumuontra_tbl.tbl_docgia.tendg;
+                f_report.NhanVien = phieumuontra_tbl.tbl_nhanvien.tennv;
+                f_report.NgayMuon = phieumuontra_tbl.ngaymuon;
+                f_report.NgayTra = phieumuontra_tbl.ngaytra;
+                f_report.GhiChu = phieumuontra_tbl.ghichu;
+
+                dts_PhieuMuonTra rpt_source = new dts_PhieuMuonTra();
+                var chitietphieus = db.tbl_chitietphieu.Where(o => o.sophieumuon == phieumuontra_tbl.sophieumuon);
+
+                foreach (var item in chitietphieus)
+                {
+                    DataRow row = rpt_source.PhieuMuonTra.Rows.Add();
+
+                    row[0] = item.masach;
+                    row[1] = item.tbl_sach.tensach;
+                    row[2] = item.trangthaisach;
+                }
+
+                f_report.List_ChiTietPhieu = rpt_source;
+
+                f_report.ShowDialog();
+
+            }
         }
 
         private void btn_huy_Click(object sender, EventArgs e)
