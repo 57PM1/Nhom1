@@ -65,6 +65,8 @@
     <Compile Include="Controllers\phieumuontra_ctrl.cs" />
     <Compile Include="Controllers\sach_ctrl.cs" />
     <Compile Include="Controllers\tacgia_ctrl.cs" />
+    <Compile Include="Controllers\xuphat_ctl.cs" />
+    <Compile Include="Models\xuphat_ett.cs" />
     <Compile Include="QL_Thu_Vien.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +118,12 @@
     </Compile>
     <Compile Include="tbl_xuphat.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_capnhat_xuphat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_capnhat_xuphat.Designer.cs">
+      <DependentUpon>frm_capnhat_xuphat.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frm_layout.cs">
       <SubType>Form</SubType>
@@ -225,6 +233,9 @@
     <Compile Include="Views\sub_frm_them_soluongsach.Designer.cs">
       <DependentUpon>sub_frm_them_soluongsach.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\frm_capnhat_xuphat.resx">
+      <DependentUpon>frm_capnhat_xuphat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_layout.resx">
       <DependentUpon>frm_layout.cs</DependentUpon>
     </EmbeddedResource>
