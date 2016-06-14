@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -133,21 +133,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_nhanvien_view' does not have a
           <Property Name="taikhoan" Type="varchar" MaxLength="50" />
           <Property Name="matkhau" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tbl_so_luong_sach_view">
-          <Key>
-            <PropertyRef Name="masach" />
-          </Key>
-          <Property Name="masach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tensach" Type="nvarchar" MaxLength="100" />
-          <Property Name="manxb" Type="int" />
-          <Property Name="malv" Type="int" />
-          <Property Name="sotrang" Type="int" />
-          <Property Name="soluonghientai" Type="int" />
-          <Property Name="soluongbandau" Type="int" />
-          <Property Name="ngaynhap" Type="varchar" MaxLength="50" />
-        </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
           <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
           <End Role="tbl_chitietphieu" Type="Self.tbl_chitietphieu" Multiplicity="*" />
@@ -265,9 +250,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <Parameter Name="sophieumuon" Type="int" Mode="In" />
         </Function>
         <Function Name="Proc_Delete_Sach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="masach" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Proc_Delete_Sach_Tacgia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masach" Type="int" Mode="In" />
         </Function>
         <Function Name="Proc_Delete_TacGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -457,18 +439,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
     [tbl_nhanvien_view].[matkhau] AS [matkhau]
     FROM [dbo].[tbl_nhanvien_view] AS [tbl_nhanvien_view]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tbl_so_luong_sach_view" EntityType="Self.tbl_so_luong_sach_view" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbl_so_luong_sach_view].[masach] AS [masach], 
-    [tbl_so_luong_sach_view].[tensach] AS [tensach], 
-    [tbl_so_luong_sach_view].[manxb] AS [manxb], 
-    [tbl_so_luong_sach_view].[malv] AS [malv], 
-    [tbl_so_luong_sach_view].[sotrang] AS [sotrang], 
-    [tbl_so_luong_sach_view].[soluonghientai] AS [soluonghientai], 
-    [tbl_so_luong_sach_view].[soluongbandau] AS [soluongbandau], 
-    [tbl_so_luong_sach_view].[ngaynhap] AS [ngaynhap]
-    FROM [dbo].[tbl_so_luong_sach_view] AS [tbl_so_luong_sach_view]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -502,8 +472,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <End Role="tbl_sach_tacgia" EntitySet="tbl_sach_tacgia" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_Thu_VienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -639,19 +608,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_so_luong_sach_view">
-          <Key>
-            <PropertyRef Name="masach" />
-          </Key>
-          <Property Name="masach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="manxb" Type="Int32" />
-          <Property Name="malv" Type="Int32" />
-          <Property Name="sotrang" Type="Int32" />
-          <Property Name="soluonghientai" Type="Int32" />
-          <Property Name="soluongbandau" Type="Int32" />
-          <Property Name="ngaynhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
           <End Role="tbl_sach" Type="Self.tbl_sach" Multiplicity="1" />
           <End Role="tbl_chitietphieu" Type="Self.tbl_chitietphieu" Multiplicity="*" />
@@ -740,7 +696,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" />
           <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" />
-          <EntitySet Name="tbl_so_luong_sach_view" EntityType="Self.tbl_so_luong_sach_view" />
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -774,31 +729,28 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_DocGia">
-            <Parameter Name="madg" Mode="In" Type="Int32" />
+          <Parameter Name="madg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_LinhVuc">
-            <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
+          <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NhanVien">
-            <Parameter Name="manv" Mode="In" Type="Int32" />
+          <Parameter Name="manv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NXB">
-            <Parameter Name="manxb" Mode="In" Type="Int32" />
+          <Parameter Name="manxb" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_PhieuMuonTra">
-            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+          <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_Sach">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_Delete_Sach_Tacgia">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
+          <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_TacGia">
-            <Parameter Name="matacgia" Mode="In" Type="Int32" />
+          <Parameter Name="matacgia" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_XuPhat">
-            <Parameter Name="maphat" Mode="In" Type="Int32" />
+          <Parameter Name="maphat" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Edit_DocGia">
             <Parameter Name="tendg" Mode="In" Type="String" />
@@ -823,7 +775,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_LinhVuc">
-            <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
+          <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_NhanVien">
             <Parameter Name="tennv" Mode="In" Type="String" />
@@ -855,9 +807,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <Parameter Name="soluonghientai" Mode="In" Type="Int32" />
             <Parameter Name="soluongbandau" Mode="In" Type="Int32" />
             <Parameter Name="ngaynhap" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_Insert_Sach_Tacgia">
-            <Parameter Name="matg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_TacGia">
             <Parameter Name="tentacgia" Mode="In" Type="String" />
@@ -907,10 +856,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <Parameter Name="soluongbandau" Mode="In" Type="Int32" />
             <Parameter Name="ngaynhap" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Proc_Update_Sach_Tacgia">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
-            <Parameter Name="matg" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Proc_Update_TacGia">
             <Parameter Name="matacgia" Mode="In" Type="Int32" />
             <Parameter Name="tentacgia" Mode="In" Type="String" />
@@ -956,6 +901,13 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Proc_Insert_Sach_Tacgia">
+            <Parameter Name="matg" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Update_Sach_Tacgia">
+            <Parameter Name="masach" Mode="In" Type="Int32" />
+            <Parameter Name="matg" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="select_admin_Result">
           <Property Type="Int32" Name="manv" Nullable="false" />
@@ -1102,20 +1054,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_so_luong_sach_view">
-            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_so_luong_sach_view">
-              <MappingFragment StoreEntitySet="tbl_so_luong_sach_view">
-                <ScalarProperty Name="masach" ColumnName="masach" />
-                <ScalarProperty Name="tensach" ColumnName="tensach" />
-                <ScalarProperty Name="manxb" ColumnName="manxb" />
-                <ScalarProperty Name="malv" ColumnName="malv" />
-                <ScalarProperty Name="sotrang" ColumnName="sotrang" />
-                <ScalarProperty Name="soluonghientai" ColumnName="soluonghientai" />
-                <ScalarProperty Name="soluongbandau" ColumnName="soluongbandau" />
-                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="tbl_sach_tacgia" TypeName="QL_Thu_VienModel.tbl_sach_tacgia" StoreEntitySet="tbl_sach_tacgia">
             <EndProperty Name="tbl_sach">
               <ScalarProperty Name="masach" ColumnName="masach" />
@@ -1131,7 +1069,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <FunctionImportMapping FunctionImportName="Proc_Delete_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_NXB" />
           <FunctionImportMapping FunctionImportName="Proc_Delete_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_PhieuMuonTra" />
           <FunctionImportMapping FunctionImportName="Proc_Delete_Sach" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_Sach" />
-          <FunctionImportMapping FunctionImportName="Proc_Delete_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_Sach_Tacgia" />
           <FunctionImportMapping FunctionImportName="Proc_Delete_TacGia" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_TacGia" />
           <FunctionImportMapping FunctionImportName="Proc_Delete_XuPhat" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_XuPhat" />
           <FunctionImportMapping FunctionImportName="Proc_Edit_DocGia" FunctionName="QL_Thu_VienModel.Store.Proc_Edit_DocGia" />
@@ -1142,7 +1079,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <FunctionImportMapping FunctionImportName="Proc_Insert_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_NXB" />
           <FunctionImportMapping FunctionImportName="Proc_Insert_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_PhieuMuonTra" />
           <FunctionImportMapping FunctionImportName="Proc_Insert_Sach" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_Sach" />
-          <FunctionImportMapping FunctionImportName="Proc_Insert_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_Sach_Tacgia" />
           <FunctionImportMapping FunctionImportName="Proc_Insert_TacGia" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_TacGia" />
           <FunctionImportMapping FunctionImportName="Proc_Insert_XuPhat" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_XuPhat" />
           <FunctionImportMapping FunctionImportName="Proc_Update_LinhVuc" FunctionName="QL_Thu_VienModel.Store.Proc_Update_LinhVuc" />
@@ -1150,7 +1086,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <FunctionImportMapping FunctionImportName="Proc_Update_NXB" FunctionName="QL_Thu_VienModel.Store.Proc_Update_NXB" />
           <FunctionImportMapping FunctionImportName="Proc_Update_PhieuMuonTra" FunctionName="QL_Thu_VienModel.Store.Proc_Update_PhieuMuonTra" />
           <FunctionImportMapping FunctionImportName="Proc_Update_Sach" FunctionName="QL_Thu_VienModel.Store.Proc_Update_Sach" />
-          <FunctionImportMapping FunctionImportName="Proc_Update_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Update_Sach_Tacgia" />
           <FunctionImportMapping FunctionImportName="Proc_Update_TacGia" FunctionName="QL_Thu_VienModel.Store.Proc_Update_TacGia" />
           <FunctionImportMapping FunctionImportName="Proc_Update_XuPhat" FunctionName="QL_Thu_VienModel.Store.Proc_Update_XuPhat" />
           <FunctionImportMapping FunctionImportName="select_admin" FunctionName="QL_Thu_VienModel.Store.select_admin">
@@ -1175,6 +1110,8 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not h
           <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QL_Thu_VienModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QL_Thu_VienModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Proc_Insert_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_Sach_Tacgia" />
+          <FunctionImportMapping FunctionImportName="Proc_Update_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Update_Sach_Tacgia" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

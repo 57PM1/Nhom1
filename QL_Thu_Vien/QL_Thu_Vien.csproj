@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -41,11 +45,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,9 +69,13 @@
     <Compile Include="Controllers\linhvuc_ctrl.cs" />
     <Compile Include="Controllers\nhanvien_ctrl.cs" />
     <Compile Include="Controllers\nhaxuatban_ctrl.cs" />
+    <Compile Include="Controllers\phat_ctrl.cs" />
     <Compile Include="Controllers\phieumuontra_ctrl.cs" />
     <Compile Include="Controllers\sach_ctrl.cs" />
     <Compile Include="Controllers\tacgia_ctrl.cs" />
+    <Compile Include="Controllers\xuphat_ctl.cs" />
+    <Compile Include="Models\phat_ett.cs" />
+    <Compile Include="Models\xuphat_ett.cs" />
     <Compile Include="QL_Thu_Vien.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +90,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dts_PhieuMuonTra.cs">
+      <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dts_PhieuMuonTra.Designer.cs">
+      <DependentUpon>dts_PhieuMuonTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpt_PhieuMuonTra.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="select_admin_Result.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
@@ -111,14 +131,17 @@
     <Compile Include="tbl_sach.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_so_luong_sach_view.cs">
-      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_tacgia.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_xuphat.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_capnhat_xuphat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_capnhat_xuphat.Designer.cs">
+      <DependentUpon>frm_capnhat_xuphat.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frm_layout.cs">
       <SubType>Form</SubType>
@@ -210,6 +233,12 @@
     <Compile Include="Views\frm_muon_tra_sach.Designer.cs">
       <DependentUpon>frm_muon_tra_sach.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frm_report_PhieuMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_report_PhieuMuonTra.Designer.cs">
+      <DependentUpon>frm_report_PhieuMuonTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frm_timkiem_docgia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +263,13 @@
     <Compile Include="Views\sub_frm_them_soluongsach.Designer.cs">
       <DependentUpon>sub_frm_them_soluongsach.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\rpt_PhieuMuonTra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_PhieuMuonTra1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_capnhat_xuphat.resx">
+      <DependentUpon>frm_capnhat_xuphat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_layout.resx">
       <DependentUpon>frm_layout.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_baocao_sachsaphet.resx">
       <DependentUpon>frm_baocao_sachsaphet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_report_PhieuMuonTra.resx">
+      <DependentUpon>frm_report_PhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\subform_them_soluongbandau.resx">
       <DependentUpon>subform_them_soluongbandau.cs</DependentUpon>
@@ -302,13 +341,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <EntityDeploy Include="QL_Thu_Vien.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QL_Thu_Vien.Designer.cs</LastGenOutput>
@@ -316,11 +348,30 @@
     <None Include="QL_Thu_Vien.edmx.diagram">
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Report\dts_PhieuMuonTra.xsc">
+      <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_PhieuMuonTra.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dts_PhieuMuonTra1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\dts_PhieuMuonTra.xss">
+      <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
+    </None>
     <None Include="Resources\Huy.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Luu.png" />
@@ -338,6 +389,7 @@
     <None Include="Resources\Xoa.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\CRYSTALDECISIONS.WINDOWS.FORMS.DLL" />
     <Content Include="QL_Thu_Vien.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
