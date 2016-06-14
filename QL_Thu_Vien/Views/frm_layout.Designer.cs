@@ -47,6 +47,7 @@
             this.độcGiảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item_thoat = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.xửPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +74,8 @@
             this.item_capnhat_docgia,
             this.item_capnhat_tacgia,
             this.item_capnhat_nxb,
-            this.item_capnhat_linhvuc});
+            this.item_capnhat_linhvuc,
+            this.xửPhạtToolStripMenuItem});
             this.item_capnhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_capnhat.Name = "item_capnhat";
             this.item_capnhat.Size = new System.Drawing.Size(72, 21);
@@ -220,6 +222,13 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // xửPhạtToolStripMenuItem
+            // 
+            this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
+            this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
+            this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +267,7 @@
         private System.Windows.Forms.ToolStripMenuItem độcGiảToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thôngTinSáchHỏngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sốLầnMượnSáchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xửPhạtToolStripMenuItem;
     }
 }
 

@@ -30,7 +30,7 @@ namespace DoAnCNPM.Views
 
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
-            if (txt_ten.Text == "admin" && txt_mk.Text == "admin")
+            if (txt_ten.Text == Constants.Admin_Name && txt_mk.Text == Constants.Admin_Name)
             {
                 MessageBox.Show("Bạn đã đăng nhập thành công!");
                 this.Hide();
@@ -53,6 +53,7 @@ namespace DoAnCNPM.Views
                         if (txt_ten.Text == item.taikhoan && PasswordUtil.HashPassword(txt_mk.Text) == item.matkhau && item.taikhoan != "" && item.taikhoan != null)
                         {
                             check = true;
+                            Utils.ID_Account = item.manhanvien;
                             break;            
                         }
                     }
@@ -67,12 +68,6 @@ namespace DoAnCNPM.Views
                     {
                         MessageBox.Show("Bạn đã đăng nhập thành công!");
                         this.Hide();
-                        if (txt_ten.Text == "admin" && txt_mk.Text == "admin")
-                        {
-                            frm_main main_form = new frm_main();
-                            main_form.Show();
-                            break;
-                        }
                         frm_main nhanvien_form = new frm_main(txt_ten.Text);
                         nhanvien_form.Show();
                     }
