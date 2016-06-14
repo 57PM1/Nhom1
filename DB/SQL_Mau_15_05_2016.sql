@@ -175,28 +175,7 @@ As
 Go
 
 
---sách--
-Create Proc Proc_Insert_Sach
-	@tensach nvarchar(100),
-	@manxb int,
-	@malv int,
-	@sotrang int,
-	@soluonghientai int,
-	@soluongbandau int,
-	@ngaynhap varchar(50)=''
-As
-	Begin
-		Insert into tbl_sach (tensach, manxb, malv, sotrang, soluonghientai, soluongbandau, ngaynhap) values (@tensach, @manxb, @malv, @sotrang, @soluonghientai, @soluongbandau, @ngaynhap)
-	End
-Go
 
-Create proc Proc_Insert_Sach_Tacgia
-	@matg int
-As
-	Begin 
-		Insert into tbl_sach_tacgia (masach, matg) values ((select SCOPE_IDENTITY() ), @matg)
-	End
-Go
 
 ------------------------------------------------------------------------------------------
 --Trigger
@@ -327,7 +306,7 @@ As
 	End
 Go
 
--- Xu phat
+-- Sach
 Create Proc Proc_Insert_Sach
 	@tensach nvarchar(100),
 	@maxb int,
@@ -335,15 +314,13 @@ Create Proc Proc_Insert_Sach
 	@sotrang int,
 	@soluonghientai int,
 	@soluongbandau int,
-	@ngaynhap varchar
+	@ngaynhap varchar(50)
 As
 	Begin
 		Insert into tbl_sach(tensach, manxb, malv, sotrang, soluonghientai,soluongbandau, ngaynhap) values(@tensach, @maxb, @malv, @sotrang, @soluonghientai, @soluongbandau, @ngaynhap);
 	End
 Go
 
-EXEC Proc_Insert_Sach N'Sách văn học', 3,1,100,50,10,N'19/05/2015'
-go
 
 
 Create Proc Proc_Update_Sach
@@ -362,6 +339,15 @@ As
 Go
 
 
+Create proc Proc_Insert_Sach_Tacgia
+	@matg int
+As
+	Begin 
+		Insert into tbl_sach_tacgia (masach, matg) values (IDENT_CURRENT('tbl_sach'), @matg)
+	End
+Go
+
+
 Create Proc Proc_Delete_Sach
 	@masach int
 As
@@ -370,5 +356,12 @@ As
 	End
 Go
 
-
+Create Proc Proc_Update_Sach_Tacgia
+	@masach int,
+	@matg int
+As
+	Begin
+		insert into tbl_sach_tacgia (masach, matg) values (@masach, @matg);
+	End
+Go
 

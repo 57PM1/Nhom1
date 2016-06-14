@@ -64,6 +64,8 @@
             this.tentg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label11 = new System.Windows.Forms.Label();
             this.cbx_tacgias = new System.Windows.Forms.ComboBox();
+            this.btn_them_tacgia = new System.Windows.Forms.Button();
+            this.btn_xoa_tacgia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -435,6 +437,7 @@
             this.cbx_option_search.Name = "cbx_option_search";
             this.cbx_option_search.Size = new System.Drawing.Size(110, 25);
             this.cbx_option_search.TabIndex = 33;
+            this.cbx_option_search.SelectedIndexChanged += new System.EventHandler(this.cbx_option_search_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -483,16 +486,38 @@
             // cbx_tacgias
             // 
             this.cbx_tacgias.FormattingEnabled = true;
-            this.cbx_tacgias.Location = new System.Drawing.Point(315, 28);
+            this.cbx_tacgias.Location = new System.Drawing.Point(322, 28);
             this.cbx_tacgias.Name = "cbx_tacgias";
             this.cbx_tacgias.Size = new System.Drawing.Size(121, 21);
             this.cbx_tacgias.TabIndex = 38;
+            // 
+            // btn_them_tacgia
+            // 
+            this.btn_them_tacgia.Location = new System.Drawing.Point(273, 28);
+            this.btn_them_tacgia.Name = "btn_them_tacgia";
+            this.btn_them_tacgia.Size = new System.Drawing.Size(43, 23);
+            this.btn_them_tacgia.TabIndex = 39;
+            this.btn_them_tacgia.Text = "Thêm tác giả";
+            this.btn_them_tacgia.UseVisualStyleBackColor = true;
+            this.btn_them_tacgia.Click += new System.EventHandler(this.btn_them_tacgia_Click);
+            // 
+            // btn_xoa_tacgia
+            // 
+            this.btn_xoa_tacgia.Location = new System.Drawing.Point(273, 57);
+            this.btn_xoa_tacgia.Name = "btn_xoa_tacgia";
+            this.btn_xoa_tacgia.Size = new System.Drawing.Size(43, 23);
+            this.btn_xoa_tacgia.TabIndex = 39;
+            this.btn_xoa_tacgia.Text = "Xóa";
+            this.btn_xoa_tacgia.UseVisualStyleBackColor = true;
+            this.btn_xoa_tacgia.Click += new System.EventHandler(this.btn_xoa_tacgia_Click);
             // 
             // frm_capnhat_sach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 490);
+            this.Controls.Add(this.btn_xoa_tacgia);
+            this.Controls.Add(this.btn_them_tacgia);
             this.Controls.Add(this.cbx_tacgias);
             this.Controls.Add(this.lst_tacgia_rs);
             this.Controls.Add(this.label6);
@@ -553,5 +578,7 @@
         private System.Windows.Forms.ColumnHeader matg;
         private System.Windows.Forms.ColumnHeader tentg;
         private System.Windows.Forms.ComboBox cbx_tacgias;
+        private System.Windows.Forms.Button btn_them_tacgia;
+        private System.Windows.Forms.Button btn_xoa_tacgia;
     }
 }

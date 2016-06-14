@@ -13,6 +13,12 @@ namespace DoAnCNPM.Models
         public string gioitinh { get; set; }
         public string diachi { get; set; }
 
+        public tacgia_ett(int matacgia, string tentacgia)
+        {
+            this.matacgia = matacgia;
+            this.tentacgia = tentacgia;
+        }
+
         public tacgia_ett() { }
         public tacgia_ett(tbl_tacgia tg)
         {
