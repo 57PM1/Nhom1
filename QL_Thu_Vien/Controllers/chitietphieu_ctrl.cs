@@ -21,23 +21,26 @@ namespace DoAnCNPM.Controllers
             try
             {
 
-                //List<chitietphieu_ett> lst = new List<chitietphieu_ett>();
-                //var dt = db.tbl_chitietphieus.Where(o => o.sophieumuon == sopm);
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (tbl_chitietphieu item in dt)
-                //    {
-                //        chitietphieu_ett temp = new chitietphieu_ett(item);
-                //        lst.Add(temp);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                List<chitietphieu_ett> lst = new List<chitietphieu_ett>();
+
+                var dt = db.tbl_chitietphieu.SqlQuery("Select * from tbl_chitietphieu where sophieumuon = " + sopm);
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_chitietphieu item in dt)
+                    {
+                        chitietphieu_ett temp = new chitietphieu_ett(item);
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
+
+
                 return rs;
             }
             catch (Exception e)
@@ -56,10 +59,12 @@ namespace DoAnCNPM.Controllers
             try
             {
                 // create new tbl_chitietphieu to insert to database_context
-                string sql = String.Format("Insert into tbl_chitietphieu(sophieumuon, masach, trangthaisach) values({0}, {1}, N'{2}')", chitietphieu.sophieumuon, chitietphieu.masach, chitietphieu.trangthaisach);
+                //string sql = String.Format("Insert into tbl_chitietphieu(sophieumuon, masach, trangthaisach) values({0}, {1}, N'{2}')", chitietphieu.sophieumuon, chitietphieu.masach, chitietphieu.trangthaisach);
 
-                db.Database.ExecuteSqlCommand(sql);
-                db.SaveChanges();
+                //db.Database.ExecuteSqlCommand(sql);
+                //db.SaveChanges();
+
+                db.Proc_Insert_ChiTietPhieu(chitietphieu.sophieumuon, chitietphieu.masach, chitietphieu.trangthaisach);
 
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -119,6 +124,7 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
+                db.Proc_Delete_ChiTietPhieu(sopm, masach);
                 //var dt = db.tbl_chitietphieus.Where(o => o.sophieumuon == sopm && o.masach == masach);
                 //if (dt.Count() > 0)
                 //{
@@ -137,6 +143,8 @@ namespace DoAnCNPM.Controllers
                 //    rs.errInfor = Constants.empty_data;
                 //}
 
+                rs.data = true;
+                rs.errcode = ErrorCode.sucess;
                 return rs;
             }
             catch (Exception e)

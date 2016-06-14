@@ -249,6 +249,10 @@ namespace DoAnCNPM.Views
                             Utils.erase_text_box(new List<TextBox> { txt_diachi, txt_chucvu, txt_email, txt_manv, txt_matkhau, txt_sdt, txt_taikhoan, txt_tennv, txt_tuoi });
                             break;
                         case ErrorCode.fail:
+                            if (Utils.switch_false())
+                            {
+                                MessageBox.Show(temp.errInfor);
+                            }
                             break;
                         default:
                             break;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnCNPM.Shareds;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace DoAnCNPM.Models
         public string nhanvien { get; set; }
         public string ngaymuon { get; set; }
         public string ngaytra { get; set; }
-        public bool? xacnhantra { get; set; }
+        public string xacnhantra { get; set; }
         public string ghichu { get; set; }
 
         public phieumuontraview_ett() { }
@@ -25,7 +26,7 @@ namespace DoAnCNPM.Models
             nhanvien = nv;
             this.ngaymuon = ngaymuon;
             this.ngaytra = ngaytra;
-            this.xacnhantra = xacnhantra;
+            this.xacnhantra = xacnhantra ? Constants.DaTra_Value : Constants.ChuaTra_Value;
             this.ghichu = ghichu;
         }
 
@@ -36,7 +37,7 @@ namespace DoAnCNPM.Models
             nhanvien = tbl.tbl_nhanvien.tennv;
             ngaymuon = tbl.ngaymuon;
             ngaytra = tbl.ngaytra;
-            xacnhantra = tbl.xacnhantra;
+            xacnhantra = tbl.xacnhantra != null ? ((bool)tbl.xacnhantra ? Constants.DaTra_Value : Constants.ChuaTra_Value) : Constants.ChuaTra_Value;
             ghichu = tbl.ghichu;
         }
     }

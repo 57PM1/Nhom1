@@ -24,7 +24,7 @@ namespace DoAnCNPM.Models
             manv = (int)phieu.manv;
             ngaymuon = phieu.ngaymuon;
             ngaytra = phieu.ngaytra;
-            xacnhantra = (bool)phieu.xacnhantra;
+            xacnhantra = phieu.xacnhantra == null ? false : (bool)phieu.xacnhantra;
             ghichu = phieu.ghichu;
         }
         public phieumuontra_ett(int sopm, int madg, int manv, string ngaymuon, string ngaytra, bool xacnhantra, string ghichu)

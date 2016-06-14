@@ -22,21 +22,8 @@ namespace DoAnCNPM.Controllers
             try
             {
                 List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
-                //var dt = from o in db.tbl_phieumuon_tra
-                //         join p in db.tbl_docgia on o.madg equals p.madg
-                //         join k in db.tbl_nhanvien on o.manv equals k.manv
-                //         select new phieumuontraview_ett()
-                //         {
-                //             sophieumuon = o.sophieumuon,
-                //             docgia = p.tendg,
-                //             nhanvien = k.tennv,
-                //             ngaymuon = o.ngaymuon,
-                //             ngaytra = o.ngaytra,
-                //             xacnhantra = o.xacnhantra,
-                //             ghichu = o.ghichu
-                //         };
 
-                var dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra");
+                var dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra Order by sophieumuon DESC");
 
                 if (dt.Count() > 0)
                 {
@@ -63,19 +50,17 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<phieumuontra_ett> insert_phieumuontra(phieumuontra_ett phieumuontra, List<string> list_masach)
+        public Result<phieumuontra_ett> insert_phieumuontra(phieumuontra_ett phieumuontra, List<chitietphieu_ett> sachs)
         {
             Result<phieumuontra_ett> rs = new Result<phieumuontra_ett>();
 
             try
             {
-                string sql = String.Format("Insert into tbl_phieumuon_tra(madg, manv, ngaymuon, ngaytra, ghichu) values({0}, {1}, '{2}', '{3}', N'{4}')", phieumuontra.madg, phieumuontra.manv, phieumuontra.ngaymuon, phieumuontra.ngaytra, phieumuontra.ghichu);
 
-                db.Database.ExecuteSqlCommand(sql);
-                db.SaveChanges();
+                db.Proc_Insert_PhieuMuonTra(phieumuontra.madg, phieumuontra.manv, phieumuontra.ngaymuon, phieumuontra.ngaytra, phieumuontra.ghichu);
 
                 // Get Inserted phieu muon tra
-                var last_record = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra OrderBy sophieumuon DESC").Take(1);
+                var last_record = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra Order By sophieumuon DESC").Take(1);
                 if (last_record.Count() > 0)
                 {
                     foreach (var item in last_record)
@@ -85,12 +70,12 @@ namespace DoAnCNPM.Controllers
                     }
                 }
 
-                // Insert Chi tiet phieu in phieu
-                if (list_masach.Count() > 0)
-                {
-                    chitietphieu_ctrl chitietphieu_ctrl = new chitietphieu_ctrl();
+                chitietphieu_ctrl chitietphieu_ctrl = new chitietphieu_ctrl();
 
-                    chitietphieu_ctrl.insert_chitietphieu(phieumuontra.sophieumuon.ToString(), list_masach);
+                foreach (chitietphieu_ett sach in sachs)
+                {
+                    sach.sophieumuon = rs.data.sophieumuon;
+                    chitietphieu_ctrl.insert_chitietphieu(sach);
                 }
 
                 rs.errcode = ErrorCode.sucess;
@@ -104,6 +89,9 @@ namespace DoAnCNPM.Controllers
                 return rs;
             }
         }
+
+
+
 
         public Result<bool> delete_phieumuontra(int maphieumuontra)
         {
@@ -127,7 +115,7 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<bool> edit_phieumuontra(phieumuontra_ett phieumuontra, List<string> list_masach)
+        public Result<bool> edit_phieumuontra(phieumuontra_ett phieumuontra, List<chitietphieu_ett> sachs)
         {
             Result<bool> rs = new Result<bool>();
             try
@@ -160,12 +148,16 @@ namespace DoAnCNPM.Controllers
                     dt.xacnhantra = phieumuontra.xacnhantra;
                     if (phieumuontra.xacnhantra == true)
                     {
-                        if (list_masach.Count() > 0)
+                        if (sachs.Count() > 0)
                         {
-                            foreach (string item in list_masach)
+                            foreach (var sach in sachs)
                             {
-                                var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + item).SingleOrDefault();
-                                
+                                if (sach.trangthaisach != Constants.TrangThai_Mat)
+                                {
+                                    var data = db.tbl_sach.SqlQuery("select * from tbl_sach where masach = " + sach.masach).SingleOrDefault();
+                                    data.soluonghientai++;
+
+                                }
                             }
                         }
                     }
@@ -190,16 +182,35 @@ namespace DoAnCNPM.Controllers
             Result<List<phieumuontraview_ett>> rs = new Result<List<phieumuontraview_ett>>();
             try
             {
-               
+
                 List<phieumuontraview_ett> lst = new List<phieumuontraview_ett>();
                 DbSqlQuery<tbl_phieumuon_tra> dt = null;
                 switch (howtosearch)
                 {
                     case "sophieumuon":
-                        dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon =" + input);
+                        dt = db.tbl_phieumuon_tra.SqlQuery(String.Format("Select * from tbl_phieumuon_tra where sophieumuon like '%{0}%' Order by sophieumuon DESC", input));
                         break;
                     case "docgia":
-                        dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where madg =" + input);
+                        dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra Order by sophieumuon DESC");
+                        var data = dt.Where(o => o.tbl_docgia.tendg.Contains(input));
+
+                        if (data.Count() > 0)
+                        {
+                            foreach (tbl_phieumuon_tra item in data)
+                            {
+                                lst.Add(new phieumuontraview_ett(item));
+                            }
+                            rs.data = lst;
+                            rs.errcode = ErrorCode.sucess;
+                            return rs;
+                        }
+                        else
+                        {
+                            rs.data = null;
+                            rs.errInfor = Constants.empty_data;
+                            return rs;
+                        }
+
                         break;
                     default:
                         break;
@@ -209,7 +220,7 @@ namespace DoAnCNPM.Controllers
                 {
                     foreach (tbl_phieumuon_tra item in dt)
                     {
-                        lst.Add( new phieumuontraview_ett(item));
+                        lst.Add(new phieumuontraview_ett(item));
                     }
                     rs.data = lst;
                     rs.errcode = ErrorCode.sucess;
@@ -227,6 +238,27 @@ namespace DoAnCNPM.Controllers
                 rs.data = null;
                 rs.errInfor = e.ToString();
                 rs.errcode = ErrorCode.fail;
+                return rs;
+            }
+        }
+
+
+        public Result<tbl_phieumuon_tra> Get_Phieu_Muon_Tra_By_ID(int sophieumuon)
+        {
+            Result<tbl_phieumuon_tra> rs = new Result<tbl_phieumuon_tra>();
+            try
+            {
+                var data = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra where sophieumuon = " + sophieumuon).FirstOrDefault();
+
+                rs.data = data;
+                rs.errcode = ErrorCode.sucess;
+                return rs;
+            }
+            catch (Exception ex)
+            {
+                rs.errInfor = ex.ToString();
+                rs.errcode = ErrorCode.fail;
+                rs.data = null;
                 return rs;
             }
         }
