@@ -11,16 +11,15 @@ using System.Windows.Forms;
 
 namespace DoAnCNPM.Views
 {
-    public partial class sub_frm_them_soluongsach : Form
+    public partial class subform_them_soluongbandau : Form
     {
-        //private QL_Thu_VienDataContext db = new QL_Thu_VienDataContext();
         QL_Thu_VienEntities db = new QL_Thu_VienEntities();
         private frm_capnhat_sach form_sach;
         private int masach_update;
-        public sub_frm_them_soluongsach(string masach, frm_capnhat_sach form)
+        public subform_them_soluongbandau(string masach, frm_capnhat_sach form)
         {
             InitializeComponent();
-            if (masach!="")
+            if (masach != "")
             {
                 masach_update = int.Parse(masach);
             }
@@ -36,7 +35,7 @@ namespace DoAnCNPM.Views
             if (txt_themsoluong.Text != "")
             {
                 var dt = db.tbl_sach.Where(o => o.masach == masach_update).SingleOrDefault();
-                dt.soluonghientai += int.Parse(txt_themsoluong.Text);
+                dt.soluongbandau += int.Parse(txt_themsoluong.Text);
                 MessageBox.Show("Bạn vừa thêm " + txt_themsoluong.Text + " cuốn sách " + dt.tensach);
                 db.SaveChanges();
                 form_sach.load_data();

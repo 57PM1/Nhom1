@@ -39,8 +39,6 @@
             this.btn_thoat = new System.Windows.Forms.Button();
             this.txt_sotrang = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_add_soluong = new System.Windows.Forms.Button();
             this.dtpk_ngaynhap = new System.Windows.Forms.DateTimePicker();
             this.cbx_linhvuc = new System.Windows.Forms.ComboBox();
             this.cbx_nxb = new System.Windows.Forms.ComboBox();
@@ -66,6 +64,8 @@
             this.cbx_tacgias = new System.Windows.Forms.ComboBox();
             this.btn_them_tacgia = new System.Windows.Forms.Button();
             this.btn_xoa_tacgia = new System.Windows.Forms.Button();
+            this.btn_them_slbd = new System.Windows.Forms.Button();
+            this.btn_them_slht = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -184,8 +184,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btn_add_soluong);
+            this.groupBox1.Controls.Add(this.btn_them_slht);
+            this.groupBox1.Controls.Add(this.btn_them_slbd);
             this.groupBox1.Controls.Add(this.dtpk_ngaynhap);
             this.groupBox1.Controls.Add(this.cbx_linhvuc);
             this.groupBox1.Controls.Add(this.cbx_nxb);
@@ -215,28 +215,6 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết độc giả";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(212, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 32);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btn_add_soluong_Click);
-            // 
-            // btn_add_soluong
-            // 
-            this.btn_add_soluong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add_soluong.Location = new System.Drawing.Point(469, 108);
-            this.btn_add_soluong.Name = "btn_add_soluong";
-            this.btn_add_soluong.Size = new System.Drawing.Size(37, 32);
-            this.btn_add_soluong.TabIndex = 14;
-            this.btn_add_soluong.Text = "+";
-            this.btn_add_soluong.UseVisualStyleBackColor = true;
-            this.btn_add_soluong.Click += new System.EventHandler(this.btn_add_soluong_Click);
             // 
             // dtpk_ngaynhap
             // 
@@ -511,6 +489,28 @@
             this.btn_xoa_tacgia.UseVisualStyleBackColor = true;
             this.btn_xoa_tacgia.Click += new System.EventHandler(this.btn_xoa_tacgia_Click);
             // 
+            // btn_them_slbd
+            // 
+            this.btn_them_slbd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_them_slbd.Location = new System.Drawing.Point(469, 108);
+            this.btn_them_slbd.Name = "btn_them_slbd";
+            this.btn_them_slbd.Size = new System.Drawing.Size(37, 32);
+            this.btn_them_slbd.TabIndex = 14;
+            this.btn_them_slbd.Text = "+";
+            this.btn_them_slbd.UseVisualStyleBackColor = true;
+            this.btn_them_slbd.Click += new System.EventHandler(this.btn_add_soluong_bandau_Click);
+            // 
+            // btn_them_slht
+            // 
+            this.btn_them_slht.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_them_slht.Location = new System.Drawing.Point(212, 108);
+            this.btn_them_slht.Name = "btn_them_slht";
+            this.btn_them_slht.Size = new System.Drawing.Size(37, 32);
+            this.btn_them_slht.TabIndex = 14;
+            this.btn_them_slht.Text = "+";
+            this.btn_them_slht.UseVisualStyleBackColor = true;
+            this.btn_them_slht.Click += new System.EventHandler(this.btn_add_soluong_Click);
+            // 
             // frm_capnhat_sach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,8 +569,6 @@
         private System.Windows.Forms.ComboBox cbx_linhvuc;
         private System.Windows.Forms.ComboBox cbx_nxb;
         private System.Windows.Forms.DateTimePicker dtpk_ngaynhap;
-        private System.Windows.Forms.Button btn_add_soluong;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txt_slht;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView lst_tacgia_rs;
@@ -580,5 +578,7 @@
         private System.Windows.Forms.ComboBox cbx_tacgias;
         private System.Windows.Forms.Button btn_them_tacgia;
         private System.Windows.Forms.Button btn_xoa_tacgia;
+        private System.Windows.Forms.Button btn_them_slht;
+        private System.Windows.Forms.Button btn_them_slbd;
     }
 }

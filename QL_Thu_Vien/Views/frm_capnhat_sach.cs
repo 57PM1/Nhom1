@@ -91,7 +91,8 @@ namespace DoAnCNPM.Views
             Utils.readOnly_text_box(new List<TextBox> { txt_masach, txt_sotrang, txt_slbd, txt_tensach, txt_slht }, true);
             dtpk_ngaynhap.Enabled = false;
             cbx_tacgias.Enabled = false; 
-            btn_add_soluong.Visible = false;
+            btn_them_slbd.Visible = false;
+            btn_them_slht.Visible = false;
             btn_xoa.Visible = false;
             btn_sua.Visible = false;
         }
@@ -468,13 +469,15 @@ namespace DoAnCNPM.Views
             {
                 btn_xoa.Visible = false;
                 btn_sua.Visible = false;
-                btn_add_soluong.Visible = false;
+                btn_them_slbd.Visible = false;
+                btn_them_slht.Visible = false;
             }
             else
             {
                 btn_xoa.Visible = true;
                 btn_sua.Visible = true;
-                btn_add_soluong.Visible = true;
+                btn_them_slbd.Visible = true;
+                btn_them_slht.Visible = true;
             }
 
 
@@ -530,7 +533,8 @@ namespace DoAnCNPM.Views
 
         private void btn_add_soluong_Click(object sender, EventArgs e)
         {
-            sub_frm_them_soluongsach sub_form = new sub_frm_them_soluongsach(int.Parse(txt_masach.Text), this);
+            //sub_frm_them_soluongsach sub_form = new sub_frm_them_soluongsach(int.Parse(txt_masach.Text), this);
+            sub_frm_them_soluongsach sub_form = new sub_frm_them_soluongsach(txt_masach.Text, this);
             sub_form.Show();
         }
 
@@ -551,6 +555,12 @@ namespace DoAnCNPM.Views
         private void cbx_option_search_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_add_soluong_bandau_Click(object sender, EventArgs e)
+        {
+            subform_them_soluongbandau sub_form = new subform_them_soluongbandau(txt_masach.Text, this);
+            sub_form.Show();
         }
 
 
