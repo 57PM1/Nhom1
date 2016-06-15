@@ -131,6 +131,9 @@
     <Compile Include="tbl_sach.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_so_luong_sach_view.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_tacgia.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
@@ -341,13 +344,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="QL_Thu_Vien.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QL_Thu_Vien.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="QL_Thu_Vien.edmx.diagram">
-      <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -355,6 +351,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="QL_Thu_Vien.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QL_Thu_Vien.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QL_Thu_Vien.edmx.diagram">
+      <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
+    </None>
     <None Include="Report\dts_PhieuMuonTra.xsc">
       <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
     </None>

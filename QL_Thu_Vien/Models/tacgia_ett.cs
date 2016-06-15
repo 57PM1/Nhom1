@@ -12,11 +12,13 @@ namespace DoAnCNPM.Models
         public string tentacgia { get; set; }
         public string gioitinh { get; set; }
         public string diachi { get; set; }
+        public string maten { get; set; }
 
         public tacgia_ett(int matacgia, string tentacgia)
         {
             this.matacgia = matacgia;
             this.tentacgia = tentacgia;
+            this.maten = matacgia + " | " + tentacgia;
         }
 
         public tacgia_ett() { }
@@ -26,6 +28,7 @@ namespace DoAnCNPM.Models
             tentacgia = tg.tentg;
             diachi = tg.diachi;
             gioitinh = tg.gioitinh;
+            this.maten = tg.matg + " | " + tg.tentg;
         }
         public tacgia_ett(int matg, string tentg, string gt, string dc)
         {
@@ -33,6 +36,7 @@ namespace DoAnCNPM.Models
             tentacgia = tentg;
             gioitinh = gt;
             diachi = dc;
+            this.maten = matg + " | " + tentg;
         }
     }
 }
