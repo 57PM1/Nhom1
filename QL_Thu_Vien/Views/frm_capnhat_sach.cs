@@ -125,7 +125,7 @@ namespace DoAnCNPM.Views
                 case ErrorCode.NaN:
                     break;
                 case ErrorCode.sucess:
-                    cbx_tacgias.DisplayMember = "tentacgia";
+                    cbx_tacgias.DisplayMember = "maten";
                     cbx_tacgias.ValueMember = "matacgia";
                     cbx_tacgias.DataSource = dt_cbx_tacgias.data;
                     cbx_tacgias.SelectedIndex = -1;
