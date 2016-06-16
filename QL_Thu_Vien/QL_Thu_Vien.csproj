@@ -131,9 +131,6 @@
     <Compile Include="tbl_sach.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_so_luong_sach_view.cs">
-      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_tacgia.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
