@@ -51,7 +51,7 @@ namespace DoAnCNPM.Views
             load_data();
 
             List<how_to_search> dt_source = new List<how_to_search>();
-            dt_source.Add(new how_to_search("Họ tên", "hoten"));
+            dt_source.Add(new how_to_search("Họ tên", "tendg"));
             dt_source.Add(new how_to_search("Lớp", "lop"));
             dt_source.Add(new how_to_search("email", "email"));
 
@@ -63,7 +63,7 @@ namespace DoAnCNPM.Views
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
         {
             var select_cbx = cbx_option_search.SelectedValue.ToString();
-            var temp = docgia_ctrl.select_docgia_fields(txt_timkiem.Text, select_cbx);
+            var temp = docgia_ctrl.select_hethan_fields(txt_timkiem.Text, select_cbx);
             switch (temp.errcode)
             {
                 case ErrorCode.NaN:
