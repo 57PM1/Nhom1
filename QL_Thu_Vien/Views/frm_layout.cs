@@ -122,5 +122,11 @@ namespace DoAnCNPM
             frm_capnhat_xuphat temp = new frm_capnhat_xuphat();
             Utils.add_form_to_panel(temp, panel1);
         }
+
+        private void thốngKêTiềnPhạtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_baocao_tienphat temp = new frm_baocao_tienphat();
+            Utils.add_form_to_panel(temp, panel1);
+        }
     }
 }

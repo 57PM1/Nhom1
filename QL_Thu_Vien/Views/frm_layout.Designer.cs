@@ -36,6 +36,7 @@
             this.item_capnhat_tacgia = new System.Windows.Forms.ToolStripMenuItem();
             this.item_capnhat_nxb = new System.Windows.Forms.ToolStripMenuItem();
             this.item_capnhat_linhvuc = new System.Windows.Forms.ToolStripMenuItem();
+            this.xửPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item_timkiem = new System.Windows.Forms.ToolStripMenuItem();
             this.item_timkiem_sach = new System.Windows.Forms.ToolStripMenuItem();
             this.item_timkiem_docgia = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,7 @@
             this.độcGiảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item_thoat = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.xửPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTiềnPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +130,13 @@
             this.item_capnhat_linhvuc.Text = "Lĩnh vực";
             this.item_capnhat_linhvuc.Click += new System.EventHandler(this.btn_capnhat_linhvuc_Click);
             // 
+            // xửPhạtToolStripMenuItem
+            // 
+            this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
+            this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
+            this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
+            // 
             // item_timkiem
             // 
             this.item_timkiem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -167,7 +175,8 @@
             // 
             this.item_baocao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sáchToolStripMenuItem,
-            this.độcGiảToolStripMenuItem});
+            this.độcGiảToolStripMenuItem,
+            this.thốngKêTiềnPhạtToolStripMenuItem});
             this.item_baocao.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_baocao.Name = "item_baocao";
             this.item_baocao.Size = new System.Drawing.Size(67, 21);
@@ -222,12 +231,12 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // xửPhạtToolStripMenuItem
+            // thốngKêTiềnPhạtToolStripMenuItem
             // 
-            this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
-            this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
-            this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
+            this.thốngKêTiềnPhạtToolStripMenuItem.Name = "thốngKêTiềnPhạtToolStripMenuItem";
+            this.thốngKêTiềnPhạtToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.thốngKêTiềnPhạtToolStripMenuItem.Text = "Thống kê tiền phạt";
+            this.thốngKêTiềnPhạtToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTiềnPhạtToolStripMenuItem_Click);
             // 
             // frm_main
             // 
@@ -268,6 +277,7 @@
         private System.Windows.Forms.ToolStripMenuItem thôngTinSáchHỏngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sốLầnMượnSáchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xửPhạtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thốngKêTiềnPhạtToolStripMenuItem;
     }
 }
 

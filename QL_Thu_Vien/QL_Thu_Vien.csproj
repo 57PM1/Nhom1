@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\baocao_tienphat_ctrl.cs" />
     <Compile Include="Controllers\chitietphieu_ctrl.cs" />
     <Compile Include="Controllers\docgia_ctrl.cs" />
     <Compile Include="Controllers\linhvuc_ctrl.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Controllers\sach_ctrl.cs" />
     <Compile Include="Controllers\tacgia_ctrl.cs" />
     <Compile Include="Controllers\xuphat_ctl.cs" />
+    <Compile Include="Models\baocao_tienphat_ett.cs" />
     <Compile Include="Models\phat_ett.cs" />
     <Compile Include="Models\xuphat_ett.cs" />
     <Compile Include="QL_Thu_Vien.Context.cs">
@@ -139,6 +141,12 @@
     </Compile>
     <Compile Include="tbl_xuphat.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_baocao_tienphat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_baocao_tienphat.Designer.cs">
+      <DependentUpon>frm_baocao_tienphat.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frm_capnhat_xuphat.cs">
       <SubType>Form</SubType>
@@ -269,6 +277,9 @@
     <EmbeddedResource Include="Report\rpt_PhieuMuonTra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_PhieuMuonTra1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_baocao_tienphat.resx">
+      <DependentUpon>frm_baocao_tienphat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_capnhat_xuphat.resx">
       <DependentUpon>frm_capnhat_xuphat.cs</DependentUpon>

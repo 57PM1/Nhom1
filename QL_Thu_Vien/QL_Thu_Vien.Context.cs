@@ -38,6 +38,7 @@ namespace DoAnCNPM
         public virtual DbSet<tbl_tacgia> tbl_tacgia { get; set; }
         public virtual DbSet<tbl_xuphat> tbl_xuphat { get; set; }
         public virtual DbSet<tbl_nhanvien_view> tbl_nhanvien_view { get; set; }
+        public virtual DbSet<tbl_so_luong_sach_view> tbl_so_luong_sach_view { get; set; }
     
         public virtual int Proc_Delete_ChiTietPhieu(Nullable<int> sophieumuon, Nullable<int> masach)
         {
@@ -104,6 +105,15 @@ namespace DoAnCNPM
                 new ObjectParameter("masach", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Delete_Sach", masachParameter);
+        }
+    
+        public virtual int Proc_Delete_Sach_Tacgia(Nullable<int> masach)
+        {
+            var masachParameter = masach.HasValue ?
+                new ObjectParameter("masach", masach) :
+                new ObjectParameter("masach", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Delete_Sach_Tacgia", masachParameter);
         }
     
         public virtual int Proc_Delete_TacGia(Nullable<int> matacgia)
@@ -324,6 +334,15 @@ namespace DoAnCNPM
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Insert_Sach", tensachParameter, maxbParameter, malvParameter, sotrangParameter, soluonghientaiParameter, soluongbandauParameter, ngaynhapParameter);
         }
     
+        public virtual int Proc_Insert_Sach_Tacgia(Nullable<int> matg)
+        {
+            var matgParameter = matg.HasValue ?
+                new ObjectParameter("matg", matg) :
+                new ObjectParameter("matg", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Insert_Sach_Tacgia", matgParameter);
+        }
+    
         public virtual int Proc_Insert_TacGia(string tentacgia, string gioitinh, string diachi)
         {
             var tentacgiaParameter = tentacgia != null ?
@@ -495,6 +514,19 @@ namespace DoAnCNPM
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Update_Sach", masachParameter, tensachParameter, maxbParameter, malvParameter, sotrangParameter, soluonghientaiParameter, soluongbandauParameter, ngaynhapParameter);
         }
     
+        public virtual int Proc_Update_Sach_Tacgia(Nullable<int> masach, Nullable<int> matg)
+        {
+            var masachParameter = masach.HasValue ?
+                new ObjectParameter("masach", masach) :
+                new ObjectParameter("masach", typeof(int));
+    
+            var matgParameter = matg.HasValue ?
+                new ObjectParameter("matg", matg) :
+                new ObjectParameter("matg", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Update_Sach_Tacgia", masachParameter, matgParameter);
+        }
+    
         public virtual int Proc_Update_TacGia(Nullable<int> matacgia, string tentacgia, string gioitinh, string diachi)
         {
             var matacgiaParameter = matacgia.HasValue ?
@@ -647,28 +679,6 @@ namespace DoAnCNPM
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual int Proc_Insert_Sach_Tacgia(Nullable<int> matg)
-        {
-            var matgParameter = matg.HasValue ?
-                new ObjectParameter("matg", matg) :
-                new ObjectParameter("matg", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Insert_Sach_Tacgia", matgParameter);
-        }
-    
-        public virtual int Proc_Update_Sach_Tacgia(Nullable<int> masach, Nullable<int> matg)
-        {
-            var masachParameter = masach.HasValue ?
-                new ObjectParameter("masach", masach) :
-                new ObjectParameter("masach", typeof(int));
-    
-            var matgParameter = matg.HasValue ?
-                new ObjectParameter("matg", matg) :
-                new ObjectParameter("matg", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Update_Sach_Tacgia", masachParameter, matgParameter);
         }
     }
 }
