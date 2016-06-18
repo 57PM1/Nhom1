@@ -34,6 +34,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dtgv = new System.Windows.Forms.DataGridView();
             this.cbx_option_search = new System.Windows.Forms.ComboBox();
+            this.btn_in = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             this.dtgv.Name = "dtgv";
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv.Size = new System.Drawing.Size(743, 225);
+            this.dtgv.Size = new System.Drawing.Size(672, 274);
             this.dtgv.TabIndex = 40;
             // 
             // cbx_option_search
@@ -114,12 +115,23 @@
             this.cbx_option_search.Size = new System.Drawing.Size(141, 25);
             this.cbx_option_search.TabIndex = 37;
             // 
+            // btn_in
+            // 
+            this.btn_in.Location = new System.Drawing.Point(709, 288);
+            this.btn_in.Name = "btn_in";
+            this.btn_in.Size = new System.Drawing.Size(75, 23);
+            this.btn_in.TabIndex = 41;
+            this.btn_in.Text = "IN";
+            this.btn_in.UseVisualStyleBackColor = true;
+            this.btn_in.Click += new System.EventHandler(this.btn_in_Click);
+            // 
             // frm_baocao_docgiamuonquahan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(796, 425);
+            this.ClientSize = new System.Drawing.Size(796, 465);
+            this.Controls.Add(this.btn_in);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_timkiem);
             this.Controls.Add(this.label7);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dtgv;
         private System.Windows.Forms.ComboBox cbx_option_search;
+        private System.Windows.Forms.Button btn_in;
     }
 }

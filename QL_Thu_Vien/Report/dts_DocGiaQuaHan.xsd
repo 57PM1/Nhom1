@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dts_DocGiaQuaHan" targetNamespace="http://tempuri.org/dts_DocGiaQuaHan.xsd" xmlns:mstns="http://tempuri.org/dts_DocGiaQuaHan.xsd" xmlns="http://tempuri.org/dts_DocGiaQuaHan.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dts_DocGiaQuaHan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dts_DocGiaQuaHan" msprop:Generator_UserDSName="dts_DocGiaQuaHan">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DocGiaQuaHan" msprop:Generator_TableClassName="DocGiaQuaHanDataTable" msprop:Generator_TableVarName="tableDocGiaQuaHan" msprop:Generator_TablePropName="DocGiaQuaHan" msprop:Generator_RowDeletingName="DocGiaQuaHanRowDeleting" msprop:Generator_RowChangingName="DocGiaQuaHanRowChanging" msprop:Generator_RowEvHandlerName="DocGiaQuaHanRowChangeEventHandler" msprop:Generator_RowDeletedName="DocGiaQuaHanRowDeleted" msprop:Generator_UserTableName="DocGiaQuaHan" msprop:Generator_RowChangedName="DocGiaQuaHanRowChanged" msprop:Generator_RowEvArgName="DocGiaQuaHanRowChangeEvent" msprop:Generator_RowClassName="DocGiaQuaHanRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaTG" msprop:Generator_ColumnVarNameInTable="columnMaTG" msprop:Generator_ColumnPropNameInRow="MaTG" msprop:Generator_ColumnPropNameInTable="MaTGColumn" msprop:Generator_UserColumnName="MaTG" type="xs:string" minOccurs="0" />
+              <xs:element name="TenTG" msprop:Generator_ColumnVarNameInTable="columnTenTG" msprop:Generator_ColumnPropNameInRow="TenTG" msprop:Generator_ColumnPropNameInTable="TenTGColumn" msprop:Generator_UserColumnName="TenTG" type="xs:string" minOccurs="0" />
+              <xs:element name="NgaySinh" msprop:Generator_ColumnVarNameInTable="columnNgaySinh" msprop:Generator_ColumnPropNameInRow="NgaySinh" msprop:Generator_ColumnPropNameInTable="NgaySinhColumn" msprop:Generator_UserColumnName="NgaySinh" type="xs:string" minOccurs="0" />
+              <xs:element name="GioiTinh" msprop:Generator_ColumnVarNameInTable="columnGioiTinh" msprop:Generator_ColumnPropNameInRow="GioiTinh" msprop:Generator_ColumnPropNameInTable="GioiTinhColumn" msprop:Generator_UserColumnName="GioiTinh" type="xs:string" minOccurs="0" />
+              <xs:element name="Lop" msprop:Generator_ColumnVarNameInTable="columnLop" msprop:Generator_ColumnPropNameInRow="Lop" msprop:Generator_ColumnPropNameInTable="LopColumn" msprop:Generator_UserColumnName="Lop" type="xs:string" minOccurs="0" />
+              <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi" type="xs:string" minOccurs="0" />
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

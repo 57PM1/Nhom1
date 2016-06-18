@@ -39,14 +39,12 @@ namespace DoAnCNPM.Views
 
             freport.SetDataSource(List_ChiTietPhieu);
 
-
             freport.SetParameterValue("SoPM", SoPM);
             freport.SetParameterValue("NgayMuon", NgayMuon);
             freport.SetParameterValue("NgayTra", NgayTra);
             freport.SetParameterValue("DocGia", DocGia);
             freport.SetParameterValue("NhanVien", NhanVien);
             freport.SetParameterValue("GhiChu", GhiChu);
-
 
             report.ReportSource = freport;
         }

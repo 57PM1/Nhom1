@@ -93,11 +93,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Report\dts_DocGiaQuaHan.cs">
+      <DependentUpon>dts_DocGiaQuaHan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dts_DocGiaQuaHan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dts_DocGiaQuaHan.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\dts_PhieuMuonTra.cs">
       <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report\dts_PhieuMuonTra.Designer.cs">
       <DependentUpon>dts_PhieuMuonTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dts_sachsaphet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dts_sachsaphet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpt_dsDocGiaQuaHan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_dsDocGiaQuaHan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpt_dsSachSapHet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_dsSachSapHet.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rpt_PhieuMuonTra.cs">
       <SubType>Component</SubType>
@@ -241,6 +266,18 @@
     <Compile Include="Views\frm_muon_tra_sach.Designer.cs">
       <DependentUpon>frm_muon_tra_sach.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frm_report_dsDocGiaMuonQuaHan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_report_dsDocGiaMuonQuaHan.Designer.cs">
+      <DependentUpon>frm_report_dsDocGiaMuonQuaHan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frm_report_dsSachGanHet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_report_dsSachGanHet.Designer.cs">
+      <DependentUpon>frm_report_dsSachGanHet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frm_report_PhieuMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +308,14 @@
     <Compile Include="Views\sub_frm_them_soluongsach.Designer.cs">
       <DependentUpon>sub_frm_them_soluongsach.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\rpt_dsDocGiaQuaHan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_dsDocGiaQuaHan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpt_dsSachSapHet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_dsSachSapHet.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpt_PhieuMuonTra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_PhieuMuonTra1.cs</LastGenOutput>
@@ -299,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_baocao_sachsaphet.resx">
       <DependentUpon>frm_baocao_sachsaphet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_report_dsDocGiaMuonQuaHan.resx">
+      <DependentUpon>frm_report_dsDocGiaMuonQuaHan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_report_dsSachGanHet.resx">
+      <DependentUpon>frm_report_dsSachGanHet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_report_PhieuMuonTra.resx">
       <DependentUpon>frm_report_PhieuMuonTra.cs</DependentUpon>
@@ -363,6 +414,17 @@
     <None Include="QL_Thu_Vien.edmx.diagram">
       <DependentUpon>QL_Thu_Vien.edmx</DependentUpon>
     </None>
+    <None Include="Report\dts_DocGiaQuaHan.xsc">
+      <DependentUpon>dts_DocGiaQuaHan.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_DocGiaQuaHan.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dts_DocGiaQuaHan.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\dts_DocGiaQuaHan.xss">
+      <DependentUpon>dts_DocGiaQuaHan.xsd</DependentUpon>
+    </None>
     <None Include="Report\dts_PhieuMuonTra.xsc">
       <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
     </None>
@@ -373,6 +435,17 @@
     </None>
     <None Include="Report\dts_PhieuMuonTra.xss">
       <DependentUpon>dts_PhieuMuonTra.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_sachsaphet.xsc">
+      <DependentUpon>dts_sachsaphet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_sachsaphet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dts_sachsaphet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\dts_sachsaphet.xss">
+      <DependentUpon>dts_sachsaphet.xsd</DependentUpon>
     </None>
     <None Include="Resources\Huy.png" />
   </ItemGroup>
