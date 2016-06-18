@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_sum = new System.Windows.Forms.Label();
+            this.btn_in = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,11 +134,22 @@
             this.txt_sum.TabIndex = 4;
             this.txt_sum.Text = "0";
             // 
+            // btn_in
+            // 
+            this.btn_in.Location = new System.Drawing.Point(984, 197);
+            this.btn_in.Name = "btn_in";
+            this.btn_in.Size = new System.Drawing.Size(75, 23);
+            this.btn_in.TabIndex = 5;
+            this.btn_in.Text = "IN";
+            this.btn_in.UseVisualStyleBackColor = true;
+            this.btn_in.Click += new System.EventHandler(this.btn_in_Click);
+            // 
             // frm_baocao_tienphat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 550);
+            this.Controls.Add(this.btn_in);
             this.Controls.Add(this.txt_sum);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -168,5 +180,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label txt_sum;
+        private System.Windows.Forms.Button btn_in;
     }
 }

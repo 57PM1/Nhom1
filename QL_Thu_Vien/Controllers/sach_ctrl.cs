@@ -315,7 +315,7 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<List<view_sachsaphet_ett>> select_sach_fields(string input, string howtosearch)
+        public Result<List<view_sachsaphet_ett>> select_sach_fields_baocao(string input, string howtosearch)
         {
             Result<List<view_sachsaphet_ett>> rs = new Result<List<view_sachsaphet_ett>>();
             try
@@ -354,6 +354,90 @@ namespace DoAnCNPM.Controllers
                     rs.errInfor = Constants.empty_data;
                     return rs;
                 }
+            }
+            catch (Exception e)
+            {
+                rs.data = null;
+                rs.errInfor = e.ToString();
+                rs.errcode = ErrorCode.fail;
+                return rs;
+            }
+        }
+
+
+        public Result<List<sachview_ett>> select_sach_fields(string input, string howtosearch)
+        {
+            Result<List<sachview_ett>> rs = new Result<List<sachview_ett>>();
+            try
+            {
+                var dt = db.tbl_sach.SqlQuery("select * from tbl_sach");
+                // IQueryable<tbl_sach> dt = null;
+                List<sachview_ett> lst = new List<sachview_ett>();
+                switch (howtosearch)
+                {
+                    case "tensach":
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where tensach like '%" + input + "%'");
+                        break;
+                    case "tacgia":
+                        //dt = db.tbl_sach.SqlQuery("select * from tbl_sach where masach= (select masach from tbl_sach_tacgia where matg=(select top 1 matg from tbl_tacgia where tentg like '%"+input+"%'))"); 
+                        var d = db.tbl_sach.SqlQuery("Select * from tbl_sach");
+                        var k = d.Where(i => i.tbl_tacgia.Where(o => o.tentg.Contains(input)).Count() > 0);
+                        if (k.Count() > 0)
+                        {
+                            foreach (var item in k)
+                            {
+                                sachview_ett temp = new sachview_ett();
+                                temp.masach = item.masach;
+                                temp.tensach = item.tensach;
+                                temp.nxb = item.tbl_nxb.tennxb;
+                                temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
+                                temp.sotrang = (int)item.sotrang;
+                                temp.soluonghientai = (int)item.soluonghientai;
+                                temp.soluongbandau = (int)item.soluongbandau;
+                                temp.ngaynhap = item.ngaynhap;
+                                lst.Add(temp);
+                            }
+                            rs.data = lst;
+                            rs.errcode = ErrorCode.sucess;
+                            return rs;
+                        }
+                        break;
+                    case "linhvuc":
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where malv=(select top 1 malv from tbl_linhvuc where tenlinhvuc like '%" + input + "%')");
+                        break;
+                    case "nxb":
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where manxb=(select top 1 manxb from tbl_nxb where tennxb like '%" + input + "%')");
+                        break;
+                    default:
+                        break;
+                }
+
+                if (dt.Count() > 0)
+                {
+                    foreach (var item in dt)
+                    {
+                        sachview_ett temp = new sachview_ett();
+                        temp.masach = item.masach;
+                        temp.tensach = item.tensach;
+                        temp.nxb = item.tbl_nxb.tennxb;
+                        temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
+                        temp.sotrang = (int)item.sotrang;
+                        temp.soluonghientai = (int)item.soluonghientai;
+                        temp.soluongbandau = (int)item.soluongbandau;
+                        temp.ngaynhap = item.ngaynhap;
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                    return rs;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                    return rs;
+                }
+                return rs;
             }
             catch (Exception e)
             {

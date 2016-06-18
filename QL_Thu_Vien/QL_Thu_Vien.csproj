@@ -114,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dts_sachsaphet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\dts_ThongKeTienPhat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dts_ThongKeTienPhat.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpt_dsDocGiaQuaHan.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +132,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rpt_PhieuMuonTra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpt_ThongKeTienPhat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_ThongKeTienPhat.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="select_admin_Result.cs">
@@ -292,6 +303,12 @@
     <Compile Include="Views\frm_report_PhieuMuonTra.Designer.cs">
       <DependentUpon>frm_report_PhieuMuonTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frm_report_ThongKeTienPhieuMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frm_report_ThongKeTienPhieuMuon.Designer.cs">
+      <DependentUpon>frm_report_ThongKeTienPhieuMuon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frm_timkiem_docgia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +344,10 @@
     <EmbeddedResource Include="Report\rpt_PhieuMuonTra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_PhieuMuonTra1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpt_ThongKeTienPhat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_ThongKeTienPhat.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_baocao_tienphat.resx">
       <DependentUpon>frm_baocao_tienphat.cs</DependentUpon>
@@ -364,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frm_report_PhieuMuonTra.resx">
       <DependentUpon>frm_report_PhieuMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frm_report_ThongKeTienPhieuMuon.resx">
+      <DependentUpon>frm_report_ThongKeTienPhieuMuon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\subform_them_soluongbandau.resx">
       <DependentUpon>subform_them_soluongbandau.cs</DependentUpon>
@@ -457,6 +481,17 @@
     </None>
     <None Include="Report\dts_sachsaphet.xss">
       <DependentUpon>dts_sachsaphet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_ThongKeTienPhat.xsc">
+      <DependentUpon>dts_ThongKeTienPhat.xsd</DependentUpon>
+    </None>
+    <None Include="Report\dts_ThongKeTienPhat.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dts_ThongKeTienPhat.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\dts_ThongKeTienPhat.xss">
+      <DependentUpon>dts_ThongKeTienPhat.xsd</DependentUpon>
     </None>
     <None Include="Resources\Huy.png" />
   </ItemGroup>

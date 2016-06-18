@@ -37,9 +37,6 @@
             this.item_capnhat_nxb = new System.Windows.Forms.ToolStripMenuItem();
             this.item_capnhat_linhvuc = new System.Windows.Forms.ToolStripMenuItem();
             this.xửPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item_timkiem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item_timkiem_sach = new System.Windows.Forms.ToolStripMenuItem();
-            this.item_timkiem_docgia = new System.Windows.Forms.ToolStripMenuItem();
             this.item_muontra_sach = new System.Windows.Forms.ToolStripMenuItem();
             this.item_baocao = new System.Windows.Forms.ToolStripMenuItem();
             this.sáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,26 +133,6 @@
             this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
             this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
-            // 
-            // item_timkiem
-            // 
-            this.item_timkiem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.item_timkiem_sach,
-            this.item_timkiem_docgia});
-            this.item_timkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_timkiem.Name = "item_timkiem";
-            this.item_timkiem.Size = new System.Drawing.Size(72, 21);
-            this.item_timkiem.Text = "Tìm kiếm";
-            // 
-            // item_timkiem_sach
-            // 
-            this.item_timkiem_sach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_timkiem_sach.Name = "item_timkiem_sach";
-            this.item_timkiem_sach.Size = new System.Drawing.Size(121, 22);
-            this.item_timkiem_sach.Text = "Sách";
-            this.item_timkiem_sach.Click += new System.EventHandler(this.btn_timkiem_sach_Click);
-            // 
-            // item_timkiem_docgia
 
             // 
             this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";

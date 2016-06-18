@@ -61,7 +61,7 @@ namespace DoAnCNPM.Views
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
         {
             var select_cbx = cbx_option_search.SelectedValue.ToString();
-            var temp = sach_ctrl.select_sach_fields(txt_timkiem.Text, select_cbx);
+            var temp = sach_ctrl.select_sach_fields_baocao(txt_timkiem.Text, select_cbx);
             switch (temp.errcode)
             {
                 case ErrorCode.NaN:

@@ -1,4 +1,6 @@
-﻿using DoAnCNPM.Shareds;
+﻿using DoAnCNPM.Models;
+using DoAnCNPM.Report;
+using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,12 +34,16 @@ namespace DoAnCNPM.Views
         {
             if (option == 1)
             {
-                dataGridView1.DataSource= tienphat_ctrl.select_all_tienphat_month(input, int.Parse(cbx_year.Text));
+                var data = tienphat_ctrl.select_all_tienphat_month(input, int.Parse(cbx_year.Text));
+                dataGridView1.DataSource= data;
+                list = data;
                 Utils.chang_title_datagridViewCell(dataGridView1, new List<string> { "Mã phiếu", "Độc giả", "Ngày mượn", "Ngày trả", "Ghi chú", "Số tiền phạt" });
             }
             else if(option == 2)
             {
-                dataGridView1.DataSource = tienphat_ctrl.select_all_tienphat_year(input);
+                var data = tienphat_ctrl.select_all_tienphat_year(input);
+                dataGridView1.DataSource = data;
+                list = data;
                 Utils.chang_title_datagridViewCell(dataGridView1, new List<string> { "Mã phiếu", "Độc giả", "Ngày mượn", "Ngày trả", "Ghi chú", "Số tiền phạt" });
             }
             tongtien();
@@ -130,6 +136,35 @@ namespace DoAnCNPM.Views
                 sum = sum + int.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
             }
             txt_sum.Text = sum.ToString();
+
+            Tong_Tien = sum.ToString();
+        }
+
+        private List<baocao_tienphat_ett> list = new List<baocao_tienphat_ett>();
+        private string Tong_Tien = "";
+
+        private void btn_in_Click(object sender, EventArgs e)
+        {
+            dts_ThongKeTienPhat rpt_source = new dts_ThongKeTienPhat();
+
+            foreach (var item in list)
+            {
+                DataRow row = rpt_source.TienPhat.Rows.Add();
+
+                row[0] = item.sophieumuon;
+                row[1] = item.docgia;
+                row[2] = item.ngaymuon;
+                row[3] = item.ngaytra;
+                row[4] = item.ghichu;
+                row[5] = item.sotienphat;
+            }
+
+            frm_report_ThongKeTienPhieuMuon frm_report = new frm_report_ThongKeTienPhieuMuon(); 
+
+            frm_report.Data_Source = rpt_source;
+            frm_report.Tong_Tien = Tong_Tien;
+
+            frm_report.ShowDialog();
         }
     }
 }
