@@ -1,5 +1,6 @@
 ﻿using DoAnCNPM.Controllers;
 using DoAnCNPM.Models;
+using DoAnCNPM.Report;
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,9 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = dt.data;
                     break;
                 case Models.ErrorCode.sucess:
-                    dtgv.DataSource = dt.data;
+                    var data = dt.data;
+                    dtgv.DataSource = data;
+                    list = data;
                     Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
                     break;
                 case Models.ErrorCode.fail:
@@ -51,7 +54,7 @@ namespace DoAnCNPM.Views
             load_data();
 
             List<how_to_search> dt_source = new List<how_to_search>();
-            dt_source.Add(new how_to_search("Họ tên", "hoten"));
+            dt_source.Add(new how_to_search("Họ tên", "tendg"));
             dt_source.Add(new how_to_search("Lớp", "lop"));
             dt_source.Add(new how_to_search("email", "email"));
 
@@ -63,14 +66,16 @@ namespace DoAnCNPM.Views
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
         {
             var select_cbx = cbx_option_search.SelectedValue.ToString();
-            var temp = docgia_ctrl.select_docgia_fields(txt_timkiem.Text, select_cbx);
+            var temp = docgia_ctrl.select_hethan_fields(txt_timkiem.Text, select_cbx);
             switch (temp.errcode)
             {
                 case ErrorCode.NaN:
                     dtgv.DataSource = temp.data;
                     break;
                 case ErrorCode.sucess:
-                    dtgv.DataSource = temp.data;
+                    var data = temp.data;
+                    dtgv.DataSource = data;
+                    list = data;
                     Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
 
                     break;
@@ -84,6 +89,32 @@ namespace DoAnCNPM.Views
                 default:
                     break;
             }
+        }
+
+        private List<view_quahan_ett> list = new List<view_quahan_ett>();
+
+        private void btn_in_Click(object sender, EventArgs e)
+        {
+            frm_report_dsDocGiaMuonQuaHan frm_report = new frm_report_dsDocGiaMuonQuaHan();
+
+            dts_DocGiaQuaHan rpt_source = new dts_DocGiaQuaHan();
+
+            foreach (var item in list)
+            {
+                DataRow row = rpt_source.DocGiaQuaHan.Rows.Add();
+
+                row[0] = item.madg;
+                row[1] = item.tendg;
+                row[2] = item.ngaysinh;
+                row[3] = item.gioitinh;
+                row[4] = item.lop;
+                row[5] = item.diachi;
+                row[6] = item.email;
+            }
+
+            frm_report.DataSource = rpt_source;
+
+            frm_report.ShowDialog();
         }
     }
 }

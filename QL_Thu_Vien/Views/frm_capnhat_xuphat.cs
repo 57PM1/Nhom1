@@ -20,9 +20,9 @@ namespace DoAnCNPM.Views
             InitializeComponent();
             Utils.readOnly_text_box(new List<TextBox> { txt_lphat, txt_giatien, txt_ma }, true);
             btn_xoa.Enabled = false;
-            btn_xoa.BackColor = Color.White;
+           // btn_xoa.BackColor = Color.White;
             btn_sua.Enabled = false;
-            btn_sua.BackColor = Color.White;
+            //btn_sua.BackColor = Color.White;
         }
         xuphat_ctl xp = new xuphat_ctl();
         xuphat_ett xp_ett = new xuphat_ett();
@@ -269,6 +269,20 @@ namespace DoAnCNPM.Views
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void txt_ma_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_ma.Text == null || txt_ma.Text == "")
+            {
+                btn_xoa.Enabled = false;
+                btn_sua.Enabled = false;
+            }
+            else
+            {
+                btn_xoa.Enabled = true;
+                btn_sua.Enabled = true;
             }
         }
     }
