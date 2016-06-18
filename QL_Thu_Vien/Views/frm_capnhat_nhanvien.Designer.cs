@@ -68,6 +68,8 @@
             // 
             // dtgv
             // 
+            this.dtgv.AllowUserToAddRows = false;
+            this.dtgv.AllowUserToDeleteRows = false;
             this.dtgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -80,7 +82,7 @@
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv.Size = new System.Drawing.Size(633, 432);
-            this.dtgv.TabIndex = 36;
+            this.dtgv.TabIndex = 16;
             this.dtgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             this.dtgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             // 
@@ -113,7 +115,7 @@
             this.txt_timkiem.Location = new System.Drawing.Point(217, 447);
             this.txt_timkiem.Name = "txt_timkiem";
             this.txt_timkiem.Size = new System.Drawing.Size(275, 25);
-            this.txt_timkiem.TabIndex = 32;
+            this.txt_timkiem.TabIndex = 15;
             this.txt_timkiem.TextChanged += new System.EventHandler(this.txt_timkiem_TextChanged);
             // 
             // label7
@@ -134,7 +136,7 @@
             this.txt_email.Location = new System.Drawing.Point(101, 185);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(392, 25);
-            this.txt_email.TabIndex = 6;
+            this.txt_email.TabIndex = 5;
             // 
             // txt_sdt
             // 
@@ -154,7 +156,7 @@
             this.txt_diachi.Multiline = true;
             this.txt_diachi.Name = "txt_diachi";
             this.txt_diachi.Size = new System.Drawing.Size(392, 26);
-            this.txt_diachi.TabIndex = 5;
+            this.txt_diachi.TabIndex = 6;
             this.txt_diachi.TextChanged += new System.EventHandler(this.txt_diachi_TextChanged);
             // 
             // groupBox1
@@ -215,7 +217,7 @@
             this.btn_thoat.Location = new System.Drawing.Point(433, 24);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(75, 42);
-            this.btn_thoat.TabIndex = 12;
+            this.btn_thoat.TabIndex = 13;
             this.btn_thoat.Text = "Thoát";
             this.btn_thoat.UseVisualStyleBackColor = false;
             this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
@@ -243,7 +245,7 @@
             this.btn_huy.Location = new System.Drawing.Point(353, 24);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(75, 42);
-            this.btn_huy.TabIndex = 11;
+            this.btn_huy.TabIndex = 12;
             this.btn_huy.Text = "Hủy";
             this.btn_huy.UseVisualStyleBackColor = false;
             this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
@@ -306,7 +308,7 @@
             this.cbx_option_search.Location = new System.Drawing.Point(102, 447);
             this.cbx_option_search.Name = "cbx_option_search";
             this.cbx_option_search.Size = new System.Drawing.Size(110, 25);
-            this.cbx_option_search.TabIndex = 33;
+            this.cbx_option_search.TabIndex = 14;
             // 
             // txt_matkhau
             // 
@@ -450,7 +452,7 @@
             this.txt_manv.Name = "txt_manv";
             this.txt_manv.ReadOnly = true;
             this.txt_manv.Size = new System.Drawing.Size(158, 25);
-            this.txt_manv.TabIndex = 1;
+            this.txt_manv.TabIndex = 100;
             this.txt_manv.Visible = false;
             this.txt_manv.TextChanged += new System.EventHandler(this.txt_manhanvien_TextChanged);
             // 

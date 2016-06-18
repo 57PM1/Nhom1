@@ -57,7 +57,6 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.item_capnhat,
-            this.item_timkiem,
             this.item_muontra_sach,
             this.item_baocao,
             this.item_thoat});
@@ -131,6 +130,7 @@
             this.item_capnhat_linhvuc.Click += new System.EventHandler(this.btn_capnhat_linhvuc_Click);
             // 
             // xửPhạtToolStripMenuItem
+
             // 
             this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
             this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
@@ -156,12 +156,12 @@
             this.item_timkiem_sach.Click += new System.EventHandler(this.btn_timkiem_sach_Click);
             // 
             // item_timkiem_docgia
+
             // 
-            this.item_timkiem_docgia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.item_timkiem_docgia.Name = "item_timkiem_docgia";
-            this.item_timkiem_docgia.Size = new System.Drawing.Size(121, 22);
-            this.item_timkiem_docgia.Text = "Độc giả";
-            this.item_timkiem_docgia.Click += new System.EventHandler(this.btn_timkiem_docgia_Click);
+            this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
+            this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
+            this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
             // 
             // item_muontra_sach
             // 
@@ -231,6 +231,7 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+
             // thốngKêTiềnPhạtToolStripMenuItem
             // 
             this.thốngKêTiềnPhạtToolStripMenuItem.Name = "thốngKêTiềnPhạtToolStripMenuItem";
@@ -238,6 +239,7 @@
             this.thốngKêTiềnPhạtToolStripMenuItem.Text = "Thống kê tiền phạt";
             this.thốngKêTiềnPhạtToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTiềnPhạtToolStripMenuItem_Click);
             // 
+            
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,9 +267,6 @@
         private System.Windows.Forms.ToolStripMenuItem item_capnhat_tacgia;
         private System.Windows.Forms.ToolStripMenuItem item_capnhat_nxb;
         private System.Windows.Forms.ToolStripMenuItem item_capnhat_linhvuc;
-        private System.Windows.Forms.ToolStripMenuItem item_timkiem;
-        private System.Windows.Forms.ToolStripMenuItem item_timkiem_sach;
-        private System.Windows.Forms.ToolStripMenuItem item_timkiem_docgia;
         private System.Windows.Forms.ToolStripMenuItem item_muontra_sach;
         private System.Windows.Forms.ToolStripMenuItem item_baocao;
         private System.Windows.Forms.ToolStripMenuItem item_thoat;

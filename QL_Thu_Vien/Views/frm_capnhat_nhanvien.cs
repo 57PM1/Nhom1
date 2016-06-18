@@ -62,8 +62,26 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = dt.data;
                     break;
                 case Models.ErrorCode.sucess:
-                    dtgv.DataSource = dt.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã NV", "Tên NV", "Địa chỉ", "Điện thoại", "Email", "Chức vụ", "Tuổi", "Tài khoản", "Mật khẩu" });
+                    //dtgv.DataSource = dt.data;
+                    //Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã NV", "Tên NV", "Địa chỉ", "Điện thoại", "Email", "Chức vụ", "Tuổi", "Tài khoản" });
+
+                    dtgv.Rows.Clear();
+
+                    dtgv.ColumnCount = 8;
+                    dtgv.Columns[0].HeaderText = "Mã NV";
+                    dtgv.Columns[1].HeaderText = "Tên NV";
+                    dtgv.Columns[2].HeaderText = "Địa chỉ";
+                    dtgv.Columns[3].HeaderText = "Điện thoại";
+                    dtgv.Columns[4].HeaderText = "Email";
+                    dtgv.Columns[5].HeaderText = "Chức vụ";
+                    dtgv.Columns[6].HeaderText = "Tuổi";
+                    dtgv.Columns[7].HeaderText = "Tài khoản";
+                    var nhanviens = dt.data;
+                    foreach (var nhanvien in nhanviens)
+                    {
+                        string[] row = new string[] { nhanvien.manhanvien.ToString(), nhanvien.tennhanvien, nhanvien.diachi, nhanvien.sdt, nhanvien.email, nhanvien.chucvu, nhanvien.tuoi.ToString(), nhanvien.taikhoan };
+                        dtgv.Rows.Add(row);
+                    }
                     break;
                 case Models.ErrorCode.fail:
                     if (Utils.switch_false())
@@ -142,7 +160,7 @@ namespace DoAnCNPM.Views
                     txt_tuoi.Text = temp.Cells[6].Value.ToString();
                 }
                 else txt_tuoi.Text = "";
-                txt_taikhoan.Text = temp.Cells[7].Value.ToString();
+                txt_taikhoan.Text = temp.Cells[7].Value != null ? temp.Cells[7].Value.ToString(): "";
             }
         }
 
@@ -156,8 +174,26 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = temp.data;
                     break;
                 case ErrorCode.sucess:
-                    dtgv.DataSource = temp.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã NV", "Tên NV", "Địa chỉ", "Điện thoại", "Email", "Chức vụ", "Tuổi", "Tài khoản", "Mật khẩu" });
+                    //dtgv.DataSource = temp.data;
+                    // Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã NV", "Tên NV", "Địa chỉ", "Điện thoại", "Email", "Chức vụ", "Tuổi", "Tài khoản"});
+
+                    dtgv.Rows.Clear();
+
+                    dtgv.ColumnCount = 8;
+                    dtgv.Columns[0].HeaderText = "Mã NV";
+                    dtgv.Columns[1].HeaderText = "Tên NV";
+                    dtgv.Columns[2].HeaderText = "Địa chỉ";
+                    dtgv.Columns[3].HeaderText = "Điện thoại";
+                    dtgv.Columns[4].HeaderText = "Email";
+                    dtgv.Columns[5].HeaderText = "Chức vụ";
+                    dtgv.Columns[6].HeaderText = "Tuổi";
+                    dtgv.Columns[7].HeaderText = "Tài khoản";
+                    var nhanviens = temp.data;
+                    foreach (var nhanvien in nhanviens)
+                    {
+                        string[] row = new string[] { nhanvien.manhanvien.ToString(), nhanvien.tennhanvien, nhanvien.diachi, nhanvien.sdt, nhanvien.email, nhanvien.chucvu, nhanvien.tuoi.ToString(), nhanvien.taikhoan };
+                        dtgv.Rows.Add(row);
+                    }
                     break;
                 case ErrorCode.fail:
                     dtgv.DataSource = temp.data;

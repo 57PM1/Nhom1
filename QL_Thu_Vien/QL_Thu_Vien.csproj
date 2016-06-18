@@ -77,6 +77,8 @@
     <Compile Include="Controllers\xuphat_ctl.cs" />
     <Compile Include="Models\baocao_tienphat_ett.cs" />
     <Compile Include="Models\phat_ett.cs" />
+    <Compile Include="Models\view_quahan_ett.cs" />
+    <Compile Include="Models\view_sachsaphet_ett.cs" />
     <Compile Include="Models\xuphat_ett.cs" />
     <Compile Include="QL_Thu_Vien.Context.cs">
       <AutoGen>True</AutoGen>
@@ -130,10 +132,13 @@
     <Compile Include="tbl_phieumuon_tra.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_quahan_view.cs">
+      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_sach.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_so_luong_sach_view.cs">
+    <Compile Include="tbl_sachsaphet_view.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_tacgia.cs">

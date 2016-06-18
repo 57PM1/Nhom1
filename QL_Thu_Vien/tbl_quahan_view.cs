@@ -12,15 +12,16 @@ namespace DoAnCNPM
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_so_luong_sach_view
+    public partial class tbl_quahan_view
     {
-        public int masach { get; set; }
-        public string tensach { get; set; }
-        public Nullable<int> manxb { get; set; }
-        public Nullable<int> malv { get; set; }
-        public Nullable<int> sotrang { get; set; }
-        public Nullable<int> soluonghientai { get; set; }
-        public Nullable<int> soluongbandau { get; set; }
-        public string ngaynhap { get; set; }
+        public int madg { get; set; }
+        public string tendg { get; set; }
+        public string ngaysinh { get; set; }
+        public string gioitinh { get; set; }
+        public string lop { get; set; }
+        public string diachi { get; set; }
+        public string email { get; set; }
+        public string ngaymuon { get; set; }
+        public string ngaytra { get; set; }
     }
 }

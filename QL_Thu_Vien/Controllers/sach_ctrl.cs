@@ -2,13 +2,14 @@
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DoAnCNPM.Controllers
 {
-    public  class sach_ctrl
+    public class sach_ctrl
     {
         public sach_ctrl() { }
 
@@ -25,7 +26,7 @@ namespace DoAnCNPM.Controllers
                 var dt = db1.tbl_sach.SqlQuery("select * from tbl_sach where masach=" + int.Parse(masach)).FirstOrDefault();
                 var item = dt.tbl_tacgia;
 
-                if (item.Count()>0)
+                if (item.Count() > 0)
                 {
                     foreach (var i in item)
                     {
@@ -77,8 +78,8 @@ namespace DoAnCNPM.Controllers
                         temp.tensach = item.tensach;
                         temp.nxb = item.tbl_nxb.tennxb;
                         temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
-                        temp.sotrang = (int) item.sotrang;
-                        temp.soluonghientai = (int) item.soluonghientai;
+                        temp.sotrang = (int)item.sotrang;
+                        temp.soluonghientai = (int)item.soluonghientai;
                         temp.soluongbandau = (int)item.soluongbandau;
                         temp.ngaynhap = item.ngaynhap;
                         lst.Add(temp);
@@ -102,32 +103,35 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<List<sachview_ett>> select_sach_almost_null()
+        public Result<List<view_sachsaphet_ett>> select_sachsaphet_null()
         {
-            Result<List<sachview_ett>> rs = new Result<List<sachview_ett>>();
+            Result<List<view_sachsaphet_ett>> rs = new Result<List<view_sachsaphet_ett>>();
             try
             {
-                //List<sachview_ett> lst = new List<sachview_ett>();
-                //var dt = from o in db.tbl_saches
-                //         join p in db.tbl_tacgias on o.matg equals p.matg
-                //         join k in db.tbl_nxbs on o.manxb equals k.manxb
-                //         join l in db.tbl_linhvucs on o.malv equals l.malinhvuc
-                //         where o.soluong < 5
-                //         select new sachview_ett() { masach = o.masach, tensach = o.tensach, linhvuc = l.tenlinhvuc, tacgia = p.tentg, nxb = k.tennxb, soluong = o.soluong.ToString(), sotrang = o.sotrang.ToString(), ngaynhap = o.ngaynhap };
-                //if (dt.Count() > 0)
-                //{
-                //    foreach (sachview_ett item in dt)
-                //    {
-                //        lst.Add(item);
-                //    }
-                //    rs.data = lst;
-                //    rs.errcode = ErrorCode.sucess;
-                //}
-                //else
-                //{
-                //    rs.data = null;
-                //    rs.errInfor = Constants.empty_data;
-                //}
+                List<view_sachsaphet_ett> lst = new List<view_sachsaphet_ett>();
+
+                var dt = db.tbl_sachsaphet_view.SqlQuery("select * from tbl_sachsaphet_view");
+                if (dt.Count() > 0)
+                {
+                    foreach (var item in dt)
+                    {
+                        view_sachsaphet_ett temp = new view_sachsaphet_ett();
+                        temp.masach = item.masach;
+                        temp.tensach = item.tensach;
+                        temp.tennxb = item.tennxb;
+                        temp.tenlinhvuc = item.tenlinhvuc;
+                        temp.soluong = (int)item.soluonghientai;
+                        temp.ngaynhap = item.ngaynhap;
+                        lst.Add(temp);
+                    }
+                    rs.data = lst;
+                    rs.errcode = ErrorCode.sucess;
+                }
+                else
+                {
+                    rs.data = null;
+                    rs.errInfor = Constants.empty_data;
+                }
                 return rs;
             }
             catch (Exception e)
@@ -189,7 +193,7 @@ namespace DoAnCNPM.Controllers
                 db.Proc_Insert_Sach(sach.tensach, sach.manxb, sach.malv, sach.sotrang, sach.soluonghientai, sach.soluongbandau, sach.ngaynhap);
                 foreach (var item in tacgias)
                 {
-                    db.Proc_Insert_Sach_Tacgia(item.matacgia);
+                    // db.Proc_Insert_Sach_Tacgia(item.matacgia);
                 }
                 //tbl_sach temp = new tbl_sach();
                 //temp.tensach = sach.tensach;
@@ -238,7 +242,7 @@ namespace DoAnCNPM.Controllers
                 //    rs.errcode = ErrorCode.NaN;
                 //    rs.errInfor = Constants.empty_data;
                 //}
-                db.Proc_Delete_Sach_Tacgia(masach);
+                //db.Proc_Delete_Sach_Tacgia(masach);
                 db.Proc_Delete_Sach(masach);
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -293,10 +297,10 @@ namespace DoAnCNPM.Controllers
                 //db.SubmitChanges();
                 QL_Thu_VienEntities db2 = new QL_Thu_VienEntities();
                 db2.Proc_Update_Sach(sach.masach, sach.tensach, sach.manxb, sach.malv, sach.sotrang, sach.soluonghientai, sach.soluongbandau, sach.ngaynhap);
-                db2.Proc_Delete_Sach_Tacgia(sach.masach);
+                //db2.Proc_Delete_Sach_Tacgia(sach.masach);
                 foreach (var item in tacgias)
                 {
-                    db2.Proc_Update_Sach_Tacgia(sach.masach, item.matacgia);
+                    //  db2.Proc_Update_Sach_Tacgia(sach.masach, item.matacgia);
                 }
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
@@ -311,48 +315,23 @@ namespace DoAnCNPM.Controllers
             }
         }
 
-        public Result<List<sachview_ett>> select_sach_fields(string input, string howtosearch)
+        public Result<List<view_sachsaphet_ett>> select_sach_fields(string input, string howtosearch)
         {
-            Result<List<sachview_ett>> rs = new Result<List<sachview_ett>>();
+            Result<List<view_sachsaphet_ett>> rs = new Result<List<view_sachsaphet_ett>>();
             try
             {
-                var dt = db.tbl_sach.SqlQuery("select * from tbl_sach");
-                // IQueryable<tbl_sach> dt = null;
-                List<sachview_ett> lst = new List<sachview_ett>();
+                DbSqlQuery<tbl_sachsaphet_view> dt = null;
+                List<view_sachsaphet_ett> lst = new List<view_sachsaphet_ett>();
                 switch (howtosearch)
                 {
                     case "tensach":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where tensach like '%" + input + "%'");
+                        dt = db.tbl_sachsaphet_view.SqlQuery(String.Format("Select * from tbl_sachsaphet_view where tensach like N'%{0}%'", input));
                         break;
-                    case "tacgia":
-                        //dt = db.tbl_sach.SqlQuery("select * from tbl_sach where masach= (select masach from tbl_sach_tacgia where matg=(select top 1 matg from tbl_tacgia where tentg like '%"+input+"%'))"); 
-                        var d = db.tbl_sach.SqlQuery("Select * from tbl_sach");
-                        var k = d.Where(i => i.tbl_tacgia.Where(o => o.tentg.Contains(input)).Count() > 0);
-                        if (k.Count() > 0)
-                        {
-                            foreach (var item in k)
-                            {
-                                sachview_ett temp = new sachview_ett();
-                                temp.masach = item.masach;
-                                temp.tensach = item.tensach;
-                                temp.nxb = item.tbl_nxb.tennxb;
-                                temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
-                                temp.sotrang = (int)item.sotrang;
-                                temp.soluonghientai = (int)item.soluonghientai;
-                                temp.soluongbandau = (int)item.soluongbandau;
-                                temp.ngaynhap = item.ngaynhap;
-                                lst.Add(temp);
-                            }
-                            rs.data = lst;
-                            rs.errcode = ErrorCode.sucess;
-                            return rs;
-                        }
+                    case "tenlinhvuc":
+                        dt = db.tbl_sachsaphet_view.SqlQuery(String.Format("Select * from tbl_sachsaphet_view where tenlinhvuc like N'%{0}%'", input));
                         break;
-                    case "linhvuc":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where malv=(select top 1 malv from tbl_linhvuc where tenlinhvuc like '%" + input + "%')");
-                        break;
-                    case "nxb":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where manxb=(select top 1 manxb from tbl_nxb where tennxb like '%" + input + "%')");
+                    case "tennxb":
+                        dt = db.tbl_sachsaphet_view.SqlQuery(String.Format("Select * from tbl_sachsaphet_view where tennxb like N'%{0}%'", input));
                         break;
                     default:
                         break;
@@ -360,17 +339,9 @@ namespace DoAnCNPM.Controllers
 
                 if (dt.Count() > 0)
                 {
-                    foreach (var item in dt)
+                    foreach (tbl_sachsaphet_view item in dt)
                     {
-                        sachview_ett temp = new sachview_ett();
-                        temp.masach = item.masach;
-                        temp.tensach = item.tensach;
-                        temp.nxb = item.tbl_nxb.tennxb;
-                        temp.linhvuc = item.tbl_linhvuc.tenlinhvuc;
-                        temp.sotrang = (int)item.sotrang;
-                        temp.soluonghientai = (int)item.soluonghientai;
-                        temp.soluongbandau = (int)item.soluongbandau;
-                        temp.ngaynhap = item.ngaynhap;
+                        view_sachsaphet_ett temp = new view_sachsaphet_ett(item);
                         lst.Add(temp);
                     }
                     rs.data = lst;
@@ -383,7 +354,6 @@ namespace DoAnCNPM.Controllers
                     rs.errInfor = Constants.empty_data;
                     return rs;
                 }
-                return rs;
             }
             catch (Exception e)
             {
