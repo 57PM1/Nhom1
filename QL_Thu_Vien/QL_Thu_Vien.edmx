@@ -904,15 +904,15 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_nhanvien_view' does not have a
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Proc_Delete_Sach_Tacgia">
+            <Parameter Name="masach" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Proc_Insert_Sach_Tacgia">
-          <Parameter Name="matg" Mode="In" Type="Int32" />
+            <Parameter Name="matg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Update_Sach_Tacgia">
             <Parameter Name="masach" Mode="In" Type="Int32" />
             <Parameter Name="matg" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Proc_Delete_Sach_Tacgia">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="select_admin_Result">
@@ -1116,9 +1116,9 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_nhanvien_view' does not have a
           <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QL_Thu_VienModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QL_Thu_VienModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Proc_Delete_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_Sach_Tacgia" />
           <FunctionImportMapping FunctionImportName="Proc_Insert_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Insert_Sach_Tacgia" />
           <FunctionImportMapping FunctionImportName="Proc_Update_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Update_Sach_Tacgia" />
-          <FunctionImportMapping FunctionImportName="Proc_Delete_Sach_Tacgia" FunctionName="QL_Thu_VienModel.Store.Proc_Delete_Sach_Tacgia" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

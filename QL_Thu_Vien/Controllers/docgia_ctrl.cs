@@ -234,7 +234,7 @@ namespace DoAnCNPM.Controllers
                     rs.errInfor = Constants.empty_data;
                     return rs;
                 }
-                return rs;
+              //  return rs;
             }
             catch (Exception e)
             {

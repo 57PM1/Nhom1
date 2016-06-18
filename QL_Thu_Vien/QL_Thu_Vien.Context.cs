@@ -649,6 +649,15 @@ namespace DoAnCNPM
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual int Proc_Delete_Sach_Tacgia(Nullable<int> masach)
+        {
+            var masachParameter = masach.HasValue ?
+                new ObjectParameter("masach", masach) :
+                new ObjectParameter("masach", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Delete_Sach_Tacgia", masachParameter);
+        }
+    
         public virtual int Proc_Insert_Sach_Tacgia(Nullable<int> matg)
         {
             var matgParameter = matg.HasValue ?
@@ -669,15 +678,6 @@ namespace DoAnCNPM
                 new ObjectParameter("matg", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Update_Sach_Tacgia", masachParameter, matgParameter);
-        }
-    
-        public virtual int Proc_Delete_Sach_Tacgia(Nullable<int> masach)
-        {
-            var masachParameter = masach.HasValue ?
-                new ObjectParameter("masach", masach) :
-                new ObjectParameter("masach", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_Delete_Sach_Tacgia", masachParameter);
         }
     }
 }

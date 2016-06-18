@@ -83,5 +83,11 @@ namespace DoAnCNPM.Views
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frm_timkiem_sach timkiem_sach = new frm_timkiem_sach();
+            timkiem_sach.ShowDialog();
+        }
     }
 }
