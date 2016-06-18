@@ -101,9 +101,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(480, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 42);
+            this.label1.Size = new System.Drawing.Size(295, 42);
             this.label1.TabIndex = 36;
-            this.label1.Text = "Tìm kiếm sách";
+            this.label1.Text = "TÌM KIẾM SÁCH";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // frm_timkiem_sach
             // 
@@ -116,9 +117,9 @@
             this.Controls.Add(this.dtgv);
             this.Controls.Add(this.cbx_option_search);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frm_timkiem_sach";
-            this.Text = "frm_timkiem_sach";
+            this.Text = "QUẢN LÝ THƯ VIỆN";
             this.Load += new System.EventHandler(this.frm_capnhat_sach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).EndInit();
             this.ResumeLayout(false);

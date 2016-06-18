@@ -190,6 +190,7 @@ namespace DoAnCNPM.Controllers
                     case "sophieumuon":
                         dt = db.tbl_phieumuon_tra.SqlQuery(String.Format("Select * from tbl_phieumuon_tra where sophieumuon like '%{0}%' Order by sophieumuon DESC", input));
                         break;
+
                     case "docgia":
                         dt = db.tbl_phieumuon_tra.SqlQuery("Select * from tbl_phieumuon_tra Order by sophieumuon DESC");
                         var data = dt.Where(o => o.tbl_docgia.tendg.Contains(input));
@@ -210,8 +211,8 @@ namespace DoAnCNPM.Controllers
                             rs.errInfor = Constants.empty_data;
                             return rs;
                         }
+                  break;
 
-                        break;
                     default:
                         break;
                 }

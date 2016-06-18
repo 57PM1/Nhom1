@@ -30,7 +30,7 @@ namespace DoAnCNPM.Views
                     break;
                 case Models.ErrorCode.sucess:
                     dtgv.DataSource = dt.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Tác giả", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng", "Ngày nhập" });
+                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng hiện tại", "Số lượng ban đầu", "Ngày nhập" });
                     break;
                 case Models.ErrorCode.fail:
                     if (Utils.switch_false())
@@ -44,6 +44,7 @@ namespace DoAnCNPM.Views
         }
         private void frm_capnhat_sach_Load(object sender, EventArgs e)
         {
+           
             load_data();
 
             List<how_to_search> dt_source = new List<how_to_search>();
@@ -56,7 +57,11 @@ namespace DoAnCNPM.Views
             cbx_option_search.DisplayMember = "value";
             cbx_option_search.ValueMember = "key";
 
-        }
+            tacgia_ctrl tacgia = new tacgia_ctrl();
+            linhvuc_ctrl linhvuc = new linhvuc_ctrl();
+            nhaxuatban_ctrl nxb = new nhaxuatban_ctrl();
+
+    }
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
         {
             var select_cbx = cbx_option_search.SelectedValue.ToString();
@@ -68,7 +73,7 @@ namespace DoAnCNPM.Views
                     break;
                 case ErrorCode.sucess:
                     dtgv.DataSource = temp.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Tác giả", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng", "Ngày nhập" });
+                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Nhà XB", "Lĩnh Vực", "Số trang", "Số lượng ban đầu", "Số lượng ban đầu", "Ngày nhập" });
 
                     break;
                 case ErrorCode.fail:
@@ -81,6 +86,11 @@ namespace DoAnCNPM.Views
                 default:
                     break;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DoAnCNPM.Controllers;
 using DoAnCNPM.Models;
+using DoAnCNPM.Report;
 using DoAnCNPM.Shareds;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,9 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = dt.data;
                     break;
                 case Models.ErrorCode.sucess:
-                    dtgv.DataSource = dt.data;
+                    var data = dt.data;
+                    dtgv.DataSource = data;
+                    list = data;
                     Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Tên lĩnh vực", "Tên nhà XBc", "Số lượng", "Ngày nhập" });
                     break;
                 case Models.ErrorCode.fail:
@@ -68,7 +71,9 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = temp.data;
                     break;
                 case ErrorCode.sucess:
-                    dtgv.DataSource = temp.data;
+                    var data = temp.data;
+                    dtgv.DataSource = data;
+                    list = data;
                     Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã sách", "Tên sách", "Tên lĩnh vực", "Tên nhà XBc", "Số lượng", "Ngày nhập" });
 
                     break;
@@ -82,6 +87,31 @@ namespace DoAnCNPM.Views
                 default:
                     break;
             }
+        }
+
+        private List<view_sachsaphet_ett> list = new List<view_sachsaphet_ett>();
+
+        private void btn_in_Click(object sender, EventArgs e)
+        {
+            frm_report_dsSachGanHet frm_report = new frm_report_dsSachGanHet();
+
+            dts_sachsaphet rpt_source = new dts_sachsaphet();
+
+            foreach (var item in list)
+            {
+                DataRow row = rpt_source.SachSapHet.Rows.Add();
+
+                row[0] = item.masach;
+                row[1] = item.tensach;
+                row[2] = item.tenlinhvuc;
+                row[3] = item.tennxb;
+                row[4] = item.soluong;
+                row[5] = item.ngaynhap;
+            }
+
+            frm_report.DataSource = rpt_source;
+
+            frm_report.ShowDialog();
         }
     }
 }

@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_dangnhap = new System.Windows.Forms.Button();
             this.btn_thoat = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_mk
@@ -47,7 +48,7 @@
             this.txt_mk.Location = new System.Drawing.Point(174, 124);
             this.txt_mk.Name = "txt_mk";
             this.txt_mk.PasswordChar = '*';
-            this.txt_mk.Size = new System.Drawing.Size(254, 29);
+            this.txt_mk.Size = new System.Drawing.Size(330, 29);
             this.txt_mk.TabIndex = 2;
             // 
             // label4
@@ -70,7 +71,7 @@
             this.txt_ten.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ten.Location = new System.Drawing.Point(174, 80);
             this.txt_ten.Name = "txt_ten";
-            this.txt_ten.Size = new System.Drawing.Size(254, 29);
+            this.txt_ten.Size = new System.Drawing.Size(330, 29);
             this.txt_ten.TabIndex = 1;
             // 
             // label3
@@ -115,7 +116,7 @@
             this.btn_dangnhap.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_dangnhap.BackColor = System.Drawing.Color.PowderBlue;
             this.btn_dangnhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dangnhap.Location = new System.Drawing.Point(174, 174);
+            this.btn_dangnhap.Location = new System.Drawing.Point(239, 174);
             this.btn_dangnhap.Name = "btn_dangnhap";
             this.btn_dangnhap.Size = new System.Drawing.Size(125, 32);
             this.btn_dangnhap.TabIndex = 3;
@@ -128,7 +129,7 @@
             this.btn_thoat.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_thoat.BackColor = System.Drawing.Color.PowderBlue;
             this.btn_thoat.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_thoat.Location = new System.Drawing.Point(303, 174);
+            this.btn_thoat.Location = new System.Drawing.Point(379, 174);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(125, 32);
             this.btn_thoat.TabIndex = 4;
@@ -136,12 +137,24 @@
             this.btn_thoat.UseVisualStyleBackColor = false;
             this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.PowderBlue;
+            this.button1.Location = new System.Drawing.Point(52, 174);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 32);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Tìm kiếm sách";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frm_dangnhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(500, 276);
+            this.ClientSize = new System.Drawing.Size(576, 316);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_thoat);
             this.Controls.Add(this.btn_dangnhap);
             this.Controls.Add(this.txt_mk);
@@ -168,5 +181,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_dangnhap;
         private System.Windows.Forms.Button btn_thoat;
+        private System.Windows.Forms.Button button1;
     }
 }
