@@ -40,12 +40,10 @@
             this.item_muontra_sach = new System.Windows.Forms.ToolStripMenuItem();
             this.item_baocao = new System.Windows.Forms.ToolStripMenuItem();
             this.sáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thôngTinSáchHỏngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sốLầnMượnSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.độcGiảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTiềnPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.item_thoat = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.thốngKêTiềnPhạtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,13 +125,6 @@
             this.item_capnhat_linhvuc.Click += new System.EventHandler(this.btn_capnhat_linhvuc_Click);
             // 
             // xửPhạtToolStripMenuItem
-
-            // 
-            this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
-            this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.xửPhạtToolStripMenuItem.Text = "Xử phạt";
-            this.xửPhạtToolStripMenuItem.Click += new System.EventHandler(this.xửPhạtToolStripMenuItem_Click);
-
             // 
             this.xửPhạtToolStripMenuItem.Name = "xửPhạtToolStripMenuItem";
             this.xửPhạtToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
@@ -161,26 +152,10 @@
             // 
             // sáchToolStripMenuItem
             // 
-            this.sáchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thôngTinSáchHỏngToolStripMenuItem,
-            this.sốLầnMượnSáchToolStripMenuItem});
             this.sáchToolStripMenuItem.Name = "sáchToolStripMenuItem";
             this.sáchToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.sáchToolStripMenuItem.Text = "Sách";
-            // 
-            // thôngTinSáchHỏngToolStripMenuItem
-            // 
-            this.thôngTinSáchHỏngToolStripMenuItem.Name = "thôngTinSáchHỏngToolStripMenuItem";
-            this.thôngTinSáchHỏngToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
-            this.thôngTinSáchHỏngToolStripMenuItem.Text = "Sách sắp hết số lượng";
-            this.thôngTinSáchHỏngToolStripMenuItem.Click += new System.EventHandler(this.btn_bcsach_hetsoluong_Click);
-            // 
-            // sốLầnMượnSáchToolStripMenuItem
-            // 
-            this.sốLầnMượnSáchToolStripMenuItem.Name = "sốLầnMượnSáchToolStripMenuItem";
-            this.sốLầnMượnSáchToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
-            this.sốLầnMượnSáchToolStripMenuItem.Text = "Sách chưa được mượn lần nào";
-            this.sốLầnMượnSáchToolStripMenuItem.Click += new System.EventHandler(this.btn_bc_sachchuaduocmuon_Click);
+            this.sáchToolStripMenuItem.Text = "Sách sắp hết số lượng";
+            this.sáchToolStripMenuItem.Click += new System.EventHandler(this.sáchToolStripMenuItem_Click);
             // 
             // độcGiảToolStripMenuItem
             // 
@@ -188,6 +163,13 @@
             this.độcGiảToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.độcGiảToolStripMenuItem.Text = "Độc giả mượn quá hạn";
             this.độcGiảToolStripMenuItem.Click += new System.EventHandler(this.btn_bcdocgia_muonquahan_Click);
+            // 
+            // thốngKêTiềnPhạtToolStripMenuItem
+            // 
+            this.thốngKêTiềnPhạtToolStripMenuItem.Name = "thốngKêTiềnPhạtToolStripMenuItem";
+            this.thốngKêTiềnPhạtToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.thốngKêTiềnPhạtToolStripMenuItem.Text = "Thống kê tiền phạt";
+            this.thốngKêTiềnPhạtToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTiềnPhạtToolStripMenuItem_Click);
             // 
             // item_thoat
             // 
@@ -208,15 +190,6 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-
-            // thốngKêTiềnPhạtToolStripMenuItem
-            // 
-            this.thốngKêTiềnPhạtToolStripMenuItem.Name = "thốngKêTiềnPhạtToolStripMenuItem";
-            this.thốngKêTiềnPhạtToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.thốngKêTiềnPhạtToolStripMenuItem.Text = "Thống kê tiền phạt";
-            this.thốngKêTiềnPhạtToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTiềnPhạtToolStripMenuItem_Click);
-            // 
-            
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,8 +223,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem sáchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem độcGiảToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thôngTinSáchHỏngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sốLầnMượnSáchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xửPhạtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêTiềnPhạtToolStripMenuItem;
     }

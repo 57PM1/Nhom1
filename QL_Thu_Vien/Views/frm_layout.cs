@@ -128,5 +128,11 @@ namespace DoAnCNPM
             frm_baocao_tienphat temp = new frm_baocao_tienphat();
             Utils.add_form_to_panel(temp, panel1);
         }
+
+        private void sáchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_baocao_sachsaphet temp = new frm_baocao_sachsaphet();
+            Utils.add_form_to_panel(temp, panel1);
+        }
     }
 }

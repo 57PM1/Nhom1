@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -527,8 +527,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <End Role="tbl_sach_tacgia" EntitySet="tbl_sach_tacgia" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_Thu_VienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -812,31 +811,31 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_DocGia">
-            <Parameter Name="madg" Mode="In" Type="Int32" />
+          <Parameter Name="madg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_LinhVuc">
-            <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
+          <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NhanVien">
-            <Parameter Name="manv" Mode="In" Type="Int32" />
+          <Parameter Name="manv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NXB">
-            <Parameter Name="manxb" Mode="In" Type="Int32" />
+          <Parameter Name="manxb" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_PhieuMuonTra">
-            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+          <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_Sach">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
+          <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_Sach_Tacgia">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
+          <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_TacGia">
-            <Parameter Name="matacgia" Mode="In" Type="Int32" />
+          <Parameter Name="matacgia" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_XuPhat">
-            <Parameter Name="maphat" Mode="In" Type="Int32" />
+          <Parameter Name="maphat" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Edit_DocGia">
             <Parameter Name="tendg" Mode="In" Type="String" />
@@ -861,7 +860,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_LinhVuc">
-            <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
+          <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_NhanVien">
             <Parameter Name="tennv" Mode="In" Type="String" />
@@ -895,7 +894,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="ngaynhap" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_Sach_Tacgia">
-            <Parameter Name="matg" Mode="In" Type="Int32" />
+          <Parameter Name="matg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_TacGia">
             <Parameter Name="tentacgia" Mode="In" Type="String" />

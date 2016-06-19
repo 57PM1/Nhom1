@@ -9,7 +9,7 @@ SELECT        dbo.tbl_docgia.madg, dbo.tbl_docgia.tendg, dbo.tbl_docgia.ngaysinh
 FROM            dbo.tbl_docgia INNER JOIN
                          dbo.tbl_phieumuon_tra ON dbo.tbl_docgia.madg = dbo.tbl_phieumuon_tra.madg
 WHERE        (dbo.tbl_phieumuon_tra.xacnhantra = 0 OR
-                         dbo.tbl_phieumuon_tra.xacnhantra IS NULL) AND (dbo.tbl_phieumuon_tra.ngaytra < { fn NOW() })
+                         dbo.tbl_phieumuon_tra.xacnhantra IS NULL) AND (CONVERT(datetime, dbo.tbl_phieumuon_tra.ngaytra, 103) < { fn NOW() })
 
 GO
 
