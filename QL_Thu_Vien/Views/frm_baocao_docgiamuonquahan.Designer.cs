@@ -28,46 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.btn_in = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_timkiem = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtgv = new System.Windows.Forms.DataGridView();
             this.cbx_option_search = new System.Windows.Forms.ComboBox();
-            this.btn_in = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // btn_in
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(653, 50);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "THỐNG KÊ ĐỘC GIẢ MƯỢN QUÁ HẠN";
+            this.btn_in.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_in.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_in.Location = new System.Drawing.Point(341, 417);
+            this.btn_in.Name = "btn_in";
+            this.btn_in.Size = new System.Drawing.Size(75, 31);
+            this.btn_in.TabIndex = 48;
+            this.btn_in.Text = "IN";
+            this.btn_in.UseVisualStyleBackColor = false;
+            this.btn_in.Click += new System.EventHandler(this.btn_in_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(28, 145);
+            this.label6.Location = new System.Drawing.Point(22, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 17);
-            this.label6.TabIndex = 38;
+            this.label6.TabIndex = 45;
             this.label6.Text = "Danh sách độc giả";
             // 
             // txt_timkiem
             // 
             this.txt_timkiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_timkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_timkiem.Location = new System.Drawing.Point(362, 105);
+            this.txt_timkiem.Location = new System.Drawing.Point(365, 98);
             this.txt_timkiem.Name = "txt_timkiem";
             this.txt_timkiem.Size = new System.Drawing.Size(306, 25);
-            this.txt_timkiem.TabIndex = 36;
+            this.txt_timkiem.TabIndex = 43;
             this.txt_timkiem.TextChanged += new System.EventHandler(this.txt_timkiem_TextChanged);
             // 
             // label7
@@ -76,10 +77,10 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(115, 108);
+            this.label7.Location = new System.Drawing.Point(118, 101);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
-            this.label7.TabIndex = 39;
+            this.label7.TabIndex = 46;
             this.label7.Text = "Tìm kiếm theo";
             // 
             // dtgv
@@ -91,12 +92,12 @@
             this.dtgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv.GridColor = System.Drawing.SystemColors.Control;
             this.dtgv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtgv.Location = new System.Drawing.Point(22, 179);
+            this.dtgv.Location = new System.Drawing.Point(25, 172);
             this.dtgv.Name = "dtgv";
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv.Size = new System.Drawing.Size(672, 274);
-            this.dtgv.TabIndex = 40;
+            this.dtgv.Size = new System.Drawing.Size(750, 237);
+            this.dtgv.TabIndex = 47;
             // 
             // cbx_option_search
             // 
@@ -110,26 +111,27 @@
             "Tên khoa",
             "Địa chỉ",
             "Điện thoại"});
-            this.cbx_option_search.Location = new System.Drawing.Point(215, 105);
+            this.cbx_option_search.Location = new System.Drawing.Point(218, 98);
             this.cbx_option_search.Name = "cbx_option_search";
             this.cbx_option_search.Size = new System.Drawing.Size(141, 25);
-            this.cbx_option_search.TabIndex = 37;
+            this.cbx_option_search.TabIndex = 44;
             // 
-            // btn_in
+            // label1
             // 
-            this.btn_in.Location = new System.Drawing.Point(709, 288);
-            this.btn_in.Name = "btn_in";
-            this.btn_in.Size = new System.Drawing.Size(75, 23);
-            this.btn_in.TabIndex = 41;
-            this.btn_in.Text = "IN";
-            this.btn_in.UseVisualStyleBackColor = true;
-            this.btn_in.Click += new System.EventHandler(this.btn_in_Click);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(69, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(653, 50);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "THỐNG KÊ ĐỘC GIẢ MƯỢN QUÁ HẠN";
             // 
             // frm_baocao_docgiamuonquahan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(796, 465);
             this.Controls.Add(this.btn_in);
             this.Controls.Add(this.label6);
@@ -150,12 +152,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_in;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_timkiem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dtgv;
         private System.Windows.Forms.ComboBox cbx_option_search;
-        private System.Windows.Forms.Button btn_in;
+        private System.Windows.Forms.Label label1;
     }
 }

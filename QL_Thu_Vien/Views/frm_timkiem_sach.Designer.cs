@@ -77,7 +77,7 @@
             this.dtgv.Name = "dtgv";
             this.dtgv.ReadOnly = true;
             this.dtgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv.Size = new System.Drawing.Size(845, 243);
+            this.dtgv.Size = new System.Drawing.Size(845, 262);
             this.dtgv.TabIndex = 41;
             // 
             // cbx_option_search
@@ -110,6 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1280, 490);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_timkiem);

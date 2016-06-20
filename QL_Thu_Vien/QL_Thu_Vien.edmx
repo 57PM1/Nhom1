@@ -118,22 +118,6 @@
           <Property Name="giatien" Type="bigint" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_nhanvien_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tbl_nhanvien_view">
-          <Key>
-            <PropertyRef Name="manv" />
-          </Key>
-          <Property Name="manv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tennv" Type="nvarchar" MaxLength="50" />
-          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
-          <Property Name="dienthoai" Type="varchar" MaxLength="11" />
-          <Property Name="email" Type="varchar" MaxLength="50" />
-          <Property Name="chucvu" Type="nvarchar" MaxLength="100" />
-          <Property Name="tuoi" Type="int" />
-          <Property Name="taikhoan" Type="varchar" MaxLength="50" />
-          <Property Name="matkhau" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_quahan_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbl_quahan_view">
           <Key>
@@ -458,19 +442,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <EntitySet Name="tbl_sach_tacgia" EntityType="Self.tbl_sach_tacgia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbl_nhanvien_view].[manv] AS [manv], 
-    [tbl_nhanvien_view].[tennv] AS [tennv], 
-    [tbl_nhanvien_view].[diachi] AS [diachi], 
-    [tbl_nhanvien_view].[dienthoai] AS [dienthoai], 
-    [tbl_nhanvien_view].[email] AS [email], 
-    [tbl_nhanvien_view].[chucvu] AS [chucvu], 
-    [tbl_nhanvien_view].[tuoi] AS [tuoi], 
-    [tbl_nhanvien_view].[taikhoan] AS [taikhoan], 
-    [tbl_nhanvien_view].[matkhau] AS [matkhau]
-    FROM [dbo].[tbl_nhanvien_view] AS [tbl_nhanvien_view]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tbl_quahan_view" EntityType="Self.tbl_quahan_view" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tbl_quahan_view].[madg] AS [madg], 
@@ -649,20 +620,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <Property Name="loaiphat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="giatien" Type="Int64" />
         </EntityType>
-        <EntityType Name="tbl_nhanvien_view">
-          <Key>
-            <PropertyRef Name="manv" />
-          </Key>
-          <Property Name="manv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tennv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="chucvu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="tuoi" Type="Int32" />
-          <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="tbl_quahan_view">
           <Key>
             <PropertyRef Name="madg" />
@@ -775,7 +732,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <EntitySet Name="tbl_sach" EntityType="Self.tbl_sach" />
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" />
-          <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" />
           <EntitySet Name="tbl_quahan_view" EntityType="Self.tbl_quahan_view" />
           <EntitySet Name="tbl_sachsaphet_view" EntityType="Self.tbl_sachsaphet_view" />
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
@@ -1121,21 +1077,6 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
                 <ScalarProperty Name="maphat" ColumnName="maphat" />
                 <ScalarProperty Name="loaiphat" ColumnName="loaiphat" />
                 <ScalarProperty Name="giatien" ColumnName="giatien" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_nhanvien_view">
-            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_nhanvien_view">
-              <MappingFragment StoreEntitySet="tbl_nhanvien_view">
-                <ScalarProperty Name="manv" ColumnName="manv" />
-                <ScalarProperty Name="tennv" ColumnName="tennv" />
-                <ScalarProperty Name="diachi" ColumnName="diachi" />
-                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="chucvu" ColumnName="chucvu" />
-                <ScalarProperty Name="tuoi" ColumnName="tuoi" />
-                <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
-                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

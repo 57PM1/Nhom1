@@ -37,7 +37,6 @@ namespace DoAnCNPM
         public virtual DbSet<tbl_sach> tbl_sach { get; set; }
         public virtual DbSet<tbl_tacgia> tbl_tacgia { get; set; }
         public virtual DbSet<tbl_xuphat> tbl_xuphat { get; set; }
-        public virtual DbSet<tbl_nhanvien_view> tbl_nhanvien_view { get; set; }
         public virtual DbSet<tbl_quahan_view> tbl_quahan_view { get; set; }
         public virtual DbSet<tbl_sachsaphet_view> tbl_sachsaphet_view { get; set; }
     

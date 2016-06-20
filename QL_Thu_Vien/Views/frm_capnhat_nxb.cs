@@ -321,9 +321,9 @@ namespace DoAnCNPM.Views
             else
             {
                 btn_xoa.Enabled = true;
-                btn_xoa.BackColor = Color.PowderBlue;
+                btn_xoa.BackColor = Color.Moccasin;
                 btn_sua.Enabled = true;
-                btn_sua.BackColor = Color.PowderBlue;
+                btn_sua.BackColor = Color.Moccasin;
             }
         }
 

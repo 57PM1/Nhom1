@@ -51,8 +51,27 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = dt.data;
                     break;
                 case Models.ErrorCode.sucess:
-                    dtgv.DataSource = dt.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
+                    var data = dt.data;
+                    //dtgv.DataSource = data;
+
+                    dtgv.Rows.Clear();
+
+                    dtgv.ColumnCount= 7;
+                    dtgv.Columns[0].HeaderText = "Mã ĐG";
+                    dtgv.Columns[1].HeaderText = "Tên ĐG";
+                    dtgv.Columns[2].HeaderText = "Ngày sinh";
+                    dtgv.Columns[3].HeaderText = "Giới tính";
+                    dtgv.Columns[4].HeaderText = "Lớp";
+                    dtgv.Columns[5].HeaderText = "Địa chỉ";
+                    dtgv.Columns[6].HeaderText = "Email";
+
+                    foreach (var item in data)
+                    {
+                        string[] row = new string[] { item.madocgia.ToString(), item.tendocgia, item.ngaysinh,  item.gioitinh, item.lop, item.diachi, item.email};
+                        dtgv.Rows.Add(row);
+                    }
+
+                    //Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
                     break;
                 case Models.ErrorCode.fail:
                     if (Utils.switch_false())
@@ -142,8 +161,28 @@ namespace DoAnCNPM.Views
                     dtgv.DataSource = temp.data;
                     break;
                 case ErrorCode.sucess:
-                    dtgv.DataSource = temp.data;
-                    Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
+                    //dtgv.DataSource = temp.data;
+                    // Utils.chang_title_datagridViewCell(dtgv, new List<string> { "Mã ĐG", "Tên ĐG", "Ngày sinh", "Giới tính", "Lớp", "Địa chỉ", "Email" });
+
+                    var data = temp.data;
+
+                    dtgv.Rows.Clear();
+
+                    dtgv.ColumnCount = 7;
+                    dtgv.Columns[0].HeaderText = "Mã ĐG";
+                    dtgv.Columns[1].HeaderText = "Tên ĐG";
+                    dtgv.Columns[2].HeaderText = "Ngày sinh";
+                    dtgv.Columns[3].HeaderText = "Giới tính";
+                    dtgv.Columns[4].HeaderText = "Lớp";
+                    dtgv.Columns[5].HeaderText = "Địa chỉ";
+                    dtgv.Columns[6].HeaderText = "Email";
+
+                    foreach (var item in data)
+                    {
+                        string[] row = new string[] { item.madocgia.ToString(), item.tendocgia, item.ngaysinh, item.gioitinh, item.lop, item.diachi, item.email };
+                        dtgv.Rows.Add(row);
+                    }
+
 
                     break;
                 case ErrorCode.fail:
