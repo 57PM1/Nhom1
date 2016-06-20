@@ -10,13 +10,17 @@
 namespace DoAnCNPM
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class tbl_so_luong_sach_view
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int masach { get; set; }
+        public string tensach { get; set; }
+        public Nullable<int> manxb { get; set; }
+        public Nullable<int> malv { get; set; }
+        public Nullable<int> sotrang { get; set; }
+        public Nullable<int> soluonghientai { get; set; }
+        public Nullable<int> soluongbandau { get; set; }
+        public string ngaynhap { get; set; }
     }
 }

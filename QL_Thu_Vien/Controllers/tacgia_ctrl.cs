@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DoAnCNPM.Controllers
 {
@@ -114,6 +115,34 @@ namespace DoAnCNPM.Controllers
             }
         }
 
+        public string select_tentacgia(int matg)
+        {
+            try
+            {
+
+
+                var dt = db.tbl_tacgia.Where(o => o.matg == matg);
+
+
+                if (dt.Count() > 0)
+                {
+                    foreach (tbl_tacgia item in dt)
+                    {
+                        tacgia_ett temp = new tacgia_ett(item);
+                        return temp.tentacgia;
+                    }
+                    
+                }
+                return null;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Lỗi");
+                return null;
+            }
+        }
+
         public Result<List<tacgia_ett>> select_tacgia_fields(string input, string howtosearch)
         {
             Result<List<tacgia_ett>> rs = new Result<List<tacgia_ett>>();
@@ -125,6 +154,9 @@ namespace DoAnCNPM.Controllers
                 {
                     case "tentg":
                         dt = db.tbl_tacgia.SqlQuery(string.Format("Select * from tbl_tacgia where tentg like '%{0}%'", input));
+                        break;
+                    case "matg":
+                        dt = db.tbl_tacgia.SqlQuery(string.Format("Select * from tbl_tacgia where matg = '%{0}%'", input));
                         break;
                     default:
                         break;

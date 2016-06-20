@@ -240,12 +240,13 @@ namespace DoAnCNPM.Views
             }
             foreach (var item in lst_tacgias)
             {
-                if(item.matacgia.ToString() == cbx_tacgias.SelectedValue.ToString())
+                if(item.matacgia.ToString() == cbx_tacgias.DisplayMember)
                 {
                     return;
                 }
             }
-            lst_tacgias.Add(new tacgia_ett(int.Parse(cbx_tacgias.SelectedValue.ToString()), cbx_tacgias.GetItemText(cbx_tacgias.SelectedItem)));
+            tacgia_ctrl tacgia_con = new tacgia_ctrl();
+            lst_tacgias.Add(new tacgia_ett(int.Parse(cbx_tacgias.SelectedValue.ToString()), tacgia_con.select_tentacgia(int.Parse(cbx_tacgias.SelectedValue.ToString()))));
 
             //update listview from list of tacgia
             lst_tacgia_rs.Items.Clear();

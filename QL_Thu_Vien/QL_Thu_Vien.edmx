@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_Thu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -160,6 +160,21 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <Property Name="tenlinhvuc" Type="nvarchar" MaxLength="100" />
           <Property Name="tennxb" Type="nvarchar" MaxLength="100" />
           <Property Name="soluonghientai" Type="int" />
+          <Property Name="ngaynhap" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_so_luong_sach_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_so_luong_sach_view">
+          <Key>
+            <PropertyRef Name="masach" />
+          </Key>
+          <Property Name="masach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tensach" Type="nvarchar" MaxLength="100" />
+          <Property Name="manxb" Type="int" />
+          <Property Name="malv" Type="int" />
+          <Property Name="sotrang" Type="int" />
+          <Property Name="soluonghientai" Type="int" />
+          <Property Name="soluongbandau" Type="int" />
           <Property Name="ngaynhap" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
@@ -494,6 +509,18 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
     [tbl_sachsaphet_view].[ngaynhap] AS [ngaynhap]
     FROM [dbo].[tbl_sachsaphet_view] AS [tbl_sachsaphet_view]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tbl_so_luong_sach_view" EntityType="Self.tbl_so_luong_sach_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_so_luong_sach_view].[masach] AS [masach], 
+    [tbl_so_luong_sach_view].[tensach] AS [tensach], 
+    [tbl_so_luong_sach_view].[manxb] AS [manxb], 
+    [tbl_so_luong_sach_view].[malv] AS [malv], 
+    [tbl_so_luong_sach_view].[sotrang] AS [sotrang], 
+    [tbl_so_luong_sach_view].[soluonghientai] AS [soluonghientai], 
+    [tbl_so_luong_sach_view].[soluongbandau] AS [soluongbandau], 
+    [tbl_so_luong_sach_view].[ngaynhap] AS [ngaynhap]
+    FROM [dbo].[tbl_so_luong_sach_view] AS [tbl_so_luong_sach_view]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -527,8 +554,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <End Role="tbl_sach_tacgia" EntitySet="tbl_sach_tacgia" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_Thu_VienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -664,29 +690,17 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_quahan_view">
-          <Key>
-            <PropertyRef Name="madg" />
-          </Key>
-          <Property Name="madg" Type="Int32" Nullable="false" />
-          <Property Name="tendg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ngaysinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="gioitinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ngaymuon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ngaytra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tbl_sachsaphet_view">
+        <EntityType Name="tbl_so_luong_sach_view">
           <Key>
             <PropertyRef Name="masach" />
           </Key>
-          <Property Name="masach" Type="Int32" Nullable="false" />
+          <Property Name="masach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="tenlinhvuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="tennxb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="manxb" Type="Int32" />
+          <Property Name="malv" Type="Int32" />
+          <Property Name="sotrang" Type="Int32" />
           <Property Name="soluonghientai" Type="Int32" />
+          <Property Name="soluongbandau" Type="Int32" />
           <Property Name="ngaynhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__tbl_chiti__masac__239E4DCF">
@@ -777,8 +791,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <EntitySet Name="tbl_tacgia" EntityType="Self.tbl_tacgia" />
           <EntitySet Name="tbl_xuphat" EntityType="Self.tbl_xuphat" />
           <EntitySet Name="tbl_nhanvien_view" EntityType="Self.tbl_nhanvien_view" />
-          <EntitySet Name="tbl_quahan_view" EntityType="Self.tbl_quahan_view" />
-          <EntitySet Name="tbl_sachsaphet_view" EntityType="Self.tbl_sachsaphet_view" />
+          <EntitySet Name="tbl_so_luong_sach_view" EntityType="Self.tbl_so_luong_sach_view" />
           <AssociationSet Name="FK__tbl_chiti__masac__239E4DCF" Association="Self.FK__tbl_chiti__masac__239E4DCF">
             <End Role="tbl_sach" EntitySet="tbl_sach" />
             <End Role="tbl_chitietphieu" EntitySet="tbl_chitietphieu" />
@@ -812,31 +825,31 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_DocGia">
-            <Parameter Name="madg" Mode="In" Type="Int32" />
+          <Parameter Name="madg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_LinhVuc">
-            <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
+          <Parameter Name="malinhvuc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NhanVien">
-            <Parameter Name="manv" Mode="In" Type="Int32" />
+          <Parameter Name="manv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_NXB">
-            <Parameter Name="manxb" Mode="In" Type="Int32" />
+          <Parameter Name="manxb" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_PhieuMuonTra">
-            <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
+          <Parameter Name="sophieumuon" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_Sach">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
+          <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_Sach_Tacgia">
-            <Parameter Name="masach" Mode="In" Type="Int32" />
+          <Parameter Name="masach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_TacGia">
-            <Parameter Name="matacgia" Mode="In" Type="Int32" />
+          <Parameter Name="matacgia" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Delete_XuPhat">
-            <Parameter Name="maphat" Mode="In" Type="Int32" />
+          <Parameter Name="maphat" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Edit_DocGia">
             <Parameter Name="tendg" Mode="In" Type="String" />
@@ -861,7 +874,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_LinhVuc">
-            <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
+          <Parameter Name="tenlinhvuc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_NhanVien">
             <Parameter Name="tennv" Mode="In" Type="String" />
@@ -895,7 +908,7 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="ngaynhap" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_Sach_Tacgia">
-            <Parameter Name="matg" Mode="In" Type="Int32" />
+          <Parameter Name="matg" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_Insert_TacGia">
             <Parameter Name="tentacgia" Mode="In" Type="String" />
@@ -980,11 +993,11 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QL_Thu_VienModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QL_Thu_VienModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -994,6 +1007,8 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tbl_quahan_view" EntityType="QL_Thu_VienModel.tbl_quahan_view" />
+          <EntitySet Name="tbl_sachsaphet_view" EntityType="QL_Thu_VienModel.tbl_sachsaphet_view" />
         </EntityContainer>
         <ComplexType Name="select_admin_Result">
           <Property Type="Int32" Name="manv" Nullable="false" />
@@ -1006,17 +1021,31 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <Property Type="String" Name="taikhoan" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="matkhau" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
+        <EntityType Name="tbl_quahan_view">
+          <Key>
+            <PropertyRef Name="madg" />
+          </Key>
+          <Property Name="madg" Type="Int32" Nullable="false" />
+          <Property Name="tendg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaysinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gioitinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ngaymuon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ngaytra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_sachsaphet_view">
+          <Key>
+            <PropertyRef Name="masach" />
+          </Key>
+          <Property Name="masach" Type="Int32" Nullable="false" />
+          <Property Name="tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tenlinhvuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tennxb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="soluonghientai" Type="Int32" />
+          <Property Name="ngaynhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1151,29 +1180,16 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_quahan_view">
-            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_quahan_view">
-              <MappingFragment StoreEntitySet="tbl_quahan_view">
-                <ScalarProperty Name="madg" ColumnName="madg" />
-                <ScalarProperty Name="tendg" ColumnName="tendg" />
-                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-                <ScalarProperty Name="lop" ColumnName="lop" />
-                <ScalarProperty Name="diachi" ColumnName="diachi" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="ngaymuon" ColumnName="ngaymuon" />
-                <ScalarProperty Name="ngaytra" ColumnName="ngaytra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_sachsaphet_view">
-            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_sachsaphet_view">
-              <MappingFragment StoreEntitySet="tbl_sachsaphet_view">
+          <EntitySetMapping Name="tbl_so_luong_sach_view">
+            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_so_luong_sach_view">
+              <MappingFragment StoreEntitySet="tbl_so_luong_sach_view">
                 <ScalarProperty Name="masach" ColumnName="masach" />
                 <ScalarProperty Name="tensach" ColumnName="tensach" />
-                <ScalarProperty Name="tenlinhvuc" ColumnName="tenlinhvuc" />
-                <ScalarProperty Name="tennxb" ColumnName="tennxb" />
+                <ScalarProperty Name="manxb" ColumnName="manxb" />
+                <ScalarProperty Name="malv" ColumnName="malv" />
+                <ScalarProperty Name="sotrang" ColumnName="sotrang" />
                 <ScalarProperty Name="soluonghientai" ColumnName="soluonghientai" />
+                <ScalarProperty Name="soluongbandau" ColumnName="soluongbandau" />
                 <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1233,27 +1249,37 @@ warning 6002: The table/view 'QL_Thu_Vien.dbo.tbl_sachsaphet_view' does not have
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QL_Thu_VienModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QL_Thu_VienModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QL_Thu_VienModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_Thu_VienModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QL_Thu_VienModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QL_Thu_VienModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QL_Thu_VienModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QL_Thu_VienModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tbl_quahan_view">
+            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_quahan_view">
+              <MappingFragment StoreEntitySet="tbl_quahan_view">
+                <ScalarProperty Name="ngaytra" ColumnName="ngaytra" />
+                <ScalarProperty Name="ngaymuon" ColumnName="ngaymuon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="lop" ColumnName="lop" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="tendg" ColumnName="tendg" />
+                <ScalarProperty Name="madg" ColumnName="madg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_sachsaphet_view">
+            <EntityTypeMapping TypeName="QL_Thu_VienModel.tbl_sachsaphet_view">
+              <MappingFragment StoreEntitySet="tbl_sachsaphet_view">
+                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+                <ScalarProperty Name="soluonghientai" ColumnName="soluonghientai" />
+                <ScalarProperty Name="tennxb" ColumnName="tennxb" />
+                <ScalarProperty Name="tenlinhvuc" ColumnName="tenlinhvuc" />
+                <ScalarProperty Name="tensach" ColumnName="tensach" />
+                <ScalarProperty Name="masach" ColumnName="masach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

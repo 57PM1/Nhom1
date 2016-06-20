@@ -267,47 +267,47 @@ namespace DoAnCNPM.Controllers
             Result<bool> rs = new Result<bool>();
             try
             {
-                // find the only row to edit
-                var dt = db.tbl_sach.Where(o => o.masach == sach.masach).SingleOrDefault();
-                // if fields are null or "" then maintaining the old data;
-                if (sach.tensach != null && sach.tensach != "")
-                {
-                    dt.tensach = sach.tensach;
-                }
-
-                if (sach.manxb != null)
-                {
-                    dt.manxb = sach.manxb;
-                }
-                if (sach.malv != null)
-                {
-                    dt.malv = sach.malv;
-                }
-                if (sach.soluonghientai != null)
-                {
-                    dt.soluonghientai = sach.soluonghientai;
-                }
-                if (sach.soluonghientai != null)
-                {
-                    dt.soluongbandau = sach.soluongbandau;
-                }
-                if (sach.sotrang != null)
-                {
-                    dt.sotrang = sach.sotrang;
-                }
-                if (sach.ngaynhap != null || sach.ngaynhap != "")
-                {
-                    dt.ngaynhap = sach.ngaynhap;
-                }
-
-                db.SaveChanges();
-                //QL_Thu_VienEntities db2 = new QL_Thu_VienEntities();
-                //db2.Proc_Update_Sach(sach.masach, sach.tensach, sach.manxb, sach.malv, sach.sotrang, sach.soluonghientai, sach.soluongbandau, sach.ngaynhap);
-                ////db2.Proc_Delete_Sach_Tacgia(sach.masach);
-                //foreach (var item in tacgias)
+                //// find the only row to edit
+                //var dt = db.tbl_sach.Where(o => o.masach == sach.masach).SingleOrDefault();
+                //// if fields are null or "" then maintaining the old data;
+                //if (sach.tensach != null && sach.tensach != "")
                 //{
-                //    //  db2.Proc_Update_Sach_Tacgia(sach.masach, item.matacgia);
+                //    dt.tensach = sach.tensach;
                 //}
+
+                //if (sach.manxb != null)
+                //{
+                //    dt.manxb = sach.manxb;
+                //}
+                //if (sach.malv != null)
+                //{
+                //    dt.malv = sach.malv;
+                //}
+                //if (sach.soluonghientai != null)
+                //{
+                //    dt.soluonghientai = sach.soluonghientai;
+                //}
+                //if (sach.soluonghientai != null)
+                //{
+                //    dt.soluongbandau = sach.soluongbandau;
+                //}
+                //if (sach.sotrang != null)
+                //{
+                //    dt.sotrang = sach.sotrang;
+                //}
+                //if (sach.ngaynhap != null || sach.ngaynhap != "")
+                //{
+                //    dt.ngaynhap = sach.ngaynhap;
+                //}
+
+                //db.SaveChanges();
+                QL_Thu_VienEntities db2 = new QL_Thu_VienEntities();
+                db2.Proc_Update_Sach(sach.masach, sach.tensach, sach.manxb, sach.malv, sach.sotrang, sach.soluonghientai, sach.soluongbandau, sach.ngaynhap);
+                db2.Proc_Delete_Sach_Tacgia(sach.masach);
+                foreach (var item in tacgias)
+                {
+                    db2.Proc_Update_Sach_Tacgia(sach.masach, item.matacgia);
+                }
                 rs.data = true;
                 rs.errcode = ErrorCode.sucess;
                 return rs;
