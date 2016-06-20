@@ -215,8 +215,8 @@ namespace DoAnCNPM.Views
                 cbx_linhvuc.Text = temp.Cells[3].Value.ToString();
                 cbx_nxb.Text = temp.Cells[2].Value.ToString();
                 txt_sotrang.Text = temp.Cells[4].Value.ToString();
-                txt_slbd.Text = temp.Cells[5].Value.ToString();
-                txt_slht.Text = temp.Cells[6].Value.ToString();
+                txt_slht.Text = temp.Cells[5].Value.ToString();
+                txt_slbd.Text = temp.Cells[6].Value.ToString();
                 var ngaynhap = temp.Cells[7].Value.ToString();
                 dtpk_ngaynhap.Value = DateTime.ParseExact(ngaynhap, "dd/MM/yyyy", null);
                 lst_tacgias=sach_ctrl.select_tacgia(txt_masach.Text.ToString()).data;

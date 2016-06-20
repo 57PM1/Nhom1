@@ -367,20 +367,20 @@
             // txt_slht
             // 
             this.txt_slht.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_slht.Location = new System.Drawing.Point(349, 129);
+            this.txt_slht.Location = new System.Drawing.Point(91, 129);
             this.txt_slht.Multiline = true;
             this.txt_slht.Name = "txt_slht";
-            this.txt_slht.Size = new System.Drawing.Size(152, 25);
-            this.txt_slht.TabIndex = 6;
+            this.txt_slht.Size = new System.Drawing.Size(116, 25);
+            this.txt_slht.TabIndex = 2;
             // 
             // txt_slbd
             // 
             this.txt_slbd.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_slbd.Location = new System.Drawing.Point(94, 129);
+            this.txt_slbd.Location = new System.Drawing.Point(349, 129);
             this.txt_slbd.Multiline = true;
             this.txt_slbd.Name = "txt_slbd";
-            this.txt_slbd.Size = new System.Drawing.Size(115, 25);
-            this.txt_slbd.TabIndex = 2;
+            this.txt_slbd.Size = new System.Drawing.Size(157, 25);
+            this.txt_slbd.TabIndex = 6;
             // 
             // txt_sotrang
             // 
