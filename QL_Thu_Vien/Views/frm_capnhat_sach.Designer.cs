@@ -164,9 +164,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(469, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(321, 42);
+            this.label1.Size = new System.Drawing.Size(296, 42);
             this.label1.TabIndex = 51;
-            this.label1.Text = "CẬP NHẬT SÁCH";
+            this.label1.Text = "QUẢN LÝ SÁCH";
             // 
             // lst_tacgia_rs
             // 

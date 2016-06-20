@@ -309,9 +309,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(413, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(379, 42);
+            this.label4.Size = new System.Drawing.Size(354, 42);
             this.label4.TabIndex = 1;
-            this.label4.Text = "CẬP NHẬT XỬ PHẠT";
+            this.label4.Text = "QUẢN LÝ XỬ PHẠT";
             // 
             // frm_capnhat_xuphat
             // 

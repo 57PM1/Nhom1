@@ -492,9 +492,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(429, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(419, 42);
+            this.label1.Size = new System.Drawing.Size(394, 42);
             this.label1.TabIndex = 37;
-            this.label1.Text = "CẬP NHẬT NHÂN VIÊN";
+            this.label1.Text = "QUẢN LÝ NHÂN VIÊN";
             // 
             // frm_capnhat_nhanvien
             // 

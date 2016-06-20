@@ -340,9 +340,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(405, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(493, 42);
+            this.label1.Size = new System.Drawing.Size(468, 42);
             this.label1.TabIndex = 37;
-            this.label1.Text = "CẬP NHẬT NHÀ XUẤT BẢN";
+            this.label1.Text = "QUẢN LÝ NHÀ XUẤT BẢN";
             // 
             // txt_manhaxuatban
             // 

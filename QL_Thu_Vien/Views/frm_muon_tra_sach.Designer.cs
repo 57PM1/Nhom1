@@ -146,11 +146,11 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(465, 19);
+            this.label1.Location = new System.Drawing.Point(366, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(331, 42);
+            this.label1.Size = new System.Drawing.Size(515, 42);
             this.label1.TabIndex = 47;
-            this.label1.Text = "MƯỢN TRẢ SÁCH";
+            this.label1.Text = "QUẢN LÝ MƯỢN /TRẢ SÁCH";
             // 
             // label2
             // 

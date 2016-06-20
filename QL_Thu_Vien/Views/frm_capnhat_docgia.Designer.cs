@@ -395,9 +395,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(419, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(373, 42);
+            this.label1.Size = new System.Drawing.Size(348, 42);
             this.label1.TabIndex = 30;
-            this.label1.Text = "CẬP NHẬT ĐỘC GIẢ";
+            this.label1.Text = "QUẢN LÝ ĐỘC GIẢ";
             // 
             // frm_capnhat_docgia
             // 

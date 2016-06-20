@@ -40,9 +40,7 @@
             this.btn_them = new System.Windows.Forms.Button();
             this.cbx_gioitinh = new System.Windows.Forms.ComboBox();
             this.txt_diachi = new System.Windows.Forms.TextBox();
-            this.txt_matacgia = new System.Windows.Forms.TextBox();
             this.txt_tentacgia = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,6 +48,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cbx_option_search = new System.Windows.Forms.ComboBox();
             this.dtgv = new System.Windows.Forms.DataGridView();
+            this.txt_matacgia = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -236,18 +236,6 @@
             this.txt_diachi.Size = new System.Drawing.Size(264, 62);
             this.txt_diachi.TabIndex = 5;
             // 
-            // txt_matacgia
-            // 
-            this.txt_matacgia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_matacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_matacgia.Location = new System.Drawing.Point(72, 55);
-            this.txt_matacgia.Name = "txt_matacgia";
-            this.txt_matacgia.ReadOnly = true;
-            this.txt_matacgia.Size = new System.Drawing.Size(149, 25);
-            this.txt_matacgia.TabIndex = 1;
-            this.txt_matacgia.Visible = false;
-            this.txt_matacgia.TextChanged += new System.EventHandler(this.txt_matacgia_TextChanged);
-            // 
             // txt_tentacgia
             // 
             this.txt_tentacgia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -256,18 +244,6 @@
             this.txt_tentacgia.Name = "txt_tentacgia";
             this.txt_tentacgia.Size = new System.Drawing.Size(264, 25);
             this.txt_tentacgia.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(11, 58);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Mã TG";
-            this.label5.Visible = false;
             // 
             // label
             // 
@@ -358,6 +334,30 @@
             this.dtgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             this.dtgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_CellClick);
             // 
+            // txt_matacgia
+            // 
+            this.txt_matacgia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_matacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_matacgia.Location = new System.Drawing.Point(72, 55);
+            this.txt_matacgia.Name = "txt_matacgia";
+            this.txt_matacgia.ReadOnly = true;
+            this.txt_matacgia.Size = new System.Drawing.Size(149, 25);
+            this.txt_matacgia.TabIndex = 1;
+            this.txt_matacgia.Visible = false;
+            this.txt_matacgia.TextChanged += new System.EventHandler(this.txt_matacgia_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label5.Location = new System.Drawing.Point(11, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Mã TG";
+            this.label5.Visible = false;
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -365,9 +365,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(436, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(365, 42);
+            this.label1.Size = new System.Drawing.Size(340, 42);
             this.label1.TabIndex = 35;
-            this.label1.Text = "CẬP NHẬT TÁC GIẢ";
+            this.label1.Text = "QUẢN LÝ TÁC GIẢ";
             // 
             // frm_capnhat_tacgia
             // 
