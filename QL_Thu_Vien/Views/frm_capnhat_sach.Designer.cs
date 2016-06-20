@@ -86,7 +86,7 @@
             this.dtpk_ngaynhap.Location = new System.Drawing.Point(349, 169);
             this.dtpk_ngaynhap.Name = "dtpk_ngaynhap";
             this.dtpk_ngaynhap.Size = new System.Drawing.Size(158, 25);
-            this.dtpk_ngaynhap.TabIndex = 13;
+            this.dtpk_ngaynhap.TabIndex = 7;
             this.dtpk_ngaynhap.Value = new System.DateTime(2015, 11, 20, 17, 0, 0, 0);
             // 
             // cbx_linhvuc
@@ -122,7 +122,7 @@
             this.btn_thoat.Location = new System.Drawing.Point(426, 248);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(75, 59);
-            this.btn_thoat.TabIndex = 12;
+            this.btn_thoat.TabIndex = 14;
             this.btn_thoat.UseVisualStyleBackColor = false;
             this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
             // 
@@ -137,7 +137,7 @@
             this.btn_huy.Location = new System.Drawing.Point(346, 248);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(75, 59);
-            this.btn_huy.TabIndex = 11;
+            this.btn_huy.TabIndex = 13;
             this.btn_huy.UseVisualStyleBackColor = false;
             this.btn_huy.Click += new System.EventHandler(this.btn_huy_Click);
             // 
@@ -152,7 +152,7 @@
             this.btn_luu.Location = new System.Drawing.Point(263, 248);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(75, 59);
-            this.btn_luu.TabIndex = 7;
+            this.btn_luu.TabIndex = 12;
             this.btn_luu.UseVisualStyleBackColor = false;
             this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);
             // 
@@ -223,7 +223,7 @@
             this.cbx_tacgias.Location = new System.Drawing.Point(355, 95);
             this.cbx_tacgias.Name = "cbx_tacgias";
             this.cbx_tacgias.Size = new System.Drawing.Size(158, 21);
-            this.cbx_tacgias.TabIndex = 48;
+            this.cbx_tacgias.TabIndex = 8;
             // 
             // label11
             // 
@@ -247,7 +247,7 @@
             this.btn_xoa.Location = new System.Drawing.Point(177, 248);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(75, 59);
-            this.btn_xoa.TabIndex = 10;
+            this.btn_xoa.TabIndex = 11;
             this.btn_xoa.UseVisualStyleBackColor = false;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
@@ -272,7 +272,7 @@
             this.btn_sua.Location = new System.Drawing.Point(94, 248);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(75, 59);
-            this.btn_sua.TabIndex = 9;
+            this.btn_sua.TabIndex = 10;
             this.btn_sua.UseVisualStyleBackColor = false;
             this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
@@ -281,6 +281,7 @@
             this.dtgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv.GridColor = System.Drawing.SystemColors.Control;
             this.dtgv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -299,7 +300,7 @@
             this.txt_timkiem.Location = new System.Drawing.Point(741, 95);
             this.txt_timkiem.Name = "txt_timkiem";
             this.txt_timkiem.Size = new System.Drawing.Size(219, 25);
-            this.txt_timkiem.TabIndex = 43;
+            this.txt_timkiem.TabIndex = 15;
             this.txt_timkiem.TextChanged += new System.EventHandler(this.txt_timkiem_TextChanged);
             // 
             // label7
@@ -359,7 +360,7 @@
             this.btn_them.Location = new System.Drawing.Point(11, 248);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(75, 59);
-            this.btn_them.TabIndex = 8;
+            this.btn_them.TabIndex = 9;
             this.btn_them.UseVisualStyleBackColor = false;
             this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
@@ -379,7 +380,7 @@
             this.txt_slbd.Multiline = true;
             this.txt_slbd.Name = "txt_slbd";
             this.txt_slbd.Size = new System.Drawing.Size(115, 25);
-            this.txt_slbd.TabIndex = 6;
+            this.txt_slbd.TabIndex = 2;
             // 
             // txt_sotrang
             // 

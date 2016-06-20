@@ -370,6 +370,10 @@ namespace DoAnCNPM.Views
                 dtpk_ngaymuon.Enabled = false;
 
             }
+
+
+            btn_sua.Visible = true;
+            btn_xoa.Visible = true;
         }
 
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
@@ -558,6 +562,10 @@ namespace DoAnCNPM.Views
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
+
+            btn_sua.Visible = false;
+            btn_xoa.Visible = false;
+
             ResetAction();
         }
 
@@ -672,7 +680,6 @@ namespace DoAnCNPM.Views
             cbx_docgia.Focus();
             option = Option.Insert;
             btn_sua.Enabled = btn_xoa.Enabled = btn_luu.Enabled = true;
-
 
             Hide_So_Tien_Phat();
             load_data();
