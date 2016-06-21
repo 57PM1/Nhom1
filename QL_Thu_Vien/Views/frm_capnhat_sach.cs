@@ -92,8 +92,8 @@ namespace DoAnCNPM.Views
             dtpk_ngaynhap.Enabled = false;
             cbx_tacgias.Enabled = false; 
             btn_them_slht.Visible = false;
-            btn_xoa.Visible = false;
-            btn_sua.Visible = false;
+            btn_xoa.Enabled = false;
+            btn_sua.Enabled = false;
         }
 
 
@@ -228,6 +228,8 @@ namespace DoAnCNPM.Views
                     lst_tacgia_rs.Items.Add(row);
                 }
             }
+
+            btn_sua.Visible = btn_xoa.Visible = true;
         }
 
 
@@ -467,14 +469,14 @@ namespace DoAnCNPM.Views
         {
             if (txt_masach.Text == null || txt_masach.Text == "")
             {
-                btn_xoa.Visible = false;
-                btn_sua.Visible = false;
+                btn_xoa.Enabled = false;
+                btn_sua.Enabled = false;
                 btn_them_slht.Visible = false;
             }
             else
             {
-                btn_xoa.Visible = true;
-                btn_sua.Visible = true;
+                btn_xoa.Enabled = true;
+                btn_sua.Enabled = true;
                 btn_them_slht.Visible = true;
             }
 

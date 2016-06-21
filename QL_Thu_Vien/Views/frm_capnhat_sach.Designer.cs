@@ -249,6 +249,7 @@
             this.btn_xoa.Size = new System.Drawing.Size(75, 59);
             this.btn_xoa.TabIndex = 11;
             this.btn_xoa.UseVisualStyleBackColor = false;
+            this.btn_xoa.Visible = false;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_xoa_tacgia
@@ -274,6 +275,7 @@
             this.btn_sua.Size = new System.Drawing.Size(75, 59);
             this.btn_sua.TabIndex = 10;
             this.btn_sua.UseVisualStyleBackColor = false;
+            this.btn_sua.Visible = false;
             this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // dtgv

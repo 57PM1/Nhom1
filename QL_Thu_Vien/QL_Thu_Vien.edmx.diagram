@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="681e91730f314e6894c790bb368b4c87" Name="Diagram1">
+      <Diagram DiagramId="44f817f0129c4c528a4ce05c55a0dcb1" Name="Diagram1">
         <EntityTypeShape EntityType="QL_Thu_VienModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_chitietphieu" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_docgia" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
@@ -15,8 +15,8 @@
         <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_sach" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_tacgia" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_xuphat" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_nhanvien_view" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_so_luong_sach_view" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_quahan_view" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_sachsaphet_view" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_chiti__masac__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_chiti__sophi__22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_phieum__madg__1ED998B2" ManuallyRouted="false" />
@@ -24,8 +24,6 @@
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_phieum__manv__1FCDBCEB" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.FK__tbl_sach__manxb__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="QL_Thu_VienModel.tbl_sach_tacgia" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_quahan_view" Width="1.5" PointX="10.375" PointY="5.75" />
-        <EntityTypeShape EntityType="QL_Thu_VienModel.tbl_sachsaphet_view" Width="1.5" PointX="10.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

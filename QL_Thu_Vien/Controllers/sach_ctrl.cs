@@ -382,7 +382,8 @@ namespace DoAnCNPM.Controllers
                 switch (howtosearch)
                 {
                     case "tensach":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where tensach like '%" + input + "%'");
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where tensach like N'%" + input + "%'");
+                       // dt = db.tbl_sach.Where(o => o.tensach.Contains(input));
                         break;
                     case "tacgia":
                         //dt = db.tbl_sach.SqlQuery("select * from tbl_sach where masach= (select masach from tbl_sach_tacgia where matg=(select top 1 matg from tbl_tacgia where tentg like '%"+input+"%'))"); 
@@ -409,10 +410,10 @@ namespace DoAnCNPM.Controllers
                         }
                         break;
                     case "linhvuc":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where malv=(select top 1 malv from tbl_linhvuc where tenlinhvuc like '%" + input + "%')");
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where malv=(select top 1 malv from tbl_linhvuc where tenlinhvuc like N'%" + input + "%')");
                         break;
                     case "nxb":
-                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where manxb=(select top 1 manxb from tbl_nxb where tennxb like '%" + input + "%')");
+                        dt = db.tbl_sach.SqlQuery("select * from tbl_sach where manxb=(select top 1 manxb from tbl_nxb where tennxb like N'%" + input + "%')");
                         break;
                     default:
                         break;

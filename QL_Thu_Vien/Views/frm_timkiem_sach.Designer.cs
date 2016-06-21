@@ -101,6 +101,7 @@
             this.cbx_option_search.Name = "cbx_option_search";
             this.cbx_option_search.Size = new System.Drawing.Size(110, 25);
             this.cbx_option_search.TabIndex = 38;
+            this.cbx_option_search.SelectedIndexChanged += new System.EventHandler(this.cbx_option_search_SelectedIndexChanged);
             // 
             // label1
             // 

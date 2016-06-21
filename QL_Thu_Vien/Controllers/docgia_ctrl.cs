@@ -197,13 +197,13 @@ namespace DoAnCNPM.Controllers
                 switch (howtosearch)
                 {
                     case "hoten":
-                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where tendg like '%" + input + "%'");
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where tendg like N'%" + input + "%'");
                         break;
                     case "lop":
-                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where lop like '%" + input + "%'");
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where lop like N'%" + input + "%'");
                         break;
                     case "email":
-                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where email like '%" + input + "%'");
+                        dt = db.tbl_docgia.SqlQuery("select * from tbl_docgia where email like N'%" + input + "%'");
                         break;
                     default:
                         break;

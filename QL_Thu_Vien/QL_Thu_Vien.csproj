@@ -159,9 +159,6 @@
     <Compile Include="tbl_nhanvien.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_nhanvien_view.cs">
-      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_nxb.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
@@ -175,9 +172,6 @@
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_sachsaphet_view.cs">
-      <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_so_luong_sach_view.cs">
       <DependentUpon>QL_Thu_Vien.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_tacgia.cs">

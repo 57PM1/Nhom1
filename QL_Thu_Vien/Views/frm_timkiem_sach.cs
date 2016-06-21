@@ -92,5 +92,10 @@ namespace DoAnCNPM.Views
         {
 
         }
+
+        private void cbx_option_search_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
