@@ -62,7 +62,7 @@
             // 
             this.cbx_option.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbx_option.FormattingEnabled = true;
-            this.cbx_option.Location = new System.Drawing.Point(75, 21);
+            this.cbx_option.Location = new System.Drawing.Point(81, 23);
             this.cbx_option.Name = "cbx_option";
             this.cbx_option.Size = new System.Drawing.Size(121, 21);
             this.cbx_option.TabIndex = 1;
@@ -73,7 +73,7 @@
             this.cbx_month.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbx_month.BackColor = System.Drawing.SystemColors.Window;
             this.cbx_month.FormattingEnabled = true;
-            this.cbx_month.Location = new System.Drawing.Point(253, 24);
+            this.cbx_month.Location = new System.Drawing.Point(290, 24);
             this.cbx_month.Name = "cbx_month";
             this.cbx_month.Size = new System.Drawing.Size(69, 21);
             this.cbx_month.TabIndex = 2;
@@ -83,9 +83,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 27);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(225, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tháng";
             // 
@@ -93,9 +94,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 24);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(69, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Lựa chọn";
             // 
@@ -104,9 +106,9 @@
             this.cbx_year.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbx_year.BackColor = System.Drawing.SystemColors.Window;
             this.cbx_year.FormattingEnabled = true;
-            this.cbx_year.Location = new System.Drawing.Point(377, 26);
+            this.cbx_year.Location = new System.Drawing.Point(427, 24);
             this.cbx_year.Name = "cbx_year";
-            this.cbx_year.Size = new System.Drawing.Size(69, 21);
+            this.cbx_year.Size = new System.Drawing.Size(92, 21);
             this.cbx_year.TabIndex = 2;
             this.cbx_year.SelectedIndexChanged += new System.EventHandler(this.cbx_year_SelectedIndexChanged);
             // 
@@ -114,9 +116,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(333, 29);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(380, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Năm";
             // 
@@ -125,10 +128,10 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(892, 505);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(881, 500);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
+            this.label4.Size = new System.Drawing.Size(80, 21);
             this.label4.TabIndex = 4;
             this.label4.Text = "Tổng tiền";
             // 
@@ -164,9 +167,9 @@
             this.groupBox1.Controls.Add(this.cbx_year);
             this.groupBox1.Controls.Add(this.cbx_month);
             this.groupBox1.Controls.Add(this.cbx_option);
-            this.groupBox1.Location = new System.Drawing.Point(328, 94);
+            this.groupBox1.Location = new System.Drawing.Point(255, 94);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 69);
+            this.groupBox1.Size = new System.Drawing.Size(544, 69);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 

@@ -425,9 +425,9 @@ namespace DoAnCNPM.Views
             else
             {
                 btn_xoa.Enabled = true;
-                btn_xoa.BackColor = Color.PowderBlue;
+                btn_xoa.BackColor = Color.Moccasin;
                 btn_sua.Enabled = true;
-                btn_sua.BackColor = Color.PowderBlue;
+                btn_sua.BackColor = Color.Moccasin;
             }
         }
 
@@ -452,6 +452,11 @@ namespace DoAnCNPM.Views
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

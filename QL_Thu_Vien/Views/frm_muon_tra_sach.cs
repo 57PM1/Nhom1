@@ -45,8 +45,9 @@ namespace DoAnCNPM.Views
             dtgv_sachmuon.Enabled = false;
             dtpk_ngaymuon.Enabled = false;
             dtpk_ngaytra.Enabled = false;
-            btn_xoa.Visible = false;
-            btn_sua.Visible = false;
+            //btn_xoa.Visible = false;
+            //btn_sua.Visible = false;
+            btn_xoa.Enabled = btn_sua.Enabled = false;
 
             DataGridViewComboBoxColumn data_sach = new DataGridViewComboBoxColumn();
             data_sach.HeaderText = "Sách";

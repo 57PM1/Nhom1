@@ -93,7 +93,9 @@ namespace DoAnCNPM.Views
             cbx_tacgias.Enabled = false; 
             btn_them_slht.Visible = false;
             btn_xoa.Enabled = false;
+            btn_xoa.BackColor = Color.White;
             btn_sua.Enabled = false;
+            btn_sua.BackColor = Color.White;
         }
 
 
@@ -470,13 +472,16 @@ namespace DoAnCNPM.Views
             if (txt_masach.Text == null || txt_masach.Text == "")
             {
                 btn_xoa.Enabled = false;
+                btn_xoa.BackColor = Color.White;
                 btn_sua.Enabled = false;
-                btn_them_slht.Visible = false;
+                btn_sua.BackColor = Color.White;
             }
             else
             {
                 btn_xoa.Enabled = true;
+                btn_xoa.BackColor = Color.Moccasin;
                 btn_sua.Enabled = true;
+                btn_sua.BackColor = Color.Moccasin;
                 btn_them_slht.Visible = true;
             }
 
@@ -561,6 +566,11 @@ namespace DoAnCNPM.Views
         {
             subform_them_soluongbandau sub_form = new subform_them_soluongbandau(txt_masach.Text, this);
             sub_form.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
 
